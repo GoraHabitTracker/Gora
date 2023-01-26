@@ -8,6 +8,10 @@
     <string name="add_habit_text">У вас пока нет привычек. \nЧтобы добавить привычку, \nНажмите «+»</string>
     <string name="done">сделано</string>
     <string name="skip">пропустить</string>
+    <string name="done_cancel">Привычка выполнена!</string>
+    <string name="skip_cancel">Привычка пропущена</string>
+    <string name="gotit">Понятно</string>
+    <string name="delete_swipe_left">Чтобы удалить привычку, свайпните влево \nпо карточке привычки</string>
     <string name="new_habit">Создать новую привычку</string>
     <string name="name_habit">Название привычки</string>
     <string name="icon_choice_text">Выберите иконку привычки</string>
@@ -20,6 +24,7 @@
     <string name="saturday">Сб</string>
     <string name="sunday">Вс</string>
     <string name="add_habit">Добавить привычку</string>
+    <string name="number_of_symbol">Введите не более 20 символов</string>
 
 
 </resources>

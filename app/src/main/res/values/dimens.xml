@@ -2,9 +2,11 @@
 <resources>
 
     <dimen name="emoji_choice">62dp</dimen>
+    <dimen name="dp_7">7dp</dimen>
     <dimen name="dp_14">14dp</dimen>
     <dimen name="text_margin">10dp</dimen>
     <dimen name="week_height">58dp</dimen>
+    <dimen name="week_text_size">11sp</dimen>
 
 
 </resources>

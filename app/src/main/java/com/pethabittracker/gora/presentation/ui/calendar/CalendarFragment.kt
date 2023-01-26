@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.pethabittracker.gora.R
 import com.pethabittracker.gora.databinding.FragmentCalendarBinding
 
 class CalendarFragment : Fragment() {
@@ -26,6 +27,7 @@ class CalendarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.calendarView.setBackgroundResource(R.color.sea_foam)
         binding.root.setBackgroundColor(Color.BLUE)
     }
 

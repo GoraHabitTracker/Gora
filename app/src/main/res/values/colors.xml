@@ -15,4 +15,8 @@
     <color name="sea_foam">#F9F4EC</color>
     <color name="sapphire">#081636</color>
     <color name="snow_white">#FFFDFA</color>
+    <color name="pastel_green">#C7EEC9</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent_2">#40000000</color>
+    <color name="habit_done">#C7EEC9</color>
 </resources>

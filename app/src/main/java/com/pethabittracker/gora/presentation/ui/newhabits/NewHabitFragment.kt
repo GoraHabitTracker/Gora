@@ -1,4 +1,4 @@
-package com.pethabittracker.gora.presentation.ui.detail
+package com.pethabittracker.gora.presentation.ui.newhabits
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,25 +7,23 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.textfield.TextInputLayout
-import com.pethabittracker.gora.R
-import com.pethabittracker.gora.databinding.FragmentDetailBinding
+import com.pethabittracker.gora.databinding.FragmentNewHabitBinding
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DetailFragment : Fragment() {
+class NewHabitFragment : Fragment() {
 
-    private var _binding: FragmentDetailBinding? = null
+    private var _binding: FragmentNewHabitBinding? = null
     private val binding get() = requireNotNull(_binding)
-    private val detailViewModel by viewModel<DetailViewModel>()
+    private val newHabitViewModel by viewModel<NewHabitViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return FragmentDetailBinding.inflate(inflater, container, false)
+        return FragmentNewHabitBinding.inflate(inflater, container, false)
             .also { _binding = it }
             .root
     }
@@ -43,8 +41,8 @@ class DetailFragment : Fragment() {
 
                 lifecycleScope.launch {
                     runCatching {
-                        val newHabit = detailViewModel.newHabit(titleHabit, "url", 1)
-                        detailViewModel.insertHabit(newHabit)
+                        val newHabit = newHabitViewModel.newHabit(titleHabit, "url", 1)
+                        newHabitViewModel.insertHabit(newHabit)
                     }
                 }
 

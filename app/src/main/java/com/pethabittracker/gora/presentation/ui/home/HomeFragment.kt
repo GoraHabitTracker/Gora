@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.getDrawable
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -55,13 +57,18 @@ class HomeFragment : Fragment() {
             // закругляем углы картинки
             ivHills.clipToOutline = true
 
-            // Decorator
-            recyclerView.addItemDecoration(
-                MaterialDividerItemDecoration(
-                    requireContext(),
-                    MaterialDividerItemDecoration.VERTICAL
-                )
-            )
+            // AlertDialog повесил пока что на Фотку
+            binding.foto.setOnClickListener {
+                val viewAlertDialog =
+                    layoutInflater.inflate(R.layout.fragment_dialog_deleting, null, false)
+                val alertDialog = AlertDialog
+                    .Builder(requireContext(), R.style.MyAlertTheme)
+                    .setView(viewAlertDialog)
+                    .show()
+                viewAlertDialog.findViewById<Button>(R.id.button_gotit).setOnClickListener {
+                    alertDialog.dismiss()
+                }
+            }
         }
 
         updateList()
@@ -79,12 +86,25 @@ class HomeFragment : Fragment() {
         //------------------ with Coroutine -------------------------------------------------------
         viewModel.getAllHabit().onEach {
             adapter.submitList(it)
-            
-            //для плавности замены слоёв
-            delay(300)
-            binding.foto.isVisible = it.isEmpty()
+
 
         }.launchIn(lifecycleScope)
+        viewModel
+            .getAllHabit()
+            .onEach {
+                adapter.submitList(it)
+
+                if (it.isNotEmpty()) {
+                    binding.root.setBackgroundResource(R.color.sea_foam)
+                } else {
+                    binding.root.setBackgroundResource(R.color.transparent)
+                }
+
+                //для плавности замены слоёв
+                delay(300)
+                binding.foto.isVisible = it.isEmpty()
+            }
+            .launchIn(lifecycleScope)
 
         //------------------ with LiveData -------------------------------------------------------
 //        viewModel.allHabit.observe(this.viewLifecycleOwner) { items ->

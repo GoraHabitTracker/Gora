@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/detail"
-        android:name="com.pethabittracker.gora.presentation.ui.detail.DetailFragment"
-        tools:layout="@layout/fragment_detail" >
+        android:name="com.pethabittracker.gora.presentation.ui.newhabits.NewHabitFragment"
+        tools:layout="@layout/fragment_new_habit" >
     </fragment>
 
 </navigation>
