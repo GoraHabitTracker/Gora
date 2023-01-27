@@ -1,9 +1,12 @@
 package com.pethabittracker.gora.presentation.ui.newhabits
 
+import android.graphics.Color
+import android.graphics.drawable.shapes.Shape
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -33,7 +36,7 @@ class NewHabitFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            toolbarDetail.setNavigationOnClickListener{
+            toolbarDetail.setNavigationOnClickListener {
                 findNavController().navigateUp()
             }
 

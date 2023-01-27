@@ -17,14 +17,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/tv_my_habit"
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_home"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:text="@string/my_habit"
-            android:textColor="@color/sapphire"
-            android:textSize="22sp" />
+            android:background="@drawable/transparent_background">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/my_habit"
+                android:textColor="@color/sapphire"
+                android:textSize="22sp" />
+        </androidx.appcompat.widget.Toolbar>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_hills"

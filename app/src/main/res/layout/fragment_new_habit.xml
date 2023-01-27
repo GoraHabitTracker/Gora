@@ -46,8 +46,8 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_button_primary"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:background="@drawable/border_button_primary">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_text_title"
@@ -68,389 +68,319 @@
                 android:textColor="@color/sapphire"
                 android:textSize="16sp" />
 
-            <HorizontalScrollView
+
+            <GridLayout
+                android:id="@+id/grid"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="160dp"
+                android:layout_marginHorizontal="5dp"
+                android:columnCount="5"
+                android:orientation="vertical"
+                android:rowCount="2">
 
-                <GridLayout
-                    android:id="@+id/grid"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:columnCount="6"
-                    android:orientation="vertical"
-                    android:rowCount="2">
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
+                    android:layout_margin="@dimen/dp_7"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_1"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
+                    android:layout_margin="@dimen/dp_7"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_2"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_3"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
+                    android:layout_margin="@dimen/dp_7"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_3"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_4"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
+                    android:layout_margin="@dimen/dp_7"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_4"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_5"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
+                    android:layout_margin="@dimen/dp_7"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_5"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_6"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
+                    android:layout_margin="@dimen/dp_7"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_6"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_7"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
+                    android:layout_margin="@dimen/dp_7"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_7"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_8"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
+                    android:layout_margin="@dimen/dp_7"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_8"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_9"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
+                    android:layout_margin="@dimen/dp_7"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_9"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_10"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
+                    android:layout_margin="@dimen/dp_7"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
+            </GridLayout>
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_10"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_11"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_12"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
-                </GridLayout>
-            </HorizontalScrollView>
-
-            <!--    <TextView-->
-            <!--        android:id="@+id/date"-->
-            <!--        android:layout_width="match_parent"-->
-            <!--        android:layout_height="wrap_content"-->
-            <!--        android:layout_margin="16dp"-->
-            <!--        android:hint="date"-->
-            <!--        android:text=""-->
-            <!--        android:textSize="16sp" />-->
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="10dp"
                 android:text="@string/day_of_week_choice_text"
                 android:textColor="@color/sapphire"
                 android:textSize="16sp" />
 
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
+                android:layout_marginHorizontal="12dp"
                 android:background="@drawable/border_button_primary"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/monday"
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatToggleButton
+                    android:id="@+id/monday2"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="@string/monday"
+                    android:background="@drawable/background_tint_toggle"
                     android:textColor="@color/sapphire"
+                    android:textOff="@string/monday"
+                    android:textOn="@string/monday"
                     android:textSize="11sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/stick_monday"
+                    app:layout_constraintEnd_toStartOf="@+id/stick_monday2"
+                    app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/stick_monday"
+                    android:id="@+id/stick_monday2"
                     android:layout_width="1dp"
                     android:layout_height="32dp"
                     android:layout_gravity="center_vertical"
                     android:background="@color/periwinkle"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/tuesday"
-                    app:layout_constraintStart_toEndOf="@+id/monday"
+                    app:layout_constraintEnd_toStartOf="@+id/tuesday2"
+                    app:layout_constraintStart_toEndOf="@+id/monday2"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tuesday"
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatToggleButton
+                    android:id="@+id/tuesday2"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="@string/tuesday"
+                    android:background="@drawable/background_tint_toggle"
                     android:textColor="@color/sapphire"
+                    android:textOff="@string/tuesday"
+                    android:textOn="@string/tuesday"
                     android:textSize="11sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/stick_tuesday"
-                    app:layout_constraintStart_toEndOf="@+id/stick_monday"
+                    app:layout_constraintEnd_toStartOf="@+id/stick_tuesday2"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/stick_monday2"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/stick_tuesday"
+                    android:id="@+id/stick_tuesday2"
                     android:layout_width="1dp"
                     android:layout_height="32dp"
                     android:layout_gravity="center_vertical"
                     android:background="@color/periwinkle"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/wednesday"
-                    app:layout_constraintStart_toEndOf="@+id/tuesday"
+                    app:layout_constraintEnd_toStartOf="@+id/wednesday2"
+                    app:layout_constraintStart_toEndOf="@+id/tuesday2"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/wednesday"
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatToggleButton
+                    android:id="@+id/wednesday2"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="@string/wednesday"
+                    android:background="@drawable/background_tint_toggle"
                     android:textColor="@color/sapphire"
+                    android:textOff="@string/wednesday"
+                    android:textOn="@string/wednesday"
                     android:textSize="11sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/stick_wednesday"
-                    app:layout_constraintStart_toEndOf="@+id/stick_tuesday"
+                    app:layout_constraintEnd_toStartOf="@+id/stick_wednesday2"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/stick_tuesday2"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/stick_wednesday"
+                    android:id="@+id/stick_wednesday2"
                     android:layout_width="1dp"
                     android:layout_height="32dp"
                     android:layout_gravity="center_vertical"
                     android:background="@color/periwinkle"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/thursday"
-                    app:layout_constraintStart_toEndOf="@+id/wednesday"
+                    app:layout_constraintEnd_toStartOf="@+id/thursday2"
+                    app:layout_constraintStart_toEndOf="@+id/wednesday2"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/thursday"
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatToggleButton
+                    android:id="@+id/thursday2"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="@string/thursday"
+                    android:background="@drawable/background_tint_toggle"
+                    android:backgroundTintMode="screen"
                     android:textColor="@color/sapphire"
+                    android:textOff="@string/thursday"
+                    android:textOn="@string/thursday"
                     android:textSize="11sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/stick_thursday"
-                    app:layout_constraintStart_toEndOf="@+id/stick_wednesday"
+                    app:layout_constraintEnd_toStartOf="@+id/stick_thursday2"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/stick_wednesday2"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/stick_thursday"
+                    android:id="@+id/stick_thursday2"
                     android:layout_width="1dp"
                     android:layout_height="32dp"
                     android:layout_gravity="center_vertical"
                     android:background="@color/periwinkle"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/friday"
-                    app:layout_constraintStart_toEndOf="@+id/thursday"
+                    app:layout_constraintEnd_toStartOf="@+id/friday2"
+                    app:layout_constraintStart_toEndOf="@+id/thursday2"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/friday"
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatToggleButton
+                    android:id="@+id/friday2"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="@string/friday"
+                    android:background="@drawable/background_tint_toggle"
                     android:textColor="@color/sapphire"
+                    android:textOff="@string/friday"
+                    android:textOn="@string/friday"
                     android:textSize="11sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/stick_friday"
-                    app:layout_constraintStart_toEndOf="@+id/stick_thursday"
+                    app:layout_constraintEnd_toStartOf="@+id/stick_friday2"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/stick_thursday2"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/stick_friday"
+                    android:id="@+id/stick_friday2"
                     android:layout_width="1dp"
                     android:layout_height="32dp"
                     android:layout_gravity="center_vertical"
                     android:background="@color/periwinkle"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/saturday"
-                    app:layout_constraintStart_toEndOf="@+id/friday"
+                    app:layout_constraintEnd_toStartOf="@+id/saturday2"
+                    app:layout_constraintStart_toEndOf="@+id/friday2"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/saturday"
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatToggleButton
+                    android:id="@+id/saturday2"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="@string/saturday"
+                    android:background="@drawable/background_tint_toggle"
                     android:textColor="@color/sapphire"
+                    android:textOff="@string/saturday"
+                    android:textOn="@string/saturday"
                     android:textSize="11sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/stick_saturday"
-                    app:layout_constraintStart_toEndOf="@+id/stick_friday"
+                    app:layout_constraintEnd_toStartOf="@+id/stick_saturday2"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/stick_friday2"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/stick_saturday"
+                    android:id="@+id/stick_saturday2"
                     android:layout_width="1dp"
                     android:layout_height="32dp"
                     android:layout_gravity="center_vertical"
                     android:background="@color/periwinkle"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/sunday"
-                    app:layout_constraintStart_toEndOf="@+id/saturday"
+                    app:layout_constraintEnd_toStartOf="@+id/sunday2"
+                    app:layout_constraintStart_toEndOf="@+id/saturday2"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/sunday"
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatToggleButton
+                    android:id="@+id/sunday2"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="@string/sunday"
+                    android:background="@drawable/background_tint_toggle"
                     android:textColor="@color/sapphire"
+                    android:textOff="@string/sunday"
+                    android:textOn="@string/sunday"
                     android:textSize="11sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/stick_saturday"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/stick_saturday2"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="12dp">
-
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/week_height"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:text="@string/monday"
-                    android:textAllCaps="false"
-                    android:textColor="@color/sapphire"
-                    android:textSize="@dimen/week_text_size"
-                    app:shapeAppearance="@style/roundedWeek"
-                    app:strokeColor="@color/periwinkle" />
-
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/week_height"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:text="@string/tuesday"
-                    android:textAllCaps="false"
-                    android:textColor="@color/sapphire"
-                    android:textSize="@dimen/week_text_size"
-                    app:strokeColor="@color/periwinkle" />
-
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/week_height"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:text="@string/wednesday"
-                    android:textAllCaps="false"
-                    android:textColor="@color/sapphire"
-                    android:textSize="@dimen/week_text_size"
-                    app:strokeColor="@color/periwinkle" />
-
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/week_height"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:text="@string/thursday"
-                    android:textAllCaps="false"
-                    android:textColor="@color/sapphire"
-                    android:textSize="@dimen/week_text_size"
-                    app:strokeColor="@color/periwinkle" />
-
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/week_height"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:text="@string/friday"
-                    android:textAllCaps="false"
-                    android:textColor="@color/sapphire"
-                    android:textSize="@dimen/week_text_size"
-                    app:strokeColor="@color/periwinkle" />
-
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/week_height"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:text="@string/saturday"
-                    android:textAllCaps="false"
-                    android:textColor="@color/sapphire"
-                    android:textSize="@dimen/week_text_size"
-                    app:strokeColor="@color/periwinkle" />
-
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/week_height"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:text="@string/sunday"
-                    android:textAllCaps="false"
-                    android:textColor="@color/sapphire"
-                    android:textSize="@dimen/week_text_size"
-                    app:shapeAppearance="@style/roundedWeek"
-                    app:strokeColor="@color/periwinkle" />
-            </com.google.android.material.button.MaterialButtonToggleGroup>
 
             <FrameLayout
                 android:layout_width="match_parent"
