@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputLayout
+import com.pethabittracker.gora.R
 import com.pethabittracker.gora.databinding.FragmentNewHabitBinding
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -41,7 +42,7 @@ class NewHabitFragment : Fragment() {
 
                 lifecycleScope.launch {
                     runCatching {
-                        val newHabit = newHabitViewModel.newHabit(titleHabit, "url", 1)
+                        val newHabit = newHabitViewModel.newHabit(titleHabit, "url", 0)
                         newHabitViewModel.insertHabit(newHabit)
                     }
                 }
@@ -59,8 +60,9 @@ class NewHabitFragment : Fragment() {
     private fun TextInputLayout.getTextOrSetError(): String? {
         return editText?.text?.toString()
             ?.ifBlank {
-                error = "Field is empty"
+                error = getString(R.string.empty_field)
                 null
             }
+
     }
 }

@@ -34,6 +34,11 @@ class HomeViewModel(
 
     val allHabit: LiveData<List<Habit>> = repository.getFlowAllHabits().asLiveData()
 
+    fun doneDown(habit: Habit) {
+        flow<Unit> {
+            updateHabit(habit, 1)
+        }.launchIn(viewModelScope)
+    }
     fun skipDown(habit: Habit) {
         flow<Unit> {
             updateHabit(habit, 2)

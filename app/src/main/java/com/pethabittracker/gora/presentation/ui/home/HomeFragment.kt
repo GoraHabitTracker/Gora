@@ -33,8 +33,11 @@ class HomeFragment : Fragment() {
         HabitAdapter(
             context = requireContext(),
             onButtonDoneClicked = {
+                viewModel.doneDown(it)
+            },
+            onButtonSkipClicked = {
                 viewModel.skipDown(it)
-            }
+            },
         )
     }
 
