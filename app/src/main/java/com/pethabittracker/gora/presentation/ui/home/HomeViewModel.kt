@@ -1,8 +1,6 @@
 package com.pethabittracker.gora.presentation.ui.home
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.pethabittracker.gora.domain.models.Habit
 import com.pethabittracker.gora.domain.repositories.HabitRepository
@@ -32,16 +30,11 @@ class HomeViewModel(
 
     //----------------- with LiveData -------------------------------------------------------------
 
-    val allHabit: LiveData<List<Habit>> = repository.getFlowAllHabits().asLiveData()
+  //  val allHabit: LiveData<List<Habit>> = repository.getFlowAllHabits().asLiveData()
 
-    fun doneDown(habit: Habit) {
+    fun skipDown(habit: Habit, priority: Int) {
         flow<Unit> {
-            updateHabit(habit, 1)
-        }.launchIn(viewModelScope)
-    }
-    fun skipDown(habit: Habit) {
-        flow<Unit> {
-            updateHabit(habit, 2)
+            updateHabit(habit, priority)
         }.launchIn(viewModelScope)
     }
 
