@@ -28,26 +28,4 @@
         <item name="cornerSize">12%</item>
     </style>
 
-
-    <style name="MyTextButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
-        <item name="android:textColor">@color/mtrl_text_btn_text_color_selector</item>
-        <item name="android:paddingLeft">@dimen/mtrl_btn_text_btn_padding_left</item>
-        <item name="android:paddingRight">@dimen/mtrl_btn_text_btn_padding_right</item>
-        <item name="iconTint">@color/mtrl_text_btn_text_color_selector</item>
-
-        <item name="backgroundTint">@color/mtrl_btn_text_btn_bg_color_selector</item>
-        <item name="rippleColor">@color/mtrl_btn_text_btn_ripple_color</item>
-    </style>
-
-    <style name="MyToggleButton" >
-        <item name="android:textColor">@color/mtrl_text_btn_text_color_selector</item>
-        <item name="android:paddingLeft">@dimen/mtrl_btn_text_btn_padding_left</item>
-        <item name="android:paddingRight">@dimen/mtrl_btn_text_btn_padding_right</item>
-        <item name="iconTint">@drawable/icon_tint_toggle</item>
-        <item name="backgroundTint">@drawable/background_tint_toggle</item>
-        <item name="rippleColor">@drawable/ripple_color_toggle</item>
-
-
-    </style>
-
 </resources>
