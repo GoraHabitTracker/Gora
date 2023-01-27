@@ -46,8 +46,8 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_button_primary"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:background="@drawable/border_button_primary">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_text_title"
@@ -201,16 +201,18 @@
                 android:background="@drawable/border_button_primary"
                 android:orientation="horizontal">
 
-                <TextView
+                <Button
                     android:id="@+id/monday"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:text="@string/monday"
+
                     android:textColor="@color/sapphire"
                     android:textSize="11sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/stick_monday"
+                    app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -225,16 +227,18 @@
                     app:layout_constraintStart_toEndOf="@+id/monday"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <Button
                     android:id="@+id/tuesday"
-                    android:layout_width="wrap_content"
+                    style="@style/MyTextButton"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:text="@string/tuesday"
+
                     android:textColor="@color/sapphire"
                     android:textSize="11sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/stick_tuesday"
+                    app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toEndOf="@+id/stick_monday"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -249,16 +253,18 @@
                     app:layout_constraintStart_toEndOf="@+id/tuesday"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <Button
                     android:id="@+id/wednesday"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:text="@string/wednesday"
+
                     android:textColor="@color/sapphire"
                     android:textSize="11sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/stick_wednesday"
+                    app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toEndOf="@+id/stick_tuesday"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -273,16 +279,18 @@
                     app:layout_constraintStart_toEndOf="@+id/wednesday"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <Button
                     android:id="@+id/thursday"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:text="@string/thursday"
+
                     android:textColor="@color/sapphire"
                     android:textSize="11sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/stick_thursday"
+                    app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toEndOf="@+id/stick_wednesday"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -297,16 +305,18 @@
                     app:layout_constraintStart_toEndOf="@+id/thursday"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <Button
                     android:id="@+id/friday"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:text="@string/friday"
+
                     android:textColor="@color/sapphire"
                     android:textSize="11sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/stick_friday"
+                    app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toEndOf="@+id/stick_thursday"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -321,16 +331,18 @@
                     app:layout_constraintStart_toEndOf="@+id/friday"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <Button
                     android:id="@+id/saturday"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:text="@string/saturday"
+
                     android:textColor="@color/sapphire"
                     android:textSize="11sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/stick_saturday"
+                    app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toEndOf="@+id/stick_friday"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -345,111 +357,299 @@
                     app:layout_constraintStart_toEndOf="@+id/saturday"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <Button
                     android:id="@+id/sunday"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:text="@string/sunday"
+
                     android:textColor="@color/sapphire"
                     android:textSize="11sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toEndOf="@+id/stick_saturday"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.google.android.material.button.MaterialButtonToggleGroup
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="12dp">
+                android:layout_margin="12dp"
+                android:background="@drawable/border_button_primary"
+                android:orientation="horizontal">
 
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/materialButtonOutlinedStyle"
+                <androidx.appcompat.widget.AppCompatToggleButton
+                    android:id="@+id/monday2"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/week_height"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:text="@string/monday"
-                    android:textAllCaps="false"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_tint_toggle"
                     android:textColor="@color/sapphire"
-                    android:textSize="@dimen/week_text_size"
-                    app:shapeAppearance="@style/roundedWeek"
-                    app:strokeColor="@color/periwinkle" />
+                    android:textOff="@string/monday"
+                    android:textOn="@string/monday"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/stick_monday2"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/week_height"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:text="@string/tuesday"
-                    android:textAllCaps="false"
-                    android:textColor="@color/sapphire"
-                    android:textSize="@dimen/week_text_size"
-                    app:strokeColor="@color/periwinkle" />
+                <TextView
+                    android:id="@+id/stick_monday2"
+                    android:layout_width="1dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/periwinkle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tuesday2"
+                    app:layout_constraintStart_toEndOf="@+id/monday2"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/week_height"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:text="@string/wednesday"
-                    android:textAllCaps="false"
-                    android:textColor="@color/sapphire"
-                    android:textSize="@dimen/week_text_size"
-                    app:strokeColor="@color/periwinkle" />
+                <androidx.appcompat.widget.AppCompatToggleButton
+                    android:id="@+id/tuesday2"
 
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/materialButtonOutlinedStyle"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/week_height"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:text="@string/thursday"
-                    android:textAllCaps="false"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_tint_toggle"
                     android:textColor="@color/sapphire"
-                    android:textSize="@dimen/week_text_size"
-                    app:strokeColor="@color/periwinkle" />
+                    android:textOff="@string/tuesday"
+                    android:textOn="@string/tuesday"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/stick_tuesday2"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/stick_monday2"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/week_height"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:text="@string/friday"
-                    android:textAllCaps="false"
-                    android:textColor="@color/sapphire"
-                    android:textSize="@dimen/week_text_size"
-                    app:strokeColor="@color/periwinkle" />
+                <TextView
+                    android:id="@+id/stick_tuesday2"
+                    android:layout_width="1dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/periwinkle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/wednesday2"
+                    app:layout_constraintStart_toEndOf="@+id/tuesday2"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/materialButtonOutlinedStyle"
+                <androidx.appcompat.widget.AppCompatToggleButton
+                    android:id="@+id/wednesday2"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/week_height"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:text="@string/saturday"
-                    android:textAllCaps="false"
+                    android:layout_height="wrap_content"
                     android:textColor="@color/sapphire"
-                    android:textSize="@dimen/week_text_size"
-                    app:strokeColor="@color/periwinkle" />
+                    android:textOff="@string/wednesday"
 
-                <com.google.android.material.button.MaterialButton
-                    style="?attr/materialButtonOutlinedStyle"
+                    android:textOn="@string/wednesday"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/stick_wednesday2"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/stick_tuesday2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/stick_wednesday2"
+                    android:layout_width="1dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/periwinkle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/thursday2"
+                    app:layout_constraintStart_toEndOf="@+id/wednesday2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatToggleButton
+                    android:id="@+id/thursday2"
+
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/week_height"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:text="@string/sunday"
-                    android:textAllCaps="false"
+                    android:layout_height="wrap_content"
+                    android:backgroundTintMode="screen"
+
                     android:textColor="@color/sapphire"
-                    android:textSize="@dimen/week_text_size"
-                    app:shapeAppearance="@style/roundedWeek"
-                    app:strokeColor="@color/periwinkle" />
-            </com.google.android.material.button.MaterialButtonToggleGroup>
+                    android:textOff="@string/thursday"
+                    android:textOn="@string/thursday"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/stick_thursday2"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/stick_wednesday2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/stick_thursday2"
+                    android:layout_width="1dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/periwinkle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/friday2"
+                    app:layout_constraintStart_toEndOf="@+id/thursday2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatToggleButton
+                    android:id="@+id/friday2"
+                    style="@style/MyTextButton"
+                    android:layout_width="0dp"
+
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_tint_toggle"
+                    android:textOff="@string/friday"
+                    android:textOn="@string/friday"
+
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/stick_friday2"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/stick_thursday2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/stick_friday2"
+                    android:layout_width="1dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/periwinkle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/saturday2"
+                    app:layout_constraintStart_toEndOf="@+id/friday2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatToggleButton
+                    android:id="@+id/saturday2"
+                    style="@style/MyTextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_tint_toggle"
+                    android:textColor="@color/sapphire"
+                    android:textOff="@string/saturday"
+                    android:textOn="@string/saturday"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/stick_saturday2"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/stick_friday2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/stick_saturday2"
+                    android:layout_width="1dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/periwinkle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/sunday2"
+                    app:layout_constraintStart_toEndOf="@+id/saturday2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatToggleButton
+                    android:id="@+id/sunday2"
+                    style="@style/MyTextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_tint_toggle"
+                    android:textColor="@color/sapphire"
+                    android:textOff="@string/sunday"
+                    android:textOn="@string/sunday"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/stick_saturday2"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <!--            <com.google.android.material.button.MaterialButtonToggleGroup-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginHorizontal="12dp">-->
+
+            <!--                <Button-->
+            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="@dimen/week_height"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:text="@string/monday"-->
+            <!--                    android:textAllCaps="false"-->
+            <!--                    app:shapeAppearance="@style/roundedWeek"-->
+            <!--                    app:strokeColor="@color/periwinkle" />-->
+
+            <!--                <Button-->
+            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="@dimen/week_height"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:backgroundTint="@color/white"-->
+            <!--                    android:text="@string/tuesday"-->
+            <!--                    android:textAllCaps="false"-->
+            <!--                    android:textColor="@color/sapphire"-->
+            <!--                    android:textSize="@dimen/week_text_size"-->
+            <!--                    app:strokeColor="@color/periwinkle" />-->
+
+            <!--                <Button-->
+            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="@dimen/week_height"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:backgroundTint="@color/white"-->
+            <!--                    android:text="@string/wednesday"-->
+            <!--                    android:textAllCaps="false"-->
+            <!--                    android:textColor="@color/sapphire"-->
+            <!--                    android:textSize="@dimen/week_text_size"-->
+            <!--                    app:strokeColor="@color/periwinkle" />-->
+
+            <!--                <Button-->
+            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="@dimen/week_height"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:backgroundTint="@color/white"-->
+            <!--                    android:text="@string/thursday"-->
+            <!--                    android:textAllCaps="false"-->
+            <!--                    android:textColor="@color/sapphire"-->
+            <!--                    android:textSize="@dimen/week_text_size"-->
+            <!--                    app:strokeColor="@color/periwinkle" />-->
+
+            <!--                <Button-->
+            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="@dimen/week_height"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:backgroundTint="@color/white"-->
+            <!--                    android:text="@string/friday"-->
+            <!--                    android:textAllCaps="false"-->
+            <!--                    android:textColor="@color/sapphire"-->
+            <!--                    android:textSize="@dimen/week_text_size"-->
+            <!--                    app:strokeColor="@color/periwinkle" />-->
+
+            <!--                <Button-->
+            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="@dimen/week_height"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:backgroundTint="@color/white"-->
+            <!--                    android:text="@string/saturday"-->
+            <!--                    android:textAllCaps="false"-->
+            <!--                    android:textColor="@color/sapphire"-->
+            <!--                    android:textSize="@dimen/week_text_size"-->
+            <!--                    app:strokeColor="@color/periwinkle" />-->
+
+            <!--                <Button-->
+            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="@dimen/week_height"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:backgroundTint="@color/white"-->
+            <!--                    android:text="@string/sunday"-->
+            <!--                    android:textAllCaps="false"-->
+            <!--                    android:textColor="@color/sapphire"-->
+            <!--                    android:textSize="@dimen/week_text_size"-->
+            <!--                    app:shapeAppearance="@style/roundedWeek"-->
+            <!--                    app:strokeColor="@color/periwinkle" />-->
+            <!--            </com.google.android.material.button.MaterialButtonToggleGroup>-->
 
             <FrameLayout
                 android:layout_width="match_parent"
