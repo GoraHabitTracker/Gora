@@ -11,21 +11,35 @@ import com.pethabittracker.gora.domain.models.Habit
 class HabitViewHolder(
     private val binding: ItemHabitBinding,
     private val context: Context,
-    private val onButtonDoneClicked: (Habit) -> Unit
+    private val onButtonClicked: (Habit, Int) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(habit: Habit) {
 
         with(binding) {
 
-            frameChoice.isVisible = true
+            when(habit.priority){
+                0 -> {
+                    frameChoice.isVisible = true
+                }
+                1 -> {
+                    frameChoice.isVisible = false
+                    frameDone.isVisible = true
+                    root.setCardBackgroundColor(ContextCompat.getColor(context, R.color.pastel_green))
+                }
+                2 -> {
+                    frameChoice.isVisible = false
+                    frameSkip.isVisible = true
+                    root.setCardBackgroundColor(ContextCompat.getColor(context, R.color.transparent_2))
+                }
+            }
 
             buttonDone.setOnClickListener {
                 frameChoice.isVisible = false
                 frameDone.isVisible = true
                 root.setCardBackgroundColor(ContextCompat.getColor(context, R.color.pastel_green))
 
-                onButtonDoneClicked(habit)
+                onButtonClicked(habit,1)
             }
 
             buttonSkip.setOnClickListener {
@@ -33,7 +47,7 @@ class HabitViewHolder(
                 frameSkip.isVisible = true
                 root.setCardBackgroundColor(ContextCompat.getColor(context, R.color.transparent_2))
 
-                onButtonDoneClicked(habit)
+                onButtonClicked(habit,2)
             }
 
             tvNameHabit.text = habit.name

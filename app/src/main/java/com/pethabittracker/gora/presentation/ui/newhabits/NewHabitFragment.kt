@@ -45,7 +45,7 @@ class NewHabitFragment : Fragment() {
 
                 lifecycleScope.launch {
                     runCatching {
-                        val newHabit = newHabitViewModel.newHabit(titleHabit, "url", 1)
+                        val newHabit = newHabitViewModel.newHabit(titleHabit, "url", 0)
                         newHabitViewModel.insertHabit(newHabit)
                     }
                 }
@@ -63,8 +63,9 @@ class NewHabitFragment : Fragment() {
     private fun TextInputLayout.getTextOrSetError(): String? {
         return editText?.text?.toString()
             ?.ifBlank {
-                error = "Field is empty"
+                error = getString(R.string.empty_field)
                 null
             }
+
     }
 }

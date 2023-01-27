@@ -55,6 +55,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:digits="@string/support_symbols"
+                    android:maxLength="20"
                     android:hint="@string/number_of_symbol"
                     android:text="" />
             </com.google.android.material.textfield.TextInputLayout>
