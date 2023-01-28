@@ -56,6 +56,7 @@
                     android:background="@color/white"
                     android:digits="@string/support_symbols"
                     android:hint="@string/number_of_symbol"
+                    android:maxLength="20"
                     android:text="" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -160,14 +161,6 @@
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
             </GridLayout>
 
-            <!--    <TextView-->
-            <!--        android:id="@+id/date"-->
-            <!--        android:layout_width="match_parent"-->
-            <!--        android:layout_height="wrap_content"-->
-            <!--        android:layout_margin="16dp"-->
-            <!--        android:hint="date"-->
-            <!--        android:text=""-->
-            <!--        android:textSize="16sp" />-->
 
             <TextView
                 android:layout_width="match_parent"
@@ -365,7 +358,6 @@
 
                 <androidx.appcompat.widget.AppCompatToggleButton
                     android:id="@+id/monday2"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_tint_toggle"
@@ -392,7 +384,6 @@
 
                 <androidx.appcompat.widget.AppCompatToggleButton
                     android:id="@+id/tuesday2"
-
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_tint_toggle"
@@ -419,12 +410,11 @@
 
                 <androidx.appcompat.widget.AppCompatToggleButton
                     android:id="@+id/wednesday2"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/background_tint_toggle"
                     android:textColor="@color/sapphire"
                     android:textOff="@string/wednesday"
-
                     android:textOn="@string/wednesday"
                     android:textSize="11sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -446,11 +436,10 @@
 
                 <androidx.appcompat.widget.AppCompatToggleButton
                     android:id="@+id/thursday2"
-
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/background_tint_toggle"
                     android:backgroundTintMode="screen"
-
                     android:textColor="@color/sapphire"
                     android:textOff="@string/thursday"
                     android:textOn="@string/thursday"
@@ -474,14 +463,12 @@
 
                 <androidx.appcompat.widget.AppCompatToggleButton
                     android:id="@+id/friday2"
-                    style="@style/MyTextButton"
                     android:layout_width="0dp"
-
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_tint_toggle"
+                    android:textColor="@color/sapphire"
                     android:textOff="@string/friday"
                     android:textOn="@string/friday"
-
                     android:textSize="11sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/stick_friday2"
@@ -502,7 +489,6 @@
 
                 <androidx.appcompat.widget.AppCompatToggleButton
                     android:id="@+id/saturday2"
-                    style="@style/MyTextButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_tint_toggle"
@@ -529,7 +515,6 @@
 
                 <androidx.appcompat.widget.AppCompatToggleButton
                     android:id="@+id/sunday2"
-                    style="@style/MyTextButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_tint_toggle"
@@ -544,95 +529,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-            <!--            <com.google.android.material.button.MaterialButtonToggleGroup-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginHorizontal="12dp">-->
-
-            <!--                <Button-->
-            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-            <!--                    android:layout_width="0dp"-->
-            <!--                    android:layout_height="@dimen/week_height"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:text="@string/monday"-->
-            <!--                    android:textAllCaps="false"-->
-            <!--                    app:shapeAppearance="@style/roundedWeek"-->
-            <!--                    app:strokeColor="@color/periwinkle" />-->
-
-            <!--                <Button-->
-            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-            <!--                    android:layout_width="0dp"-->
-            <!--                    android:layout_height="@dimen/week_height"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:backgroundTint="@color/white"-->
-            <!--                    android:text="@string/tuesday"-->
-            <!--                    android:textAllCaps="false"-->
-            <!--                    android:textColor="@color/sapphire"-->
-            <!--                    android:textSize="@dimen/week_text_size"-->
-            <!--                    app:strokeColor="@color/periwinkle" />-->
-
-            <!--                <Button-->
-            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-            <!--                    android:layout_width="0dp"-->
-            <!--                    android:layout_height="@dimen/week_height"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:backgroundTint="@color/white"-->
-            <!--                    android:text="@string/wednesday"-->
-            <!--                    android:textAllCaps="false"-->
-            <!--                    android:textColor="@color/sapphire"-->
-            <!--                    android:textSize="@dimen/week_text_size"-->
-            <!--                    app:strokeColor="@color/periwinkle" />-->
-
-            <!--                <Button-->
-            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-            <!--                    android:layout_width="0dp"-->
-            <!--                    android:layout_height="@dimen/week_height"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:backgroundTint="@color/white"-->
-            <!--                    android:text="@string/thursday"-->
-            <!--                    android:textAllCaps="false"-->
-            <!--                    android:textColor="@color/sapphire"-->
-            <!--                    android:textSize="@dimen/week_text_size"-->
-            <!--                    app:strokeColor="@color/periwinkle" />-->
-
-            <!--                <Button-->
-            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-            <!--                    android:layout_width="0dp"-->
-            <!--                    android:layout_height="@dimen/week_height"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:backgroundTint="@color/white"-->
-            <!--                    android:text="@string/friday"-->
-            <!--                    android:textAllCaps="false"-->
-            <!--                    android:textColor="@color/sapphire"-->
-            <!--                    android:textSize="@dimen/week_text_size"-->
-            <!--                    app:strokeColor="@color/periwinkle" />-->
-
-            <!--                <Button-->
-            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-            <!--                    android:layout_width="0dp"-->
-            <!--                    android:layout_height="@dimen/week_height"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:backgroundTint="@color/white"-->
-            <!--                    android:text="@string/saturday"-->
-            <!--                    android:textAllCaps="false"-->
-            <!--                    android:textColor="@color/sapphire"-->
-            <!--                    android:textSize="@dimen/week_text_size"-->
-            <!--                    app:strokeColor="@color/periwinkle" />-->
-
-            <!--                <Button-->
-            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-            <!--                    android:layout_width="0dp"-->
-            <!--                    android:layout_height="@dimen/week_height"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:backgroundTint="@color/white"-->
-            <!--                    android:text="@string/sunday"-->
-            <!--                    android:textAllCaps="false"-->
-            <!--                    android:textColor="@color/sapphire"-->
-            <!--                    android:textSize="@dimen/week_text_size"-->
-            <!--                    app:shapeAppearance="@style/roundedWeek"-->
-            <!--                    app:strokeColor="@color/periwinkle" />-->
-            <!--            </com.google.android.material.button.MaterialButtonToggleGroup>-->
 
             <FrameLayout
                 android:layout_width="match_parent"

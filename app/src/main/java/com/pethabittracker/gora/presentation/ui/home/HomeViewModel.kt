@@ -1,8 +1,6 @@
 package com.pethabittracker.gora.presentation.ui.home
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.pethabittracker.gora.domain.models.Habit
 import com.pethabittracker.gora.domain.repositories.HabitRepository
@@ -32,7 +30,7 @@ class HomeViewModel(
 
     //----------------- with LiveData -------------------------------------------------------------
 
-    val allHabit: LiveData<List<Habit>> = repository.getFlowAllHabits().asLiveData()
+  //  val allHabit: LiveData<List<Habit>> = repository.getFlowAllHabits().asLiveData()
 
     fun changeThePriority(habit: Habit, priority: Int) {
         flow<Unit> {

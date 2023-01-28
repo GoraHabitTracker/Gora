@@ -106,41 +106,6 @@ class NewHabitFragment : Fragment() {
 
                 findNavController().navigateUp()
             }
-
-            var tuesdayFlag = false
-            var mondayFlag = false
-            tuesday.setOnClickListener {
-                if (!tuesdayFlag) {
-                    it.setBackgroundColor(getColor(requireContext(), R.color.button_pressed))
-                    tuesdayFlag = true
-                } else {
-                    it.setBackgroundColor(getColor(requireContext(), R.color.white))
-                    tuesdayFlag = false
-                }
-            }
-            monday.setOnClickListener {
-                if (!mondayFlag) {
-                    it.setBackgroundColor(getColor(requireContext(), R.color.button_pressed))
-                    mondayFlag = true
-                } else {
-                    it.setBackgroundColor(getColor(requireContext(), R.color.white))
-                    mondayFlag = false
-                }
-            }
-
-            wednesday2.setOnClickListener {
-                if (it.isPressed) {
-                    it.setBackgroundResource(R.color.button_pressed)
-                } else {
-                    it.setBackgroundResource(R.color.white)
-                }
-            }
-//
-//            tuesday2.setOnClickListener {
-//                if (it.isPressed){
-//                    it.setBackgroundResource(R.color.button_pressed)
-//                }
-//            }
         }
     }
 
@@ -152,7 +117,7 @@ class NewHabitFragment : Fragment() {
     private fun TextInputLayout.getTextOrSetError(): String? {
         return editText?.text?.toString()
             ?.ifBlank {
-                error = "Field is empty"
+                error = getString(R.string.empty_field)
                 null
             }
     }
