@@ -11,12 +11,14 @@ import com.pethabittracker.gora.domain.models.Habit
 class HabitViewHolder(
     private val binding: ItemHabitBinding,
     private val context: Context,
-    private val onButtonDoneClicked: (Habit) -> Unit
+    private val onButtonActionClicked: (Habit, Int) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(habit: Habit) {
 
         with(binding) {
+
+            imageView.setImageResource(habit.urlImage)
 
             frameChoice.isVisible = true
 
@@ -25,7 +27,7 @@ class HabitViewHolder(
                 frameDone.isVisible = true
                 root.setCardBackgroundColor(ContextCompat.getColor(context, R.color.pastel_green))
 
-                onButtonDoneClicked(habit)
+                onButtonActionClicked(habit, 2)     // может добавить отдельный класс\сущность Priority? для лучше читаемости кода
             }
 
             buttonSkip.setOnClickListener {
@@ -33,7 +35,7 @@ class HabitViewHolder(
                 frameSkip.isVisible = true
                 root.setCardBackgroundColor(ContextCompat.getColor(context, R.color.transparent_2))
 
-                onButtonDoneClicked(habit)
+                onButtonActionClicked(habit, 1)
             }
 
             tvNameHabit.text = habit.name

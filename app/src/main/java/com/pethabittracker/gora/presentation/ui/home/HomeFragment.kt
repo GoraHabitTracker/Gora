@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.pethabittracker.gora.R
 import com.pethabittracker.gora.databinding.FragmentHomeBinding
 import com.pethabittracker.gora.presentation.ui.adapter.HabitAdapter
@@ -32,8 +31,8 @@ class HomeFragment : Fragment() {
     private val adapter by lazy {
         HabitAdapter(
             context = requireContext(),
-            onButtonDoneClicked = {
-                viewModel.skipDown(it)
+            onButtonActionClicked = { habit, priority ->
+                viewModel.changeThePriority(habit, priority)
             }
         )
     }

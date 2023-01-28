@@ -67,115 +67,98 @@
                 android:textColor="@color/sapphire"
                 android:textSize="16sp" />
 
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <GridLayout
+                android:id="@+id/grid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:columnCount="6"
+                android:orientation="vertical"
+                android:rowCount="2">
 
-                <GridLayout
-                    android:id="@+id/grid"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:columnCount="6"
-                    android:orientation="vertical"
-                    android:rowCount="2">
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_1"
+                    android:layout_width="@dimen/emoji_choice"
+                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_margin="@dimen/dp_7"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_1"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
+<!--                app:strokeWidth="3dp"   - добавляет border -->
+<!--                app:strokeColor="@color/gray"  - меняет цвет border-->
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_2"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_2"
+                    android:layout_width="@dimen/emoji_choice"
+                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_margin="@dimen/dp_7"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_3"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_3"
+                    android:layout_width="@dimen/emoji_choice"
+                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_margin="@dimen/dp_7"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_4"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_4"
+                    android:layout_width="@dimen/emoji_choice"
+                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_margin="@dimen/dp_7"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_5"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_5"
+                    android:layout_width="@dimen/emoji_choice"
+                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_margin="@dimen/dp_7"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_6"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_6"
+                    android:layout_width="@dimen/emoji_choice"
+                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_margin="@dimen/dp_7"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_7"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_7"
+                    android:layout_width="@dimen/emoji_choice"
+                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_margin="@dimen/dp_7"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_8"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_8"
+                    android:layout_width="@dimen/emoji_choice"
+                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_margin="@dimen/dp_7"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_9"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_9"
+                    android:layout_width="@dimen/emoji_choice"
+                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_margin="@dimen/dp_7"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_10"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_11"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_12"
-                        android:layout_width="@dimen/emoji_choice"
-                        android:layout_height="@dimen/emoji_choice"
-                        android:layout_margin="@dimen/dp_7"
-                        android:src="@drawable/are_you_ready"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji" />
-                </GridLayout>
-            </HorizontalScrollView>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_10"
+                    android:layout_width="@dimen/emoji_choice"
+                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_margin="@dimen/dp_7"
+                    android:src="@drawable/are_you_ready"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji" />
+            </GridLayout>
 
             <!--    <TextView-->
             <!--        android:id="@+id/date"-->

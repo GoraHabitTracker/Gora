@@ -6,7 +6,7 @@ import com.pethabittracker.gora.domain.repositories.HabitRepository
 
 class NewHabitViewModel(private val repository: HabitRepository) : ViewModel() {
 
-    fun newHabit(name: String, url: String, priority: Int) =
+    fun newHabit(name: String, url: Int, priority: Int) =   // скорее всего newHabit должен создаваться тут или в каком-нибудь UserCase
         repository.newHabit(name, url, priority)
 
     suspend fun insertHabit(habit: Habit) =

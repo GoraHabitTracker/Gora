@@ -34,9 +34,9 @@ class HomeViewModel(
 
     val allHabit: LiveData<List<Habit>> = repository.getFlowAllHabits().asLiveData()
 
-    fun skipDown(habit: Habit) {
+    fun changeThePriority(habit: Habit, priority: Int) {
         flow<Unit> {
-            updateHabit(habit, 2)
+            updateHabit(habit, priority)
         }.launchIn(viewModelScope)
     }
 

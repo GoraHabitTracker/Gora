@@ -35,7 +35,7 @@ internal class HabitRepositoryImpl(private val habitDao: HabitDao) : HabitReposi
         return habitDao.getFlowHabitEntityList().map { it.toDomainModels() }
     }
 
-    override fun newHabit(name: String, url: String, priority: Int): Habit {
+    override fun newHabit(name: String, url: Int, priority: Int): Habit {    // По-моему этот метод надо удалить из репозитория
         return HabitEntity(
             name = name,
             urlImage = url,
@@ -43,7 +43,7 @@ internal class HabitRepositoryImpl(private val habitDao: HabitDao) : HabitReposi
         ).toDomain()
     }
 
-    override fun updateHabitPriority(id: HabitId ,name: String, url: String, priority: Int) {
+    override fun updateHabitPriority(id: HabitId ,name: String, url: Int, priority: Int) {
         val updatedHabit = Habit(
             id = id,
             name = name,
