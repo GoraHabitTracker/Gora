@@ -70,102 +70,130 @@
 
             <GridLayout
                 android:id="@+id/grid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:columnCount="6"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginHorizontal="5dp"
+                android:columnCount="5"
                 android:orientation="vertical"
                 android:rowCount="2">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_1"
-                    android:layout_width="@dimen/emoji_choice"
-                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
+                    android:layout_marginBottom="8dp"
                     android:src="@drawable/are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
-<!--                app:strokeWidth="3dp"   - добавляет border -->
-<!--                app:strokeColor="@color/gray"  - меняет цвет border-->
-
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_2"
-                    android:layout_width="@dimen/emoji_choice"
-                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
+                    android:layout_marginTop="8dp"
                     android:src="@drawable/are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_3"
-                    android:layout_width="@dimen/emoji_choice"
-                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
+                    android:layout_marginBottom="8dp"
                     android:src="@drawable/are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_4"
-                    android:layout_width="@dimen/emoji_choice"
-                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
+                    android:layout_marginTop="8dp"
                     android:src="@drawable/are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_5"
-                    android:layout_width="@dimen/emoji_choice"
-                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
+                    android:layout_marginBottom="8dp"
                     android:src="@drawable/are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_6"
-                    android:layout_width="@dimen/emoji_choice"
-                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
+                    android:layout_marginTop="8dp"
                     android:src="@drawable/are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_7"
-                    android:layout_width="@dimen/emoji_choice"
-                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
+                    android:layout_marginBottom="8dp"
                     android:src="@drawable/are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_8"
-                    android:layout_width="@dimen/emoji_choice"
-                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
+                    android:layout_marginTop="8dp"
                     android:src="@drawable/are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_9"
-                    android:layout_width="@dimen/emoji_choice"
-                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
+                    android:layout_marginBottom="8dp"
                     android:src="@drawable/are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_10"
-                    android:layout_width="@dimen/emoji_choice"
-                    android:layout_height="@dimen/emoji_choice"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_rowWeight="0.5"
+                    android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
+                    android:layout_marginTop="8dp"
                     android:src="@drawable/are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
             </GridLayout>
 
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="10dp"
                 android:text="@string/day_of_week_choice_text"
                 android:textColor="@color/sapphire"
                 android:textSize="16sp" />
@@ -173,185 +201,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:background="@drawable/border_button_primary"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/monday"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/monday"
-
-                    android:textColor="@color/sapphire"
-                    android:textSize="11sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/stick_monday"
-                    app:layout_constraintHorizontal_weight="1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/stick_monday"
-                    android:layout_width="1dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/periwinkle"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/tuesday"
-                    app:layout_constraintStart_toEndOf="@+id/monday"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/tuesday"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tuesday"
-
-                    android:textColor="@color/sapphire"
-                    android:textSize="11sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/stick_tuesday"
-                    app:layout_constraintHorizontal_weight="1"
-                    app:layout_constraintStart_toEndOf="@+id/stick_monday"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/stick_tuesday"
-                    android:layout_width="1dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/periwinkle"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/wednesday"
-                    app:layout_constraintStart_toEndOf="@+id/tuesday"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/wednesday"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/wednesday"
-
-                    android:textColor="@color/sapphire"
-                    android:textSize="11sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/stick_wednesday"
-                    app:layout_constraintHorizontal_weight="1"
-                    app:layout_constraintStart_toEndOf="@+id/stick_tuesday"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/stick_wednesday"
-                    android:layout_width="1dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/periwinkle"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/thursday"
-                    app:layout_constraintStart_toEndOf="@+id/wednesday"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/thursday"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/thursday"
-
-                    android:textColor="@color/sapphire"
-                    android:textSize="11sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/stick_thursday"
-                    app:layout_constraintHorizontal_weight="1"
-                    app:layout_constraintStart_toEndOf="@+id/stick_wednesday"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/stick_thursday"
-                    android:layout_width="1dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/periwinkle"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/friday"
-                    app:layout_constraintStart_toEndOf="@+id/thursday"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/friday"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/friday"
-
-                    android:textColor="@color/sapphire"
-                    android:textSize="11sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/stick_friday"
-                    app:layout_constraintHorizontal_weight="1"
-                    app:layout_constraintStart_toEndOf="@+id/stick_thursday"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/stick_friday"
-                    android:layout_width="1dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/periwinkle"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/saturday"
-                    app:layout_constraintStart_toEndOf="@+id/friday"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/saturday"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/saturday"
-
-                    android:textColor="@color/sapphire"
-                    android:textSize="11sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/stick_saturday"
-                    app:layout_constraintHorizontal_weight="1"
-                    app:layout_constraintStart_toEndOf="@+id/stick_friday"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/stick_saturday"
-                    android:layout_width="1dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/periwinkle"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/sunday"
-                    app:layout_constraintStart_toEndOf="@+id/saturday"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/sunday"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sunday"
-
-                    android:textColor="@color/sapphire"
-                    android:textSize="11sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_weight="1"
-                    app:layout_constraintStart_toEndOf="@+id/stick_saturday"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
+                android:layout_marginHorizontal="12dp"
                 android:background="@drawable/border_button_primary"
                 android:orientation="horizontal">
 
@@ -527,7 +377,6 @@
                     app:layout_constraintStart_toEndOf="@+id/stick_saturday2"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
 
             <FrameLayout
                 android:layout_width="match_parent"
