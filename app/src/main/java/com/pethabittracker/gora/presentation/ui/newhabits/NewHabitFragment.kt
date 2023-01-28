@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -35,11 +34,11 @@ class NewHabitFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         var imageHabit: ShapeableImageView = binding.emoji1
-        var urlImage = R.drawable.are_you_ready
+        var urlImage = R.drawable.spanch
         fun changeImage(currentImageHabit: ShapeableImageView) {
             if (currentImageHabit != imageHabit) {
                 // снимаем выделения с imageHabit
-                imageHabit.setImageResource(R.drawable.are_you_ready)
+                imageHabit.setImageResource(R.drawable.spanch)
                 // выделяем текущую ImageView
                 currentImageHabit.setImageResource(R.drawable.girl_runs_png)
                 // приравниваем текущую ImageView к imageHabit

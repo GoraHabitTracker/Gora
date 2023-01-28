@@ -205,7 +205,6 @@
 
                 <Button
                     android:id="@+id/tuesday"
-                    style="@style/MyTextButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/tuesday"
