@@ -1,15 +1,13 @@
 package com.pethabittracker.gora.presentation.ui.newhabits
 
-import android.graphics.Color
-import android.graphics.drawable.shapes.Shape
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.pethabittracker.gora.R
 import com.pethabittracker.gora.databinding.FragmentNewHabitBinding
@@ -53,6 +51,12 @@ class NewHabitFragment : Fragment() {
                 val friday = friday.isChecked
                 val saturday = saturday.isChecked
                 val sunday = sunday.isChecked
+
+                if (!monday&&!thursday&&!wednesday&&!tuesday&&!friday&&!saturday&&!sunday){
+                    val snackbar = Snackbar.make(it,"Выберите хотя бы один день повторения привычки",Snackbar.LENGTH_LONG)
+                    snackbar.show()
+                    return@setOnClickListener
+                }
 
                 val selectedDays =
                     WeekList(monday, thursday, wednesday, tuesday, friday, saturday, sunday)
