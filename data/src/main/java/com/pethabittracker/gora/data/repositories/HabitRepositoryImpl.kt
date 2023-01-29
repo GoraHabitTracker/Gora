@@ -5,8 +5,10 @@ import com.pethabittracker.gora.data.mapper.toData
 import com.pethabittracker.gora.data.mapper.toDomain
 import com.pethabittracker.gora.data.mapper.toDomainModels
 import com.pethabittracker.gora.data.models.HabitEntity
+import com.pethabittracker.gora.data.models.WeekListEntity
 import com.pethabittracker.gora.domain.models.Habit
 import com.pethabittracker.gora.domain.models.HabitId
+import com.pethabittracker.gora.domain.models.WeekList
 import com.pethabittracker.gora.domain.repositories.HabitRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -35,20 +37,22 @@ internal class HabitRepositoryImpl(private val habitDao: HabitDao) : HabitReposi
         return habitDao.getFlowHabitEntityList().map { it.toDomainModels() }
     }
 
-    override fun newHabit(name: String, url: String, priority: Int): Habit {
+    override fun newHabit(name: String, url: String, priority: Int, repeatDays: WeekList): Habit {
         return HabitEntity(
             name = name,
             urlImage = url,
-            priority = priority
+            priority = priority,
+            repeatDays = repeatDays.toData(),
         ).toDomain()
     }
 
-    override fun updateHabitPriority(id: HabitId ,name: String, url: String, priority: Int) {
+    override fun updateHabitPriority(habit: Habit, priority: Int) {
         val updatedHabit = Habit(
-            id = id,
-            name = name,
-            urlImage = url,
-            priority = priority
+            id = habit.id,
+            name = habit.name,
+            urlImage = habit.urlImage,
+            priority = priority,
+            repeatDays = habit.repeatDays
         ).toData()
         habitDao.update(updatedHabit)
     }

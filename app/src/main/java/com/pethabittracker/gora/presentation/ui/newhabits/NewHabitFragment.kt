@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputLayout
 import com.pethabittracker.gora.R
 import com.pethabittracker.gora.databinding.FragmentNewHabitBinding
+import com.pethabittracker.gora.domain.models.WeekList
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -40,12 +41,26 @@ class NewHabitFragment : Fragment() {
                 findNavController().navigateUp()
             }
 
+
+
             buttonSave.setOnClickListener {
                 val titleHabit = containerTitle.getTextOrSetError() ?: return@setOnClickListener
 
+                val monday = monday.isChecked
+                val thursday = thursday.isChecked
+                val wednesday = wednesday.isChecked
+                val tuesday = tuesday.isChecked
+                val friday = friday.isChecked
+                val saturday = saturday.isChecked
+                val sunday = sunday.isChecked
+
+                val selectedDays =
+                    WeekList(monday, thursday, wednesday, tuesday, friday, saturday, sunday)
+
                 lifecycleScope.launch {
                     runCatching {
-                        val newHabit = newHabitViewModel.newHabit(titleHabit, "url", 0)
+                        val newHabit =
+                            newHabitViewModel.newHabit(titleHabit, "url", 0, selectedDays)
                         newHabitViewModel.insertHabit(newHabit)
                     }
                 }
