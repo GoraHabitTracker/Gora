@@ -15,9 +15,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.pethabittracker.gora.R
+import com.pethabittracker.gora.data.utils.getCurrentDayOfWeek
 import com.pethabittracker.gora.databinding.FragmentHomeBinding
 import com.pethabittracker.gora.presentation.ui.adapter.HabitAdapter
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -83,11 +85,6 @@ class HomeFragment : Fragment() {
     private fun updateList() {
 
         //------------------ with Coroutine -------------------------------------------------------
-        viewModel.getAllHabit().onEach {
-            adapter.submitList(it)
-
-
-        }.launchIn(lifecycleScope)
         viewModel
             .getAllHabit()
             .onEach {

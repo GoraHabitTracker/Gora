@@ -8,9 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.imageview.ShapeableImageView
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.pethabittracker.gora.R
 import com.pethabittracker.gora.databinding.FragmentNewHabitBinding
+import com.pethabittracker.gora.domain.models.WeekList
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -50,6 +52,7 @@ class NewHabitFragment : Fragment() {
             toolbarDetail.setNavigationOnClickListener {
                 findNavController().navigateUp()
             }
+
 
             emoji1.setOnClickListener {
                 changeImage(emoji1)
@@ -92,14 +95,32 @@ class NewHabitFragment : Fragment() {
                 urlImage = R.drawable.spanch_10
             }
 
-            //-------------------------------------------------------------------------------------
             buttonSave.setOnClickListener {
                 val titleHabit = containerTitle.getTextOrSetError() ?: return@setOnClickListener
 
+                val monday = monday.isChecked
+                val thursday = thursday.isChecked
+                val wednesday = wednesday.isChecked
+                val tuesday = tuesday.isChecked
+                val friday = friday.isChecked
+                val saturday = saturday.isChecked
+                val sunday = sunday.isChecked
+
+                if (!monday&&!thursday&&!wednesday&&!tuesday&&!friday&&!saturday&&!sunday){
+                    val snackbar = Snackbar.make(it,"Выберите хотя бы один день повторения привычки",Snackbar.LENGTH_LONG)
+                    snackbar.show()
+                    return@setOnClickListener
+                }
+
+                val selectedDays =
+                    WeekList(monday, thursday, wednesday, tuesday, friday, saturday, sunday)
+
                 lifecycleScope.launch {
                     runCatching {
-                        val newHabit = viewModel.newHabit(titleHabit, urlImage, 1)
+
+                        val newHabit = viewModel.newHabit(titleHabit, urlImage, 0, selectedDays)
                         viewModel.insertHabit(newHabit)
+
                     }
                 }
 

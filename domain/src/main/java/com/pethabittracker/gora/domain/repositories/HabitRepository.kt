@@ -2,6 +2,7 @@ package com.pethabittracker.gora.domain.repositories
 
 import com.pethabittracker.gora.domain.models.Habit
 import com.pethabittracker.gora.domain.models.HabitId
+import com.pethabittracker.gora.domain.models.WeekList
 import kotlinx.coroutines.flow.Flow
 
 
@@ -17,7 +18,7 @@ interface HabitRepository {
 
     fun getFlowAllHabits(): Flow<List<Habit>>
 
-    fun newHabit(name: String, url: Int, priority: Int): Habit      // По-моему этот метод надо удалить из репозитория
+    fun newHabit(name: String, url: Int, priority: Int, repeatDays: WeekList): Habit      // По-моему этот метод надо удалить из репозитория
 
     fun updateHabitPriority(id: HabitId ,name: String, url: Int, priority: Int)
 }
