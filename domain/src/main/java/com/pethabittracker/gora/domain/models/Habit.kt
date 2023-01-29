@@ -4,7 +4,7 @@ data class Habit(
     val id: HabitId,
     val name: String,
     val urlImage: Int,
-    val priority: Int
+    val priority: Int,
     val repeatDays: WeekList,
 )
 

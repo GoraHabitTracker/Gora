@@ -13,6 +13,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.pethabittracker.gora.R
 import com.pethabittracker.gora.databinding.FragmentNewHabitBinding
 import com.pethabittracker.gora.domain.models.WeekList
+import com.pethabittracker.gora.presentation.models.Priority
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -118,7 +119,7 @@ class NewHabitFragment : Fragment() {
                 lifecycleScope.launch {
                     runCatching {
 
-                        val newHabit = viewModel.newHabit(titleHabit, urlImage, 0, selectedDays)
+                        val newHabit = viewModel.newHabit(titleHabit, urlImage, Priority.Default.value, selectedDays)
                         viewModel.insertHabit(newHabit)
 
                     }

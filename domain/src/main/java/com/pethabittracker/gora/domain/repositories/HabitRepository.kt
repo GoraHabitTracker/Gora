@@ -20,5 +20,5 @@ interface HabitRepository {
 
     fun newHabit(name: String, url: Int, priority: Int, repeatDays: WeekList): Habit      // По-моему этот метод надо удалить из репозитория
 
-    fun updateHabitPriority(id: HabitId ,name: String, url: Int, priority: Int)
+    fun updateHabitPriority(habit: Habit, priority: Int)
 }

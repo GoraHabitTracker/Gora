@@ -12,9 +12,9 @@ internal data class HabitEntity(
     val name: String,
     @ColumnInfo(name = "url_image")
     val urlImage: Int,
-    val priority: Int
+    val priority: Int,
     @Embedded
-    val repeatDays: WeekListEntity,
+    val repeatDays: WeekListEntity
 )
 
 @Entity
