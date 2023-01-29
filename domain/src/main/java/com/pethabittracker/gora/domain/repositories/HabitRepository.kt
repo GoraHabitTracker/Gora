@@ -18,7 +18,7 @@ interface HabitRepository {
 
     fun getFlowAllHabits(): Flow<List<Habit>>
 
-    fun newHabit(name: String, url: String, priority: Int, repeatDays: WeekList): Habit
+    fun newHabit(name: String, url: Int, priority: Int, repeatDays: WeekList): Habit      // По-моему этот метод надо удалить из репозитория
 
-    fun updateHabitPriority(habit: Habit, priority: Int)
+    fun updateHabitPriority(id: HabitId ,name: String, url: Int, priority: Int)
 }

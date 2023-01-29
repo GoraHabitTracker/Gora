@@ -3,8 +3,8 @@ package com.pethabittracker.gora.domain.models
 data class Habit(
     val id: HabitId,
     val name: String,
-    val urlImage: String,
-    val priority: Int,
+    val urlImage: Int,
+    val priority: Int
     val repeatDays: WeekList,
 )
 
