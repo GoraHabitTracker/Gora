@@ -36,16 +36,16 @@ class NewHabitFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var imageHabit: ShapeableImageView = binding.emoji1
+        var currentIconHabit: ShapeableImageView = binding.emoji1
         var urlImage = R.drawable.spanch
-        fun changeImage(currentImageHabit: ShapeableImageView) {
-            if (currentImageHabit != imageHabit) {
-                // снимаем выделения с imageHabit
-                imageHabit.setImageResource(R.drawable.spanch)
-                // выделяем текущую ImageView
-                currentImageHabit.setImageResource(R.drawable.girl_runs_png)
-                // приравниваем текущую ImageView к imageHabit
-                imageHabit = currentImageHabit
+        fun selectTheIcon(selectedIcon: ShapeableImageView) {
+            if (selectedIcon != currentIconHabit) {
+                // снимаем выделения с currentIconHabit
+                currentIconHabit.setImageResource(R.drawable.spanch)
+                // выделяем новую выбранную иконку
+                selectedIcon.setImageResource(R.drawable.girl_runs_png)
+                // приравниваем текущую иконку к новой(выбранной)
+                currentIconHabit = selectedIcon
             }
         }
 
@@ -54,45 +54,49 @@ class NewHabitFragment : Fragment() {
                 findNavController().navigateUp()
             }
 
-
             emoji1.setOnClickListener {
-                changeImage(emoji1)
-                urlImage = R.drawable.spanch
+                if (currentIconHabit == emoji1) {
+                    // выделяем иконку
+                    emoji1.setImageResource(R.drawable.girl_runs_png)
+                } else {
+                    selectTheIcon(emoji1)
+                    urlImage = R.drawable.spanch
+                }
             }
             emoji2.setOnClickListener {
-                changeImage(emoji2)
+                selectTheIcon(emoji2)
                 urlImage = R.drawable.spanch_2
             }
             emoji3.setOnClickListener {
-                changeImage(emoji3)
+                selectTheIcon(emoji3)
                 urlImage = R.drawable.spanch_3
             }
             emoji4.setOnClickListener {
-                changeImage(emoji4)
+                selectTheIcon(emoji4)
                 urlImage = R.drawable.spanch_4
             }
             emoji5.setOnClickListener {
-                changeImage(emoji5)
+                selectTheIcon(emoji5)
                 urlImage = R.drawable.spanch_5
             }
             emoji6.setOnClickListener {
-                changeImage(emoji6)
+                selectTheIcon(emoji6)
                 urlImage = R.drawable.spanch_6
             }
             emoji7.setOnClickListener {
-                changeImage(emoji7)
+                selectTheIcon(emoji7)
                 urlImage = R.drawable.spanch_7
             }
             emoji8.setOnClickListener {
-                changeImage(emoji8)
+                selectTheIcon(emoji8)
                 urlImage = R.drawable.spanch_8
             }
             emoji9.setOnClickListener {
-                changeImage(emoji9)
+                selectTheIcon(emoji9)
                 urlImage = R.drawable.spanch_9
             }
             emoji10.setOnClickListener {
-                changeImage(emoji10)
+                selectTheIcon(emoji10)
                 urlImage = R.drawable.spanch_10
             }
 
@@ -107,8 +111,12 @@ class NewHabitFragment : Fragment() {
                 val saturday = saturday.isChecked
                 val sunday = sunday.isChecked
 
-                if (!monday&&!thursday&&!wednesday&&!tuesday&&!friday&&!saturday&&!sunday){
-                    val snackbar = Snackbar.make(it,"Выберите хотя бы один день повторения привычки",Snackbar.LENGTH_LONG)
+                if (!monday && !thursday && !wednesday && !tuesday && !friday && !saturday && !sunday) {
+                    val snackbar = Snackbar.make(
+                        it,
+                        "Выберите хотя бы один день повторения привычки",
+                        Snackbar.LENGTH_LONG
+                    )
                     snackbar.show()
                     return@setOnClickListener
                 }
@@ -118,10 +126,13 @@ class NewHabitFragment : Fragment() {
 
                 lifecycleScope.launch {
                     runCatching {
-
-                        val newHabit = viewModel.newHabit(titleHabit, urlImage, Priority.Default.value, selectedDays)
+                        val newHabit = viewModel.newHabit(
+                            titleHabit,
+                            urlImage,
+                            Priority.Default.value,
+                            selectedDays
+                        )
                         viewModel.insertHabit(newHabit)
-
                     }
                 }
 
