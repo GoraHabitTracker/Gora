@@ -8,7 +8,6 @@ import com.pethabittracker.gora.domain.repositories.HabitRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.withContext
-import java.util.Locale.filter
 
 class HomeViewModel(
     private val repository: HabitRepository,
@@ -18,7 +17,7 @@ class HomeViewModel(
     private val dataFlow: Flow<List<Habit>> = _dataFlow.asStateFlow()
 
     //------------------ with Coroutine -------------------------------------------------------
-    fun getAllHabit(): Flow<List<Habit>> {
+    fun getAllHabitFlow(): Flow<List<Habit>> {
 
         return dataFlow    // работает, но что-то здесь не то
             .runCatching {
@@ -64,7 +63,7 @@ class HomeViewModel(
             "Tuesday" -> habit.repeatDays.tuesday
             "Friday" -> habit.repeatDays.friday
             "Saturday" -> habit.repeatDays.saturday
-           else -> {habit.repeatDays.sunday}
-       }
+            else -> habit.repeatDays.sunday
+        }
     }
 }

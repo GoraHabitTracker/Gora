@@ -48,6 +48,7 @@ class ContentFragment : Fragment() {
             viewModel.countHabitFlow
                 .onEach {
                     if (it < allowedCountOfHabit) {
+                        binding.fab.setImageResource(R.drawable.button_add)
                         fab.setOnClickListener {
                             findNavController().navigate(NavigationDirections.actionGlobalFab())
                         }
@@ -56,7 +57,7 @@ class ContentFragment : Fragment() {
                         fab.setOnClickListener {
                             val toast = Toast.makeText(
                                 context,
-                                "Исчерпан лимит (10 привычек)",
+                                R.string.limit_habit,
                                 Toast.LENGTH_SHORT
                             )
                             toast.show()

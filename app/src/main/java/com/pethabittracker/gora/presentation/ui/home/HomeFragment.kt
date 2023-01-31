@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.getDrawable
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -15,11 +13,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.pethabittracker.gora.R
-import com.pethabittracker.gora.data.utils.getCurrentDayOfWeek
 import com.pethabittracker.gora.databinding.FragmentHomeBinding
 import com.pethabittracker.gora.presentation.ui.adapter.HabitAdapter
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -57,19 +53,6 @@ class HomeFragment : Fragment() {
 
             // закругляем углы картинки
             ivHills.clipToOutline = true
-
-            // AlertDialog повесил пока что на Фотку
-            binding.foto.setOnClickListener {
-                val viewAlertDialog =
-                    layoutInflater.inflate(R.layout.fragment_dialog_deleting, null, false)
-                val alertDialog = AlertDialog
-                    .Builder(requireContext(), R.style.MyAlertTheme)
-                    .setView(viewAlertDialog)
-                    .show()
-                viewAlertDialog.findViewById<Button>(R.id.button_gotit).setOnClickListener {
-                    alertDialog.dismiss()
-                }
-            }
         }
 
         updateList()
@@ -86,11 +69,11 @@ class HomeFragment : Fragment() {
 
         //------------------ with Coroutine -------------------------------------------------------
         viewModel
-            .getAllHabit()
-            .onEach {
-                adapter.submitList(it)
+            .getAllHabitFlow()
+            .onEach { listHabits ->
+                adapter.submitList(listHabits)
 
-                if (it.isNotEmpty()) {
+                if (listHabits.isNotEmpty()) {
                     binding.root.setBackgroundResource(R.color.sea_foam)
                 } else {
                     binding.root.setBackgroundResource(R.color.transparent)
@@ -98,7 +81,7 @@ class HomeFragment : Fragment() {
 
                 //для плавности замены слоёв
                 delay(300)
-                binding.foto.isVisible = it.isEmpty()
+                binding.foto.isVisible = listHabits.isEmpty()
             }
             .launchIn(lifecycleScope)
 

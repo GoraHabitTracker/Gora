@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -14,6 +16,8 @@ import com.pethabittracker.gora.R
 import com.pethabittracker.gora.databinding.FragmentNewHabitBinding
 import com.pethabittracker.gora.domain.models.WeekList
 import com.pethabittracker.gora.presentation.models.Priority
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -100,7 +104,7 @@ class NewHabitFragment : Fragment() {
                 urlImage = R.drawable.spanch_10
             }
 
-            buttonSave.setOnClickListener {
+            buttonSave.setOnClickListener { view ->
                 val titleHabit = containerTitle.getTextOrSetError() ?: return@setOnClickListener
 
                 val monday = monday.isChecked
@@ -113,7 +117,7 @@ class NewHabitFragment : Fragment() {
 
                 if (!monday && !thursday && !wednesday && !tuesday && !friday && !saturday && !sunday) {
                     val snackbar = Snackbar.make(
-                        it,
+                        view,
                         "Выберите хотя бы один день повторения привычки",
                         Snackbar.LENGTH_LONG
                     )
@@ -136,7 +140,15 @@ class NewHabitFragment : Fragment() {
                     }
                 }
 
+                viewModel
+                    .checkSingleIdOne()
+                    .onEach {
+                        if (it) showAlertDialog()
+                    }
+                    .launchIn(viewLifecycleOwner.lifecycleScope)
+
                 findNavController().navigateUp()
+                // TODO надо убрать клаву с выходом из этого фрагмента
             }
         }
     }
@@ -152,5 +164,21 @@ class NewHabitFragment : Fragment() {
                 error = getString(R.string.empty_field)
                 null
             }
+    }
+
+    private fun showAlertDialog() {
+        val viewAlertDialog =
+            layoutInflater.inflate(R.layout.fragment_dialog_deleting, null, false)
+        val alertDialog = AlertDialog
+            .Builder(requireContext(), R.style.MyAlertTheme)
+            .setView(viewAlertDialog)
+            .show()
+        viewAlertDialog.findViewById<Button>(R.id.button_gotit).setOnClickListener {
+            alertDialog.dismiss()
+        }
+    }
+
+    companion object {
+        const val theOnlyHabit = 1
     }
 }
