@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.pethabittracker.gora.data.utils.getCurrentDayOfWeek
 import com.pethabittracker.gora.domain.models.Habit
 import com.pethabittracker.gora.domain.repositories.HabitRepository
+import com.pethabittracker.gora.presentation.models.Priority
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.withContext
@@ -27,8 +28,8 @@ class HomeViewModel(
             .fold(
                 onSuccess = { flowListHabit ->
                     flowListHabit.map { list ->
-                        list.filter { habit ->
-                            filterCurrentDay(habit)
+                        list.onEach { habit ->
+                            priorityCurrentDay(habit)
                         }
                     }
                 },
@@ -64,7 +65,36 @@ class HomeViewModel(
             "Tuesday" -> habit.repeatDays.tuesday
             "Friday" -> habit.repeatDays.friday
             "Saturday" -> habit.repeatDays.saturday
-           else -> {habit.repeatDays.sunday}
-       }
+            else -> {
+                habit.repeatDays.sunday
+            }
+        }
+    }
+
+    private suspend fun priorityCurrentDay(habit: Habit) {
+
+        when(habit.priority){
+            Priority.Default.value->{
+                if (!filterCurrentDay(habit)){
+                    updateHabit(habit, Priority.Inactive.value)
+                }
+            }
+            Priority.Done.value->{
+                if (!filterCurrentDay(habit)){
+                    updateHabit(habit, Priority.Inactive.value)
+                }
+            }
+            Priority.Skip.value->{
+                if (!filterCurrentDay(habit)){
+                    updateHabit(habit, Priority.Inactive.value)
+                }
+            }
+            Priority.Inactive.value->{
+                if (filterCurrentDay(habit)){
+                    updateHabit(habit, Priority.Default.value)
+                }
+            }
+        }
+
     }
 }

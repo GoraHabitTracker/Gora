@@ -18,6 +18,7 @@
     <color name="pastel_green">#C7EEC9</color>
     <color name="transparent">#00000000</color>
     <color name="transparent_2">#40000000</color>
+    <color name="transparent_3">#90FFFFFF</color>
     <color name="habit_done">#C7EEC9</color>
     <color name="button_pressed">#7fa1f0</color>
 </resources>
