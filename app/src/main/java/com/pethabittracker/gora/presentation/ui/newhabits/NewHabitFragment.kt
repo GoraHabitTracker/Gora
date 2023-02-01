@@ -152,6 +152,10 @@ class NewHabitFragment : Fragment() {
                     imm.hideSoftInputFromWindow(view.windowToken, 0)
                 }
             }
+
+            containerTitle.setEndIconOnClickListener {
+                editTextTitle.setText("")
+            }
         }
     }
 
