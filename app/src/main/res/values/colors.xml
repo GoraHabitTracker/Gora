@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#0000ff</color>
+
     <color name="gray">#BDBDBD</color>
     <color name="blue_fcbk">#3B60B7</color>
     <color name="periwinkle">#C2D5FF</color>
@@ -20,4 +21,5 @@
     <color name="transparent_2">#40000000</color>
     <color name="habit_done">#C7EEC9</color>
     <color name="button_pressed">#7fa1f0</color>
+    <color name="pastel_red">#E77777</color>
 </resources>

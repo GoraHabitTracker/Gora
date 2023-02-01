@@ -13,13 +13,25 @@ class HomeViewModel(
     private val repository: HabitRepository,
 ) : ViewModel() {
 
-    private val _dataFlow = MutableStateFlow(emptyList<Habit>())
-    private val dataFlow: Flow<List<Habit>> = _dataFlow.asStateFlow()
+    private val _allHabitFlow = MutableStateFlow(emptyList<Habit>())
+    private val allHabitFlow: Flow<List<Habit>> = _allHabitFlow.asStateFlow()
+
+    fun checkSingleIdOne(): Boolean {
+        return allHabitFlow
+            .map { allHabits ->
+                val thereIsIdEqualOne = allHabits.filter { it.id.id == 1 }.isNotEmpty()
+                allHabits.size == theOnlyHabit && thereIsIdEqualOne
+            }.stateIn(
+                viewModelScope,
+                SharingStarted.Eagerly,
+                false
+            ).value
+    }
 
     //------------------ with Coroutine -------------------------------------------------------
     fun getAllHabitFlow(): Flow<List<Habit>> {
 
-        return dataFlow    // работает, но что-то здесь не то
+        return allHabitFlow
             .runCatching {
                 repository.getFlowAllHabits()
             }
@@ -65,5 +77,9 @@ class HomeViewModel(
             "Saturday" -> habit.repeatDays.saturday
             else -> habit.repeatDays.sunday
         }
+    }
+
+    companion object {
+        const val theOnlyHabit = 1
     }
 }

@@ -47,15 +47,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/border_button_primary">
+                android:hint="@string/number_of_symbol"
+                android:textColorHint="@color/periwinkle"
+                app:endIconDrawable="@drawable/x"
+                app:endIconMode="custom"
+                app:endIconTint="@color/periwinkle"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/x_error">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_text_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:background="@drawable/border_button_primary"
                     android:digits="@string/support_symbols"
-                    android:hint="@string/number_of_symbol"
                     android:maxLength="20"
                     android:text="" />
             </com.google.android.material.textfield.TextInputLayout>

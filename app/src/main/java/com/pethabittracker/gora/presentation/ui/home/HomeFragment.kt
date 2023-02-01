@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.getDrawable
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -17,6 +19,7 @@ import com.pethabittracker.gora.databinding.FragmentHomeBinding
 import com.pethabittracker.gora.presentation.ui.adapter.HabitAdapter
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -56,7 +59,6 @@ class HomeFragment : Fragment() {
         }
 
         updateList()
-
         setSwipeToDelete()
     }
 
@@ -82,6 +84,11 @@ class HomeFragment : Fragment() {
                 //для плавности замены слоёв
                 delay(300)
                 binding.foto.isVisible = listHabits.isEmpty()
+            }.map {    // AlertDialog
+                viewModel.checkSingleIdOne()
+            }
+            .onEach {
+                if (it) showAlertDialog()
             }
             .launchIn(lifecycleScope)
 
@@ -181,6 +188,18 @@ class HomeFragment : Fragment() {
         }
         ItemTouchHelper(itemTouchHelperCallback).apply {
             attachToRecyclerView(binding.recyclerView)
+        }
+    }
+
+    private fun showAlertDialog() {
+        val viewAlertDialog =
+            layoutInflater.inflate(R.layout.fragment_dialog_deleting, null, false)
+        val alertDialog = AlertDialog
+            .Builder(requireContext(), R.style.MyAlertTheme)
+            .setView(viewAlertDialog)
+            .show()
+        viewAlertDialog.findViewById<Button>(R.id.button_gotit).setOnClickListener {
+            alertDialog.dismiss()
         }
     }
 }

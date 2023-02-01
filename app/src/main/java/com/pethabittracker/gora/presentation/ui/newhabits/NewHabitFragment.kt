@@ -1,11 +1,14 @@
 package com.pethabittracker.gora.presentation.ui.newhabits
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.appcompat.app.AlertDialog
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -16,8 +19,6 @@ import com.pethabittracker.gora.R
 import com.pethabittracker.gora.databinding.FragmentNewHabitBinding
 import com.pethabittracker.gora.domain.models.WeekList
 import com.pethabittracker.gora.presentation.models.Priority
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -118,7 +119,7 @@ class NewHabitFragment : Fragment() {
                 if (!monday && !thursday && !wednesday && !tuesday && !friday && !saturday && !sunday) {
                     val snackbar = Snackbar.make(
                         view,
-                        "Выберите хотя бы один день повторения привычки",
+                        getString(R.string.alarm_selection_day),
                         Snackbar.LENGTH_LONG
                     )
                     snackbar.show()
@@ -140,15 +141,16 @@ class NewHabitFragment : Fragment() {
                     }
                 }
 
-                viewModel
-                    .checkSingleIdOne()
-                    .onEach {
-                        if (it) showAlertDialog()
-                    }
-                    .launchIn(viewLifecycleOwner.lifecycleScope)
-
                 findNavController().navigateUp()
-                // TODO надо убрать клаву с выходом из этого фрагмента
+            }
+
+            // убираем клаву при переходе на другой фрагмент
+            editTextTitle.setOnFocusChangeListener { view, hasFocus ->
+                if (!hasFocus) {
+                    val imm =
+                        activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(view.windowToken, 0)
+                }
             }
         }
     }
@@ -161,24 +163,36 @@ class NewHabitFragment : Fragment() {
     private fun TextInputLayout.getTextOrSetError(): String? {
         return editText?.text?.toString()
             ?.ifBlank {
-                error = getString(R.string.empty_field)
-                null
+                with(binding) {
+                    error = getString(R.string.empty_field)
+                    hintTextColor = ContextCompat.getColorStateList(    // не работает
+                        context,
+                        R.color.pastel_red
+                    )
+                    editTextTitle.background = ResourcesCompat.getDrawable(
+                        resources,
+                        R.drawable.border_edittext_error,
+                        null
+                    )
+                    editTextTitle.doOnTextChanged { text, _, _, _ ->
+                        if (text?.length != 0) {
+                            error = null
+                            editTextTitle.background =
+                                ResourcesCompat.getDrawable(
+                                    resources,
+                                    R.drawable.border_button_primary,
+                                    null
+                                )
+                            hintTextColor =
+                                ContextCompat.getColorStateList(
+                                    context,
+                                    R.color.periwinkle
+                                )
+                        }
+                    }
+
+                    null
+                }
             }
-    }
-
-    private fun showAlertDialog() {
-        val viewAlertDialog =
-            layoutInflater.inflate(R.layout.fragment_dialog_deleting, null, false)
-        val alertDialog = AlertDialog
-            .Builder(requireContext(), R.style.MyAlertTheme)
-            .setView(viewAlertDialog)
-            .show()
-        viewAlertDialog.findViewById<Button>(R.id.button_gotit).setOnClickListener {
-            alertDialog.dismiss()
-        }
-    }
-
-    companion object {
-        const val theOnlyHabit = 1
     }
 }
