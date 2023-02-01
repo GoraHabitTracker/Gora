@@ -17,18 +17,6 @@ class HomeViewModel(
     private val _allHabitFlow = MutableStateFlow(emptyList<Habit>())
     private val allHabitFlow: Flow<List<Habit>> = _allHabitFlow.asStateFlow()
 
-    fun checkSingleIdOne(): Boolean {
-        return allHabitFlow
-            .map { allHabits ->
-                val thereIsIdEqualOne = allHabits.filter { it.id.id == 1 }.isNotEmpty()
-                allHabits.size == theOnlyHabit && thereIsIdEqualOne
-            }.stateIn(
-                viewModelScope,
-                SharingStarted.Eagerly,
-                false
-            ).value
-    }
-
     //------------------ with Coroutine -------------------------------------------------------
     fun getAllHabitFlow(): Flow<List<Habit>> {
 
@@ -82,32 +70,28 @@ class HomeViewModel(
 
     private suspend fun priorityCurrentDay(habit: Habit) {
 
-        when(habit.priority){
-            Priority.Default.value->{
-                if (!filterCurrentDay(habit)){
+        when (habit.priority) {
+            Priority.Default.value -> {
+                if (!filterCurrentDay(habit)) {
                     updateHabit(habit, Priority.Inactive.value)
                 }
             }
-            Priority.Done.value->{
-                if (!filterCurrentDay(habit)){
+            Priority.Done.value -> {
+                if (!filterCurrentDay(habit)) {
                     updateHabit(habit, Priority.Inactive.value)
                 }
             }
-            Priority.Skip.value->{
-                if (!filterCurrentDay(habit)){
+            Priority.Skip.value -> {
+                if (!filterCurrentDay(habit)) {
                     updateHabit(habit, Priority.Inactive.value)
                 }
             }
-            Priority.Inactive.value->{
-                if (filterCurrentDay(habit)){
+            Priority.Inactive.value -> {
+                if (filterCurrentDay(habit)) {
                     updateHabit(habit, Priority.Default.value)
                 }
             }
         }
 
-    }
-
-    companion object {
-        const val theOnlyHabit = 1
     }
 }

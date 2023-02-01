@@ -9,7 +9,7 @@
         android:id="@+id/iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/welcome_main"
+        android:src="@drawable/image_welcome_main"
         app:layout_constraintBottom_toTopOf="@+id/text_view_welcome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

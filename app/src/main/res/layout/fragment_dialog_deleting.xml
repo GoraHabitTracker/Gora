@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="26dp"
-        android:src="@drawable/hand_one_finger" />
+        android:src="@drawable/image_hand_one_finger" />
 
     <TextView
         android:id="@+id/tv_delete"

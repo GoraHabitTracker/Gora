@@ -48,12 +48,12 @@ class ContentFragment : Fragment() {
             viewModel.countHabitFlow
                 .onEach {
                     if (it < allowedCountOfHabit) {
-                        binding.fab.setImageResource(R.drawable.button_add)
+                        binding.fab.setImageResource(R.drawable.icon_button_add)
                         fab.setOnClickListener {
                             findNavController().navigate(NavigationDirections.actionGlobalFab())
                         }
                     } else {
-                        binding.fab.setImageResource(R.drawable.button_add_negative)
+                        binding.fab.setImageResource(R.drawable.icon_button_add_negative)
                         fab.setOnClickListener {
                             val toast = Toast.makeText(
                                 context,

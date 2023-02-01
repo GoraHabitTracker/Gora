@@ -20,7 +20,6 @@ import com.pethabittracker.gora.databinding.FragmentHomeBinding
 import com.pethabittracker.gora.presentation.ui.adapter.HabitAdapter
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -88,11 +87,10 @@ class HomeFragment : Fragment() {
 
                 //просто дёргаем адаптер для пересоздания вью карточек
                 binding.recyclerView.adapter = adapter
-            }.map {    // AlertDialog
-                viewModel.checkSingleIdOne()
-            }
-            .onEach {
-                if (it) showAlertDialog()
+
+                // AlertDialog
+                val thereIsIdEqualOne = listHabits.filter { it.id.id == 1 }.isNotEmpty()
+                if (listHabits.size == theOnlyHabit && thereIsIdEqualOne) showAlertDialog()
             }
             .launchIn(lifecycleScope)
 
@@ -143,7 +141,7 @@ class HomeFragment : Fragment() {
 
                 val backGroundColor = Color.parseColor("#b80f0a")
                 val deleteDrawable =
-                    getDrawable(requireContext(), R.drawable.trashcan)
+                    getDrawable(requireContext(), R.drawable.icon_trashcan)
                 val width = deleteDrawable?.intrinsicWidth ?: 0
                 val height = deleteDrawable?.intrinsicHeight ?: 0
 
@@ -210,11 +208,15 @@ class HomeFragment : Fragment() {
         val viewAlertDialog =
             layoutInflater.inflate(R.layout.fragment_dialog_deleting, null, false)
         val alertDialog = AlertDialog
-            .Builder(requireContext(), R.style.MyAlertTheme)
+            .Builder(requireContext(), R.style.AlertDialogStyle)
             .setView(viewAlertDialog)
             .show()
         viewAlertDialog.findViewById<Button>(R.id.button_gotit).setOnClickListener {
             alertDialog.dismiss()
         }
+    }
+
+    companion object {
+        const val theOnlyHabit = 1
     }
 }

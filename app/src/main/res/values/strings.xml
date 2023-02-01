@@ -28,5 +28,8 @@
     <string name="empty_field">Название должно иметь хотя бы один символ</string>
     <string name="limit_habit">"Исчерпан лимит (10 привычек)"</string>
     <string name="alarm_selection_day">"Выберите хотя бы один день повторения привычки"</string>
+    <string name="calendar">Календарь</string>
+    <string name="habits_not_done">Вы выполнили не все привычки</string>
+    <string name="habits_done">Все привычки за день выполнены!</string>
 
 </resources>

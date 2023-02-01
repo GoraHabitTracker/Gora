@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:ns1="http://schemas.android.com/tools">
+<resources>
 
     <style name="ListCardViewStyle" parent="Theme.AppCompat.Light">
         <item name="cardCornerRadius">5dp</item>
@@ -15,12 +15,10 @@
     <style name="roundedEmoji">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
-
-
     </style>
 
-    <style name="MyAlertTheme" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:windowBackground">@drawable/dialog_bg</item>
+    <style name="AlertDialogStyle" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/border_dialog</item>
     </style>
 
     <style name="roundedWeek">

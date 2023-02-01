@@ -48,7 +48,7 @@ class NewHabitFragment : Fragment() {
                 // снимаем выделения с currentIconHabit
                 currentIconHabit.setImageResource(R.drawable.spanch)
                 // выделяем новую выбранную иконку
-                selectedIcon.setImageResource(R.drawable.girl_runs_png)
+                selectedIcon.setImageResource(R.drawable.image_girl_runs_png)
                 // приравниваем текущую иконку к новой(выбранной)
                 currentIconHabit = selectedIcon
             }
@@ -62,7 +62,7 @@ class NewHabitFragment : Fragment() {
             emoji1.setOnClickListener {
                 if (currentIconHabit == emoji1) {
                     // выделяем иконку
-                    emoji1.setImageResource(R.drawable.girl_runs_png)
+                    emoji1.setImageResource(R.drawable.image_girl_runs_png)
                 } else {
                     selectTheIcon(emoji1)
                     urlImage = R.drawable.spanch
