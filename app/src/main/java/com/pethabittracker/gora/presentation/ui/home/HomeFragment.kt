@@ -1,7 +1,8 @@
 package com.pethabittracker.gora.presentation.ui.home
 
 import android.graphics.*
-import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.shapes.RoundRectShape
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -84,6 +85,9 @@ class HomeFragment : Fragment() {
                 //для плавности замены слоёв
                 delay(300)
                 binding.foto.isVisible = listHabits.isEmpty()
+
+                //просто дёргаем адаптер для пересоздания вью карточек
+                binding.recyclerView.adapter = adapter
             }.map {    // AlertDialog
                 viewModel.checkSingleIdOne()
             }
@@ -137,7 +141,6 @@ class HomeFragment : Fragment() {
                 val mClearPaint = Paint()
                 mClearPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
 
-                val mBackGround = ColorDrawable()
                 val backGroundColor = Color.parseColor("#b80f0a")
                 val deleteDrawable =
                     getDrawable(requireContext(), R.drawable.trashcan)
@@ -158,13 +161,25 @@ class HomeFragment : Fragment() {
                     )
                 }
 
-                mBackGround.color = backGroundColor
+                val valueDp = 5 * resources.displayMetrics.density
+                val outR = floatArrayOf(
+                    valueDp,
+                    valueDp,
+                    valueDp,
+                    valueDp,
+                    valueDp,
+                    valueDp,
+                    valueDp,
+                    valueDp
+                )
+                val mBackGround = ShapeDrawable(RoundRectShape(outR, null, null))
                 mBackGround.setBounds(
                     itemView.right + dX.toInt(),
                     itemView.top,
                     itemView.right,
                     itemView.bottom
                 )
+                mBackGround.paint.color = backGroundColor
                 mBackGround.draw(c)
 
                 val deleteIconTop = itemView.top + (itemHeight - height) / 2

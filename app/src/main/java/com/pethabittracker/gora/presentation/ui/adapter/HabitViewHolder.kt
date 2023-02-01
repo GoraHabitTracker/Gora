@@ -1,6 +1,8 @@
 package com.pethabittracker.gora.presentation.ui.adapter
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +23,9 @@ class HabitViewHolder(
 
             imageView.setImageResource(habit.urlImage)
 
+            val colorInt: Int = context.getColor(R.color.transparent_3)
+            val csl = ColorStateList.valueOf(colorInt)
+
             // на новый день надо будет через workmanager обновлять приоритет в привычках
             when (habit.priority) {
                 Priority.Default.value -> {
@@ -39,30 +44,31 @@ class HabitViewHolder(
                 Priority.Skip.value -> {
                     frameChoice.isVisible = false
                     frameSkip.isVisible = true
-                    root.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            context,
-                            R.color.transparent_2
-                        )
-                    )
+                    root.setCardForegroundColor(csl)
+                }
+                Priority.Inactive.value -> {
+                    frameChoice.isVisible = true
+                    buttonDone.isEnabled = false
+                    buttonDone.isClickable = false
+                    buttonSkip.isEnabled = false
+                    buttonSkip.isClickable = false
+                    root.setCardForegroundColor(csl)
                 }
             }
+
 
             buttonDone.setOnClickListener {
                 frameChoice.isVisible = false
                 frameDone.isVisible = true
                 root.setCardBackgroundColor(ContextCompat.getColor(context, R.color.pastel_green))
 
-                onButtonActionClicked(
-                    habit,
-                    Priority.Done.value
-                )
+                onButtonActionClicked(habit, Priority.Done.value)
             }
 
             buttonSkip.setOnClickListener {
                 frameChoice.isVisible = false
                 frameSkip.isVisible = true
-                root.setCardBackgroundColor(ContextCompat.getColor(context, R.color.transparent_2))
+                root.setCardForegroundColor(csl)
 
                 onButtonActionClicked(habit, Priority.Skip.value)
             }

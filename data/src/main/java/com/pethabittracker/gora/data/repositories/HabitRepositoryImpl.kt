@@ -33,7 +33,7 @@ internal class HabitRepositoryImpl(private val habitDao: HabitDao) : HabitReposi
         habitDao.getHabitEntityList().map { it.toDomain() }
     }
 
-    override fun getFlowAllHabits(): Flow<List<Habit>> {
+    override  fun getFlowAllHabits(): Flow<List<Habit>> {
         return habitDao.getFlowHabitEntityList().map { it.toDomainModels() }
     }
 
