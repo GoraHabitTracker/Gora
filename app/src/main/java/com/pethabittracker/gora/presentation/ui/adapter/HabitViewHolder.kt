@@ -2,7 +2,6 @@ package com.pethabittracker.gora.presentation.ui.adapter
 
 import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.Color
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
@@ -23,7 +22,7 @@ class HabitViewHolder(
 
             imageView.setImageResource(habit.urlImage)
 
-            val colorInt: Int = context.getColor(R.color.transparent_3)
+            val colorInt: Int = context.getColor(R.color.transparent_90)
             val csl = ColorStateList.valueOf(colorInt)
 
             // на новый день надо будет через workmanager обновлять приоритет в привычках

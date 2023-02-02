@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/fragment_content"
-        android:name="com.pethabittracker.gora.presentation.ui.ContentFragment"
+        android:name="com.pethabittracker.gora.presentation.ui.content.ContentFragment"
         tools:layout="@layout/fragment_content" />
 
 </navigation>

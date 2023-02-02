@@ -11,8 +11,8 @@
         style="@style/Widget.MaterialComponents.Toolbar.Primary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/transparent_background"
-        app:navigationIcon="@drawable/arrow_back">
+        android:background="@drawable/border_transparent_background"
+        app:navigationIcon="@drawable/icon_arrow_back">
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,15 +47,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/border_button_primary">
+                android:hint="@string/number_of_symbol"
+                android:textColorHint="@color/periwinkle"
+                app:endIconDrawable="@drawable/icon_x_periwinkle"
+                app:endIconMode="custom"
+                app:endIconTint="@color/periwinkle"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/icon_x_error">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_text_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:background="@drawable/border_button_primary"
                     android:digits="@string/support_symbols"
-                    android:hint="@string/number_of_symbol"
                     android:maxLength="20"
                     android:text="" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -85,7 +90,7 @@
                     android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginBottom="8dp"
-                    android:src="@drawable/are_you_ready"
+                    android:src="@drawable/image_are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -96,7 +101,7 @@
                     android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginTop="8dp"
-                    android:src="@drawable/are_you_ready"
+                    android:src="@drawable/image_are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -107,7 +112,7 @@
                     android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginBottom="8dp"
-                    android:src="@drawable/are_you_ready"
+                    android:src="@drawable/image_are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -118,7 +123,7 @@
                     android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginTop="8dp"
-                    android:src="@drawable/are_you_ready"
+                    android:src="@drawable/image_are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -129,7 +134,7 @@
                     android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginBottom="8dp"
-                    android:src="@drawable/are_you_ready"
+                    android:src="@drawable/image_are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -140,7 +145,7 @@
                     android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginTop="8dp"
-                    android:src="@drawable/are_you_ready"
+                    android:src="@drawable/image_are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -151,7 +156,7 @@
                     android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginBottom="8dp"
-                    android:src="@drawable/are_you_ready"
+                    android:src="@drawable/image_are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -162,7 +167,7 @@
                     android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginTop="8dp"
-                    android:src="@drawable/are_you_ready"
+                    android:src="@drawable/image_are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -173,7 +178,7 @@
                     android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginBottom="8dp"
-                    android:src="@drawable/are_you_ready"
+                    android:src="@drawable/image_are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -184,7 +189,7 @@
                     android:layout_columnWeight="0.2"
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginTop="8dp"
-                    android:src="@drawable/are_you_ready"
+                    android:src="@drawable/image_are_you_ready"
                     app:shapeAppearanceOverlay="@style/roundedEmoji" />
             </GridLayout>
 

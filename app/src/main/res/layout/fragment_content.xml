@@ -43,12 +43,10 @@
         app:backgroundTint="@color/periwinkle"
         app:tint="@color/blue_fcbk"
         android:contentDescription="Q"
-        android:src="@drawable/button_add"
+        android:src="@drawable/icon_button_add"
         app:elevation="0dp"
         app:layout_anchor="@id/bottom_app_bar" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-<!--    android:layout_marginBottom="56dp" - пришлось захардкодить, чтобы показывались все элементы списка-->
 
     <!--    app:elevation="0dp"                     - убирает тени -->
     <!--    app:itemIconTint="@color/blue_fcbk"     - устанавливает цвет иконкам -->

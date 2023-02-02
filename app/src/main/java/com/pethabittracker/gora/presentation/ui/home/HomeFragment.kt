@@ -56,23 +56,9 @@ class HomeFragment : Fragment() {
 
             // закругляем углы картинки
             ivHills.clipToOutline = true
-
-            // AlertDialog повесил пока что на Фотку
-            binding.foto.setOnClickListener {
-                val viewAlertDialog =
-                    layoutInflater.inflate(R.layout.fragment_dialog_deleting, null, false)
-                val alertDialog = AlertDialog
-                    .Builder(requireContext(), R.style.MyAlertTheme)
-                    .setView(viewAlertDialog)
-                    .show()
-                viewAlertDialog.findViewById<Button>(R.id.button_gotit).setOnClickListener {
-                    alertDialog.dismiss()
-                }
-            }
         }
 
         updateList()
-
         setSwipeToDelete()
     }
 
@@ -85,11 +71,11 @@ class HomeFragment : Fragment() {
 
         //------------------ with Coroutine -------------------------------------------------------
         viewModel
-            .getAllHabit()
-            .onEach {
-                adapter.submitList(it)
+            .getAllHabitFlow()
+            .onEach { listHabits ->
+                adapter.submitList(listHabits)
 
-                if (it.isNotEmpty()) {
+                if (listHabits.isNotEmpty()) {
                     binding.root.setBackgroundResource(R.color.sea_foam)
                 } else {
                     binding.root.setBackgroundResource(R.color.transparent)
@@ -97,10 +83,14 @@ class HomeFragment : Fragment() {
 
                 //для плавности замены слоёв
                 delay(300)
-                binding.foto.isVisible = it.isEmpty()
+                binding.foto.isVisible = listHabits.isEmpty()
 
                 //просто дёргаем адаптер для пересоздания вью карточек
                 binding.recyclerView.adapter = adapter
+
+                // AlertDialog
+                val thereIsIdEqualOne = listHabits.filter { it.id.id == 1 }.isNotEmpty()
+                if (listHabits.size == theOnlyHabit && thereIsIdEqualOne) showAlertDialog()
             }
             .launchIn(lifecycleScope)
 
@@ -151,7 +141,7 @@ class HomeFragment : Fragment() {
 
                 val backGroundColor = Color.parseColor("#b80f0a")
                 val deleteDrawable =
-                    getDrawable(requireContext(), R.drawable.trashcan)
+                    getDrawable(requireContext(), R.drawable.icon_trashcan)
                 val width = deleteDrawable?.intrinsicWidth ?: 0
                 val height = deleteDrawable?.intrinsicHeight ?: 0
 
@@ -212,5 +202,21 @@ class HomeFragment : Fragment() {
         ItemTouchHelper(itemTouchHelperCallback).apply {
             attachToRecyclerView(binding.recyclerView)
         }
+    }
+
+    private fun showAlertDialog() {
+        val viewAlertDialog =
+            layoutInflater.inflate(R.layout.fragment_dialog_deleting, null, false)
+        val alertDialog = AlertDialog
+            .Builder(requireContext(), R.style.AlertDialogStyle)
+            .setView(viewAlertDialog)
+            .show()
+        viewAlertDialog.findViewById<Button>(R.id.button_gotit).setOnClickListener {
+            alertDialog.dismiss()
+        }
+    }
+
+    companion object {
+        const val theOnlyHabit = 1
     }
 }

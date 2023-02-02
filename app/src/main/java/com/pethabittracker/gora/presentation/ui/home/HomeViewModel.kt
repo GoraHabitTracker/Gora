@@ -9,19 +9,18 @@ import com.pethabittracker.gora.presentation.models.Priority
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.withContext
-import java.util.Locale.filter
 
 class HomeViewModel(
     private val repository: HabitRepository,
 ) : ViewModel() {
 
-    private val _dataFlow = MutableStateFlow(emptyList<Habit>())
-    private val dataFlow: Flow<List<Habit>> = _dataFlow.asStateFlow()
+    private val _allHabitFlow = MutableStateFlow(emptyList<Habit>())
+    private val allHabitFlow: Flow<List<Habit>> = _allHabitFlow.asStateFlow()
 
     //------------------ with Coroutine -------------------------------------------------------
-    fun getAllHabit(): Flow<List<Habit>> {
+    fun getAllHabitFlow(): Flow<List<Habit>> {
 
-        return dataFlow    // работает, но что-то здесь не то
+        return allHabitFlow
             .runCatching {
                 repository.getFlowAllHabits()
             }
@@ -65,32 +64,30 @@ class HomeViewModel(
             "Tuesday" -> habit.repeatDays.tuesday
             "Friday" -> habit.repeatDays.friday
             "Saturday" -> habit.repeatDays.saturday
-            else -> {
-                habit.repeatDays.sunday
-            }
+            else -> habit.repeatDays.sunday
         }
     }
 
     private suspend fun priorityCurrentDay(habit: Habit) {
 
-        when(habit.priority){
-            Priority.Default.value->{
-                if (!filterCurrentDay(habit)){
+        when (habit.priority) {
+            Priority.Default.value -> {
+                if (!filterCurrentDay(habit)) {
                     updateHabit(habit, Priority.Inactive.value)
                 }
             }
-            Priority.Done.value->{
-                if (!filterCurrentDay(habit)){
+            Priority.Done.value -> {
+                if (!filterCurrentDay(habit)) {
                     updateHabit(habit, Priority.Inactive.value)
                 }
             }
-            Priority.Skip.value->{
-                if (!filterCurrentDay(habit)){
+            Priority.Skip.value -> {
+                if (!filterCurrentDay(habit)) {
                     updateHabit(habit, Priority.Inactive.value)
                 }
             }
-            Priority.Inactive.value->{
-                if (filterCurrentDay(habit)){
+            Priority.Inactive.value -> {
+                if (filterCurrentDay(habit)) {
                     updateHabit(habit, Priority.Default.value)
                 }
             }
