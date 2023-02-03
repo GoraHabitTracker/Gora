@@ -42,7 +42,7 @@
             android:layout_margin="12dp"
             android:background="@drawable/roundstyle_image"
             android:scaleType="fitXY"
-            android:src="@drawable/image_hills_png" />
+            app:srcCompat="@drawable/image_hills_png" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -73,7 +73,7 @@
             android:layout_gravity="center_horizontal|top"
             android:layout_weight="2.5"
             android:scaleType="centerInside"
-            android:src="@drawable/image_home_foto" />
+            app:srcCompat="@drawable/image_home_foto" />
 
         <TextView
             android:id="@+id/tv_click_button"
@@ -95,7 +95,7 @@
             android:paddingStart="104dp"
             android:paddingEnd="0dp"
             android:scaleType="centerInside"
-            android:src="@drawable/image_vector_arrow" />
+            app:srcCompat="@drawable/image_vector_arrow" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout><!--TODO картинка расхардкодить(?) -->

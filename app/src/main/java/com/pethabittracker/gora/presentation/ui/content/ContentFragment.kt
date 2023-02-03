@@ -54,6 +54,8 @@ class ContentFragment : Fragment() {
                         }
                     } else {
                         binding.fab.setImageResource(R.drawable.icon_button_add_negative)
+                        binding.fab.setColorFilter(R.color.cross_color)
+                        binding.fab.setBackgroundColor(resources.getColor(R.color.cross_background,null) )
                         fab.setOnClickListener {
                             val toast = Toast.makeText(
                                 context,

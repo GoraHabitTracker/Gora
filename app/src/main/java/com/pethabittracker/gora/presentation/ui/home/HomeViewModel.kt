@@ -2,6 +2,7 @@ package com.pethabittracker.gora.presentation.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.pethabittracker.gora.data.usecase.UpdateHabitPriorityUseCase
 import com.pethabittracker.gora.data.utils.getCurrentDayOfWeek
 import com.pethabittracker.gora.domain.models.Habit
 import com.pethabittracker.gora.domain.repositories.HabitRepository
@@ -12,6 +13,7 @@ import kotlinx.coroutines.withContext
 
 class HomeViewModel(
     private val repository: HabitRepository,
+    private val updateHabitPriorityUseCase: UpdateHabitPriorityUseCase
 ) : ViewModel() {
 
     private val _allHabitFlow = MutableStateFlow(emptyList<Habit>())
@@ -52,7 +54,7 @@ class HomeViewModel(
 
     private suspend fun updateHabit(habit: Habit, priority: Int) = withContext(Dispatchers.IO) {
         runCatching {
-            repository.updateHabitPriority(habit, priority)
+           updateHabitPriorityUseCase.invoke(habit, priority)
         }
     }
 

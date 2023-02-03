@@ -131,13 +131,12 @@ class NewHabitFragment : Fragment() {
 
                 lifecycleScope.launch {
                     runCatching {
-                        val newHabit = viewModel.newHabit(
+                         viewModel.newHabit(
                             titleHabit,
                             urlImage,
                             Priority.Default.value,
                             selectedDays
                         )
-                        viewModel.insertHabit(newHabit)
                     }
                 }
 
