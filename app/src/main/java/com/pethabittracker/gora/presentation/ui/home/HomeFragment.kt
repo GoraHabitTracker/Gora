@@ -32,9 +32,8 @@ class HomeFragment : Fragment() {
     private val adapter by lazy {
         HabitAdapter(
             context = requireContext(),
-            onButtonActionClicked = { habit, priority ->
-                viewModel.changeThePriority(habit, priority)
-            }
+            onDoneClicked = { viewModel.onDoneClicked(it) },
+            onSkipClicked = { viewModel.onSkipClicked(it) }
         )
     }
 

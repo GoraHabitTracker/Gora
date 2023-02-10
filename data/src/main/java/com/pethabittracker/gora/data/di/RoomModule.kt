@@ -16,4 +16,5 @@ internal val roomModule = module {
     }
 
     single { get<HabitDatabase>().habitDao() }
+    single { get<HabitDatabase>().calendarDataDao() }
 }

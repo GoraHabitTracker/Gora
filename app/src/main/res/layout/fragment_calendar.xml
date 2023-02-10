@@ -25,7 +25,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <TextView
-        android:id="@+id/exDateText"
+        android:id="@+id/todays_date_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -36,37 +36,33 @@
         android:textSize="17sp"
         tools:text="Понедельник, 1 февраля 2023" />
 
-    <LinearLayout
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginHorizontal="12dp"-->
+    <!--        android:background="@drawable/roundstyle_image"-->
+    <!--        android:backgroundTint="@color/white"-->
+    <!--        android:orientation="vertical">-->
+
+    <!--        <include-->
+    <!--            android:id="@+id/legendLayout"-->
+    <!--            layout="@layout/calendar_day_legend_container"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="10dp"-->
+    <!--            android:layout_marginBottom="10dp" />-->
+
+    <com.kizitonwose.calendar.view.CalendarView
+        android:id="@+id/calendar_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"
         android:background="@drawable/roundstyle_image"
         android:backgroundTint="@color/white"
-        android:orientation="vertical">
-
-        <include
-            android:id="@+id/legendLayout"
-            layout="@layout/calendar_day_legend_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp" />
-
-        <com.kizitonwose.calendar.view.CalendarView
-            android:id="@+id/exOneCalendar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cv_dayViewResource="@layout/example_1_calendar_day" />
-
-    </LinearLayout>
-
-<!--    <CalendarView-->
-<!--        android:id="@+id/calendar_view"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginHorizontal="12dp"-->
-<!--        android:background="@drawable/roundstyle_image"-->
-<!--        android:backgroundTint="@color/white" />-->
+        android:paddingTop="10dp"
+        app:cv_dayViewResource="@layout/calendar_day_layout"
+        app:cv_monthHeaderResource="@layout/calendar_day_legend_container" />
+    <!--    </LinearLayout>-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -122,7 +118,5 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView_x"
             app:layout_constraintTop_toBottomOf="@+id/textView1" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
