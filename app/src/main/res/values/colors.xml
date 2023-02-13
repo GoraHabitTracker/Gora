@@ -21,6 +21,5 @@
     <color name="transparent_40">#40000000</color>
     <color name="transparent_90">#90FFFFFF</color>
     <color name="pastel_red">#E77777</color>
-    <color name="cross_color">#BDCEF4</color>
     <color name="cross_background">#F1F5FF</color>
 </resources>

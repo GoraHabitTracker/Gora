@@ -33,8 +33,7 @@ class WelcomeFragment : Fragment() {
             findNavController().navigate(R.id.action_global_welcome)
         }
 
-        viewModel.updateCalendarData()
-
+        viewModel.updateDaily()
     }
 
     override fun onDestroyView() {

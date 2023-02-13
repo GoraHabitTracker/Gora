@@ -38,7 +38,7 @@ class CalendarViewModel(
                 val dateWithFulfilledHabit: MutableSet<LocalDate> = mutableSetOf()
                 val dateWithUnfulfilledHabit: MutableSet<LocalDate> = mutableSetOf()
                 list.onEach { progressCalendar ->
-                    if (progressCalendar.namesHabitsFulfilled == progressCalendar.namesAllHabits) {
+                    if (progressCalendar.areAllFulfilled) {
                         dateWithFulfilledHabit.add(progressCalendar.date)
                     } else {
                         dateWithUnfulfilledHabit.add(progressCalendar.date)

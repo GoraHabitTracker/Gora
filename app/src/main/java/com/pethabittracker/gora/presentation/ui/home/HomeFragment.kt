@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.getDrawable
 import androidx.core.view.isVisible
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.pethabittracker.gora.R
 import com.pethabittracker.gora.databinding.FragmentHomeBinding
+import com.pethabittracker.gora.domain.models.Habit
 import com.pethabittracker.gora.presentation.ui.adapter.HabitAdapter
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
@@ -33,7 +35,10 @@ class HomeFragment : Fragment() {
         HabitAdapter(
             context = requireContext(),
             onDoneClicked = { viewModel.onDoneClicked(it) },
-            onSkipClicked = { viewModel.onSkipClicked(it) }
+            onSkipClicked = { viewModel.onSkipClicked(it) },
+            onQuestionClicked = {
+                onQuestionClicked(it)
+            }
         )
     }
 
@@ -89,16 +94,9 @@ class HomeFragment : Fragment() {
 
                 // AlertDialog
                 val thereIsIdEqualOne = listHabits.filter { it.id.id == 1 }.isNotEmpty()
-                if (listHabits.size == theOnlyHabit && thereIsIdEqualOne) showAlertDialog()
+                if (listHabits.size == theOnlyHabit && thereIsIdEqualOne) showAlertDialogKillHabit()
             }
             .launchIn(lifecycleScope)
-
-        //------------------ with LiveData -------------------------------------------------------
-//        viewModel.allHabit.observe(this.viewLifecycleOwner) { items ->
-//            items.let { list ->
-//                adapter.submitList(list)
-//            }
-//        }
     }
 
     private fun setSwipeToDelete() {
@@ -203,14 +201,103 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun showAlertDialog() {
-        val viewAlertDialog =
+    private fun showAlertDialogKillHabit() {
+        val viewAlertDialogKillHabit: View =
             layoutInflater.inflate(R.layout.fragment_dialog_deleting, null, false)
         val alertDialog = AlertDialog
             .Builder(requireContext(), R.style.AlertDialogStyle)
-            .setView(viewAlertDialog)
+            .setView(viewAlertDialogKillHabit)
             .show()
-        viewAlertDialog.findViewById<Button>(R.id.button_gotit).setOnClickListener {
+        viewAlertDialogKillHabit.findViewById<Button>(R.id.button_gotit).setOnClickListener {
+            alertDialog.dismiss()
+        }
+    }
+
+    private fun onQuestionClicked(habit: Habit) {
+        showAlertDialogInfoDetailed(habit)
+    }
+
+    private fun showAlertDialogInfoDetailed(habit: Habit) {
+        val viewAlertDialogInfoDetailed: View =
+            layoutInflater.inflate(R.layout.fragment_dialog_info_detailed, null, false)
+
+        if (habit.repeatDays.monday) {
+            viewAlertDialogInfoDetailed.findViewById<TextView>(R.id.checkOrSkip_monday_icon)
+                .setCompoundDrawablesWithIntrinsicBounds(
+                    getDrawable(requireContext(), R.drawable.icon_check_blue_fcbk),
+                    null,
+                    null,
+                    null
+                )
+        }
+
+        if (habit.repeatDays.thursday) {
+            viewAlertDialogInfoDetailed.findViewById<TextView>(R.id.checkOrSkip_thursday_icon)
+                .setCompoundDrawablesWithIntrinsicBounds(
+                    getDrawable(requireContext(), R.drawable.icon_check_blue_fcbk),
+                    null,
+                    null,
+                    null
+                )
+        }
+
+        if (habit.repeatDays.wednesday) {
+            viewAlertDialogInfoDetailed.findViewById<TextView>(R.id.checkOrSkip_wednesday_icon)
+                .setCompoundDrawablesWithIntrinsicBounds(
+                    getDrawable(requireContext(), R.drawable.icon_check_blue_fcbk),
+                    null,
+                    null,
+                    null
+                )
+        }
+
+        if (habit.repeatDays.thursday) {
+            viewAlertDialogInfoDetailed.findViewById<TextView>(R.id.checkOrSkip_tuesday_icon)
+                .setCompoundDrawablesWithIntrinsicBounds(
+                    getDrawable(requireContext(), R.drawable.icon_check_blue_fcbk),
+                    null,
+                    null,
+                    null
+                )
+        }
+
+        if (habit.repeatDays.friday) {
+            viewAlertDialogInfoDetailed.findViewById<TextView>(R.id.checkOrSkip_friday_icon)
+                .setCompoundDrawablesWithIntrinsicBounds(
+                    getDrawable(requireContext(), R.drawable.icon_check_blue_fcbk),
+                    null,
+                    null,
+                    null
+                )
+        }
+
+        if (habit.repeatDays.saturday) {
+            viewAlertDialogInfoDetailed.findViewById<TextView>(R.id.checkOrSkip_saturday_icon)
+                .setCompoundDrawablesWithIntrinsicBounds(
+                    getDrawable(requireContext(), R.drawable.icon_check_blue_fcbk),
+                    null,
+                    null,
+                    null
+                )
+        }
+
+        if (habit.repeatDays.sunday) {
+            viewAlertDialogInfoDetailed.findViewById<TextView>(R.id.checkOrSkip_sunday_icon)
+                .setCompoundDrawablesWithIntrinsicBounds(
+                    getDrawable(requireContext(), R.drawable.icon_check_blue_fcbk),
+                    null,
+                    null,
+                    null
+                )
+        }
+        // надо эти if'ы оптимизировать, но голова уже не соображает
+
+        val alertDialog = AlertDialog
+            .Builder(requireContext(), R.style.AlertDialogStyle)
+            .setView(viewAlertDialogInfoDetailed)
+            .show()
+
+        viewAlertDialogInfoDetailed.findViewById<Button>(R.id.button_ok).setOnClickListener {
             alertDialog.dismiss()
         }
     }

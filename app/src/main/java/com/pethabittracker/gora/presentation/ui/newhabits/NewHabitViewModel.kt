@@ -54,7 +54,8 @@ class NewHabitViewModel(
                     CalendarData(
                         date = progressCalendarToday.date,
                         namesHabitsFulfilled = progressCalendarToday.namesHabitsFulfilled,
-                        namesAllHabits = it
+                        namesAllHabits = it,
+                        areAllFulfilled = progressCalendarToday.areAllFulfilled
                     )
                 )
             }

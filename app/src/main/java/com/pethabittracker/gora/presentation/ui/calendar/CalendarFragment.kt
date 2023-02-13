@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
-import com.kizitonwose.calendar.core.CalendarDay
-import com.kizitonwose.calendar.core.CalendarMonth
-import com.kizitonwose.calendar.core.DayPosition
-import com.kizitonwose.calendar.core.daysOfWeek
+import com.kizitonwose.calendar.core.*
 import com.kizitonwose.calendar.view.CalendarView
 import com.kizitonwose.calendar.view.MonthDayBinder
 import com.kizitonwose.calendar.view.MonthHeaderFooterBinder
@@ -19,6 +17,7 @@ import com.kizitonwose.calendar.view.ViewContainer
 import com.pethabittracker.gora.R
 import com.pethabittracker.gora.data.utils.displayText
 import com.pethabittracker.gora.data.utils.getCurrentDate
+import com.pethabittracker.gora.data.utils.setBackgroundColorRes
 import com.pethabittracker.gora.data.utils.setTextColorRes
 import com.pethabittracker.gora.databinding.CalendarDayLayoutBinding
 import com.pethabittracker.gora.databinding.FragmentCalendarBinding
@@ -34,7 +33,6 @@ class CalendarFragment : Fragment() {
     private var _binding: FragmentCalendarBinding? = null
     private val binding get() = requireNotNull(_binding)
     private val viewModel by viewModel<CalendarViewModel>()
-
     private val monthCalendarView: CalendarView get() = binding.calendarView
     private val selectedDates = mutableSetOf<LocalDate>()
     private val today = LocalDate.now()
@@ -66,14 +64,21 @@ class CalendarFragment : Fragment() {
                 textView.setTextColorRes(R.color.sapphire)
             }
 
-        dateFulfilldHabits =
-            viewModel.getDateWithFulfilledHabitFlow()  // эти строки отрабатывают после отресовки view календаря
+        // эти строки отрабатывают после отресовки view календаря
+        dateFulfilldHabits = viewModel.getDateWithFulfilledHabitFlow()
         dateUnfulfilledHabits = viewModel.getDateWithUnfulfilledHabitFlow()
 
         val currentMonth = YearMonth.now()
         val startMonth = currentMonth.minusMonths(100)
         val endMonth = currentMonth.plusMonths(100)
-        setupMonthCalendar(startMonth, endMonth, currentMonth, daysOfWeek)
+        setupMonthCalendar(
+            startMonth,
+            endMonth,
+            currentMonth,
+            daysOfWeek,
+            dateFulfilldHabits,
+            dateUnfulfilledHabits
+        )
     }
 
     private fun setupMonthCalendar(
@@ -81,6 +86,8 @@ class CalendarFragment : Fragment() {
         endMonth: YearMonth,
         currentMonth: YearMonth,
         daysOfWeek: List<DayOfWeek>,
+        done: List<LocalDate>,
+        notDone: List<LocalDate>
     ) {
         class DayViewContainer(view: View) : ViewContainer(view) {
             /** Will be set when this container is bound. See the dayBinder. */
@@ -110,7 +117,6 @@ class CalendarFragment : Fragment() {
                         container.titlesContainer.children.map { it as TextView }
                             .forEachIndexed { index, textView ->
                                 textView.text = daysOfWeek[index].displayText()
-                                textView.setTextColorRes(R.color.cross_color)
                                 /**
                                  * In the code above, we use the same `daysOfWeek` list
                                  * that was created when we set up the calendar.
@@ -132,7 +138,13 @@ class CalendarFragment : Fragment() {
                 override fun create(view: View) = DayViewContainer(view)
                 override fun bind(container: DayViewContainer, data: CalendarDay) {
                     container.day = data
-                    bindDate(data.date, container.textView, data.position == DayPosition.MonthDate)
+                    bindDate(
+                        data.date,
+                        container.textView,
+                        data.position == DayPosition.MonthDate,
+                        done,
+                        notDone
+                    )
                 }
             }
             monthScrollListener = { updateTitle() }
@@ -141,43 +153,39 @@ class CalendarFragment : Fragment() {
         }
     }
 
-    private fun bindDate(date: LocalDate, textView: TextView, isSelectable: Boolean) {
+    private fun bindDate(
+        date: LocalDate,
+        textView: TextView,
+        isSelectable: Boolean,
+        done: List<LocalDate>,      // не помогло
+        notDone: List<LocalDate>    // не отрабатывает
+    ) {
         textView.text = date.dayOfMonth.toString()
+
+        if (date == today) textView.foreground =
+            ResourcesCompat.getDrawable(resources, R.drawable.background_today_ring, null)
+
         if (isSelectable) {
-            when {
+            when {      // TODO Календарь отрабатывает только со второго захода. Надо исправить
                 selectedDates.contains(date) -> {
-                    textView.setBackgroundResource(R.drawable.example_1_selected_bg)
-                }
-                today == date -> {
-                    textView.setTextColorRes(R.color.sapphire)
-                    textView.setBackgroundResource(R.drawable.background_today_ring)
+                    textView.setBackgroundColorRes(R.drawable.background_calendar_selected)
                 }
                 else -> {
                     textView.setTextColorRes(R.color.sapphire)
                     textView.background = null
+                    if (done.contains(date)) {
+                        textView.setBackgroundColorRes(R.drawable.background_calendar_done)
+                        textView.setTextColorRes(R.color.sapphire)
+                    }
+                    if (notDone.contains(date)) {
+                        textView.setBackgroundColorRes(R.drawable.background_calendar_skipped)
+                        textView.setTextColorRes(R.color.snow_white)
+                    }
                 }
             }
         } else {
-            textView.setTextColorRes(R.color.cross_color)
+            textView.setTextColorRes(R.color.periwinkle)
             textView.background = null
-        }
-
-        when {  // TODO Календарь отрабатывает только со второго захода. Надо исправить
-            // 1 сегодня
-            date == today -> {
-                textView.setBackgroundResource(R.drawable.background_today_ring)
-            }
-            // 2 - привычки все сделаны
-            dateFulfilldHabits.contains(date) -> {
-                textView.setBackgroundResource(R.drawable.background_calendar_done)
-            }
-            // 3 - одна из привычек не сделана
-            dateUnfulfilledHabits.contains(date) -> {
-                textView.setTextColorRes(R.color.snow_white)
-                textView.setBackgroundResource(R.drawable.background_calendar_skipped)
-            }
-            // 0 - ничего не меняем. Привычки не были созданы в этот день
-            else -> {}
         }
 
         val myDate = LocalDate.parse("2023-02-03")
@@ -204,6 +212,12 @@ class CalendarFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun updateTitle() {
         binding.todaysDateText.text = getCurrentDate()
+
+        val month = monthCalendarView.findFirstVisibleMonth()?.yearMonth ?: return
+        binding.monthText.text = month.year.toString()
+//        binding.monthText.text = month.month.displayText(short = false)
+        binding.monthText.text = month.month.toString()
+
     }
 
     override fun onDestroy() {

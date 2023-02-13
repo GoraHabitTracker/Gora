@@ -11,5 +11,6 @@ internal data class CalendarDataEntity(
     @ColumnInfo(name = "names_of_fulfilled_habits")
     val namesHabitsFulfilled: String,
     @ColumnInfo(name = "names_all_habits")
-    val namesAllHabits: String
+    val namesAllHabits: String,
+    val areAllFulfilled: Boolean
 )

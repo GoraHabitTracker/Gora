@@ -22,7 +22,7 @@
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/border_transparent_background">
+            android:background="@drawable/background_transparent">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -98,7 +98,4 @@
             app:srcCompat="@drawable/image_vector_arrow" />
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout><!--TODO картинка расхардкодить(?) -->
-
-    <!--    android:background="@drawable/roundstyle_image"     - закругление углов. не работает без соответствующего кода во Фрагменте-->
-    <!--    app:srcCompat="@drawable/image_hills" -->
+</androidx.constraintlayout.widget.ConstraintLayout>

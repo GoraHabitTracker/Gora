@@ -32,7 +32,8 @@ class NewHabitUseCase(
             CalendarData(
                 date = todayProgressCalendar.date,
                 namesHabitsFulfilled = todayProgressCalendar.namesHabitsFulfilled,
-                namesAllHabits = todayProgressCalendar.namesAllHabits.plus(newHabit.name)
+                namesAllHabits = todayProgressCalendar.namesAllHabits.plus(newHabit.name),
+                areAllFulfilled = todayProgressCalendar.areAllFulfilled
             )
         )
     }

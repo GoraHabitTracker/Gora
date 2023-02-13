@@ -3,11 +3,11 @@ package com.pethabittracker.gora.presentation.ui.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pethabittracker.gora.data.usecase.UpdateHabitPriorityUseCase
-import com.pethabittracker.gora.data.utils.getCurrentDayOfWeek
 import com.pethabittracker.gora.domain.models.CalendarData
 import com.pethabittracker.gora.domain.models.Habit
 import com.pethabittracker.gora.domain.repositories.CalendarDataRepository
 import com.pethabittracker.gora.domain.repositories.HabitRepository
+import com.pethabittracker.gora.presentation.extensions.filterCurrentDay
 import com.pethabittracker.gora.presentation.models.Priority
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
@@ -25,18 +25,21 @@ class HomeViewModel(
     private val _allHabitFlow = MutableStateFlow(emptyList<Habit>())
     private val allHabitFlow: Flow<List<Habit>> = _allHabitFlow.asStateFlow()
 
-    private val _listCalendarData = MutableStateFlow(emptyList<CalendarData>())
-    private val listCalendarData: Flow<List<CalendarData>> = _listCalendarData.asStateFlow()
+    private val _listCalendarDataFlow = MutableStateFlow(emptyList<CalendarData>())
+    private val listCalendarDataFlow: Flow<List<CalendarData>> = _listCalendarDataFlow.asStateFlow()
+
+    private val _fulfilledHabitFlow = MutableStateFlow(false)
+    private val fulfilledHabitFlow: Flow<Boolean> = _fulfilledHabitFlow.asStateFlow()
 
     init {
         viewModelScope.launch {
             calendarRepository.getFlowCalendarData().collectLatest {
-                _listCalendarData.value = it
+                _listCalendarDataFlow.value = it
             }
+            checkAllFulfilled()
         }
     }
 
-    //------------------ with Coroutine -------------------------------------------------------
     fun getAllHabitFlow(): Flow<List<Habit>> {
 
         return allHabitFlow
@@ -55,10 +58,6 @@ class HomeViewModel(
             )
     }
 
-    //----------------- with LiveData -------------------------------------------------------------
-
-    //  val allHabit: LiveData<List<Habit>> = repository.getFlowAllHabits().asLiveData()
-
     private fun changeThePriority(habit: Habit, priority: Int) {
         flow<Unit> {
             updateHabit(habit, priority)
@@ -66,15 +65,20 @@ class HomeViewModel(
     }
 
     suspend fun deleteHabit(habit: Habit) = withContext(Dispatchers.IO) {
-        listCalendarData
+        listCalendarDataFlow
             .map { list ->
                 val currentCalendarData = list.first { it.date == today }
 
                 val date = currentCalendarData.date
-                val namesAllHabits = currentCalendarData.namesAllHabits.minus(habit.name)
                 val namesHabitsFulfilled =
                     currentCalendarData.namesHabitsFulfilled.minus(habit.name)
-                val newCalendarData = CalendarData(date, namesHabitsFulfilled, namesAllHabits)
+                val namesAllHabits = currentCalendarData.namesAllHabits.minus(habit.name)
+                val newCalendarData = CalendarData(
+                    date = date,
+                    namesHabitsFulfilled = namesHabitsFulfilled,
+                    namesAllHabits = namesAllHabits,
+                    areAllFulfilled = currentCalendarData.areAllFulfilled
+                )
                 calendarRepository.updateCalendarData(newCalendarData)
                 habitRepository.deleteHabits(habit)
             }.launchIn(viewModelScope)
@@ -86,38 +90,26 @@ class HomeViewModel(
         }
     }
 
-    private fun filterCurrentDay(habit: Habit): Boolean {
-        return when (getCurrentDayOfWeek()) {
-            "Monday" -> habit.repeatDays.monday
-            "Thursday" -> habit.repeatDays.thursday
-            "Wednesday" -> habit.repeatDays.wednesday
-            "Tuesday" -> habit.repeatDays.tuesday
-            "Friday" -> habit.repeatDays.friday
-            "Saturday" -> habit.repeatDays.saturday
-            else -> habit.repeatDays.sunday
-        }
-    }
-
     private suspend fun priorityCurrentDay(habit: Habit) {
 
         when (habit.priority) {
             Priority.Default.value -> {
-                if (!filterCurrentDay(habit)) {
+                if (!habit.filterCurrentDay()) {
                     updateHabit(habit, Priority.Inactive.value)
                 }
             }
             Priority.Done.value -> {
-                if (!filterCurrentDay(habit)) {
+                if (!habit.filterCurrentDay()) {
                     updateHabit(habit, Priority.Inactive.value)
                 }
             }
             Priority.Skip.value -> {
-                if (!filterCurrentDay(habit)) {
+                if (!habit.filterCurrentDay()) {
                     updateHabit(habit, Priority.Inactive.value)
                 }
             }
             Priority.Inactive.value -> {
-                if (filterCurrentDay(habit)) {
+                if (habit.filterCurrentDay()) {
                     updateHabit(habit, Priority.Default.value)
                 }
             }
@@ -125,27 +117,41 @@ class HomeViewModel(
     }
 
     fun onDoneClicked(habit: Habit) {
-        /*
-         1) меняем приоритет у привычки
-         2) добавляем в calendarProgress на сегодняшнюю дату текущую привычку в поле сделанные
-         */
-        listCalendarData
-            .map { listProgrCal ->
+        listCalendarDataFlow
+            .map { listCalendar ->
+                // обновляем приоритет текущей привычки
                 changeThePriority(habit, Priority.Done.value)
 
-                val progressCalendarOld = listProgrCal.first { it.date == today }
-                val date = progressCalendarOld.date
-                val namesHabitsFulfilled = progressCalendarOld.namesHabitsFulfilled.plus(habit.name)
-                val namesAllHabits = progressCalendarOld.namesAllHabits
-                val calendarData = CalendarData(date, namesHabitsFulfilled, namesAllHabits)
+                // добавляем привычку в выполненные и проверяем, все ли выполнены на сегодня
+                val calendarDateOld = listCalendar.first { it.date == today }
+                val calendarData = CalendarData(
+                    date = calendarDateOld.date,
+                    namesHabitsFulfilled = calendarDateOld.namesHabitsFulfilled.plus(habit.name),
+                    namesAllHabits = calendarDateOld.namesAllHabits,
+                    areAllFulfilled = _fulfilledHabitFlow.value
+                )
 
                 calendarRepository.updateCalendarData(calendarData)
             }
             .launchIn(viewModelScope)
     }
 
+    private fun checkAllFulfilled(): Boolean {
+        return fulfilledHabitFlow
+            .map {
+                habitRepository.getAllHabits().none { habit ->
+                    // привычка не имеет ни Priority.Default ни Priority.Skip
+                    habit.priority != Priority.Default.value && habit.priority != Priority.Skip.value
+                }
+            }.stateIn(
+                viewModelScope,
+                SharingStarted.Eagerly,
+                false
+            ).value
+    }
+
     fun onSkipClicked(habit: Habit) {
-        listCalendarData
+        listCalendarDataFlow
             .map {
                 changeThePriority(habit, Priority.Skip.value)
             }

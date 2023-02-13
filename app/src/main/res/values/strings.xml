@@ -31,5 +31,15 @@
     <string name="calendar">Календарь</string>
     <string name="habits_not_done">Вы выполнили не все привычки</string>
     <string name="habits_done">Все привычки за день выполнены!</string>
+    <string name="monday_full_ru">Понедельник</string>
+    <string name="friday_full_ru">Пятница</string>
+    <string name="tuesday_full_ru">Вторник</string>
+    <string name="wednesday_full_ru">Среда</string>
+    <string name="thursday_full_ru">Четверг</string>
+    <string name="saturday_full_ru">Суббота</string>
+    <string name="sunday_full_ru">Воскресенье</string>
+    <string name="ok">Окей</string>
+    <string name="habit_inactive">Сегодня привычка неактивна</string>
+    <string name="habit_limit_10">Более 10 привычек \nдобавить нельзя</string>
 
 </resources>

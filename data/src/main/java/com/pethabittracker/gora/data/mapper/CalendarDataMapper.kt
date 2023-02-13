@@ -12,7 +12,8 @@ internal fun CalendarDataEntity.toDomain(): CalendarData {
     return CalendarData(
         date = LocalDate.parse(date),
         namesHabitsFulfilled = namesHabitsFulfilled.toListString(),
-        namesAllHabits = namesAllHabits.toListString()
+        namesAllHabits = namesAllHabits.toListString(),
+        areAllFulfilled = areAllFulfilled
     )
 }
 
@@ -20,7 +21,8 @@ internal fun CalendarData.toData(): CalendarDataEntity {
     return CalendarDataEntity(
         date = date.toString(),
         namesHabitsFulfilled = namesHabitsFulfilled.toString(),
-        namesAllHabits = namesAllHabits.toString()
+        namesAllHabits = namesAllHabits.toString(),
+        areAllFulfilled = areAllFulfilled
     )
 }
 

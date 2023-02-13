@@ -11,7 +11,8 @@ import com.pethabittracker.gora.domain.models.Habit
 class HabitAdapter(
     private val context: Context,
     private val onDoneClicked: (Habit) -> Unit,
-    private val onSkipClicked: (Habit) -> Unit
+    private val onSkipClicked: (Habit) -> Unit,
+    private val onQuestionClicked: (Habit) -> Unit
 ) : ListAdapter<Habit, HabitViewHolder>(DIFF_UTIL) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitViewHolder {
@@ -23,7 +24,8 @@ class HabitAdapter(
             ),
             context = context,
             onSkipClicked = onSkipClicked,
-            onDoneClicked = onDoneClicked
+            onDoneClicked = onDoneClicked,
+            onQuestionClicked = onQuestionClicked
         )
     }
 

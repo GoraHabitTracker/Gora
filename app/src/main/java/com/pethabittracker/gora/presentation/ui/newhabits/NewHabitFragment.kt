@@ -131,7 +131,7 @@ class NewHabitFragment : Fragment() {
 
                 lifecycleScope.launch {
                     runCatching {
-                         viewModel.newHabit(
+                        viewModel.newHabit(
                             titleHabit,
                             urlImage,
                             Priority.Default.value,
@@ -183,7 +183,7 @@ class NewHabitFragment : Fragment() {
                             editTextTitle.background =
                                 ResourcesCompat.getDrawable(
                                     resources,
-                                    R.drawable.border_button_primary,
+                                    R.drawable.background_button_skip,
                                     null
                                 )
                             hintTextColor =
