@@ -36,9 +36,7 @@ class HomeFragment : Fragment() {
             context = requireContext(),
             onDoneClicked = { viewModel.onDoneClicked(it) },
             onSkipClicked = { viewModel.onSkipClicked(it) },
-            onQuestionClicked = {
-                onQuestionClicked(it)
-            }
+            onQuestionClicked = { onQuestionClicked(it) }
         )
     }
 

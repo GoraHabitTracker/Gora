@@ -62,59 +62,38 @@
             app:cv_monthHeaderResource="@layout/calendar_day_legend_container" />
     </LinearLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"
         android:layout_marginVertical="16dp"
         android:background="@drawable/roundstyle_image"
         android:backgroundTint="@color/white"
+        android:orientation="vertical"
         android:padding="18dp">
-
-        <ImageView
-            android:id="@+id/imageView_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            app:layout_constraintBottom_toTopOf="@id/imageView_x"
-            app:layout_constraintEnd_toStartOf="@id/textView1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/icon_check_green" />
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
             android:text="@string/habits_done"
             android:textColor="@color/sapphire"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@id/textView2"
-            app:layout_constraintStart_toEndOf="@+id/imageView_check"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView_x"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/textView2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView_check"
-            app:srcCompat="@drawable/icon_x_pastel_red" />
+            app:drawableStartCompat="@drawable/icon_check_green" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
             android:text="@string/habits_not_done"
             android:textColor="@color/sapphire"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView_x"
-            app:layout_constraintTop_toBottomOf="@+id/textView1" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:drawableStartCompat="@drawable/icon_x_pastel_red" />
+    </LinearLayout>
 </LinearLayout>
