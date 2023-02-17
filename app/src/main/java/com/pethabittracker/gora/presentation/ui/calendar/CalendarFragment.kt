@@ -9,6 +9,9 @@ import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.kizitonwose.calendar.core.*
 import com.kizitonwose.calendar.view.CalendarView
 import com.kizitonwose.calendar.view.MonthDayBinder
@@ -22,6 +25,11 @@ import com.pethabittracker.gora.data.utils.setTextColorRes
 import com.pethabittracker.gora.databinding.CalendarDayLayoutBinding
 import com.pethabittracker.gora.databinding.FragmentCalendarBinding
 import com.pethabittracker.gora.presentation.models.MonthViewContainer
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.mapLatest
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -214,10 +222,7 @@ class CalendarFragment : Fragment() {
         binding.todaysDateText.text = getCurrentDate()
 
         val month = monthCalendarView.findFirstVisibleMonth()?.yearMonth ?: return
-        binding.monthText.text = month.year.toString()
-//        binding.monthText.text = month.month.displayText(short = false)
-        binding.monthText.text = month.month.toString()
-
+        binding.monthText.text = month.displayText(short = false).replaceFirstChar { it.uppercase() }
     }
 
     override fun onDestroy() {

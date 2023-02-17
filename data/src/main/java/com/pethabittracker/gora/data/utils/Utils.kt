@@ -19,7 +19,7 @@ fun YearMonth.displayText(short: Boolean = false): String {
 }
 
 fun Month.displayText(short: Boolean = true): String {
-    val style = if (short) TextStyle.SHORT else TextStyle.FULL
+    val style = if (short) TextStyle.SHORT else TextStyle.FULL.asStandalone()
     return getDisplayName(style, rusLocale)
 }
 

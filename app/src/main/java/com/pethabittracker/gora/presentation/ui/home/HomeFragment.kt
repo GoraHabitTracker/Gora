@@ -17,6 +17,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.pethabittracker.gora.R
+import com.pethabittracker.gora.data.sharedprefs.PrefsManager
 import com.pethabittracker.gora.databinding.FragmentHomeBinding
 import com.pethabittracker.gora.domain.models.Habit
 import com.pethabittracker.gora.presentation.ui.adapter.HabitAdapter
@@ -38,6 +39,10 @@ class HomeFragment : Fragment() {
             onSkipClicked = { viewModel.onSkipClicked(it) },
             onQuestionClicked = { onQuestionClicked(it) }
         )
+    }
+
+    private val prefsManager by lazy {
+        PrefsManager(requireContext())
     }
 
     override fun onCreateView(
@@ -91,8 +96,11 @@ class HomeFragment : Fragment() {
                 binding.recyclerView.adapter = adapter
 
                 // AlertDialog
-                val thereIsIdEqualOne = listHabits.filter { it.id.id == 1 }.isNotEmpty()
-                if (listHabits.size == theOnlyHabit && thereIsIdEqualOne) showAlertDialogKillHabit()
+                if (!prefsManager.flagIsChecked&&listHabits.size == theOnlyHabit){
+                    showAlertDialogKillHabit()
+                    prefsManager.flagIsChecked = true
+                }
+
             }
             .launchIn(lifecycleScope)
     }
@@ -110,7 +118,7 @@ class HomeFragment : Fragment() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
+                val position = viewHolder.bindingAdapterPosition
                 val habit = adapter.currentList[position]
                 lifecycleScope.launch {
                     viewModel.deleteHabit(habit)
@@ -133,8 +141,7 @@ class HomeFragment : Fragment() {
 
                 val mClearPaint = Paint()
                 mClearPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
-
-                val backGroundColor = Color.parseColor("#b80f0a")
+                val backGroundColor = resources.getColor(R.color.delete_background, null)
                 val deleteDrawable =
                     getDrawable(requireContext(), R.drawable.icon_trashcan)
                 val width = deleteDrawable?.intrinsicWidth ?: 0

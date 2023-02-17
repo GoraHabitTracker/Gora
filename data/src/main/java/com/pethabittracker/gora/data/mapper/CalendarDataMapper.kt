@@ -1,5 +1,6 @@
 package com.pethabittracker.gora.data.mapper
 
+import com.pethabittracker.gora.data.R
 import com.pethabittracker.gora.data.models.CalendarDataEntity
 import com.pethabittracker.gora.domain.models.CalendarData
 import java.time.LocalDate
@@ -27,12 +28,12 @@ internal fun CalendarData.toData(): CalendarDataEntity {
 }
 
 internal fun String.toListString(): Set<String> {
-    val delimiter = ", "
+    val delimiter = R.string.comma_space.toString()
     val namesList: MutableSet<String> = mutableSetOf()
-    if (this == "[]") return namesList      // вынести в константы
+    if (this == R.string.square_brackets.toString()) return namesList      // вынести в константы
 
     this
-        .trim('[', ']')
+        .trim(R.string.square_brackets_open.toChar(), R.string.square_brackets_close.toChar())
         .split(delimiter)
         .forEach {
             namesList.add(it.trim())

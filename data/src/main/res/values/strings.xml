@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="database_name">database</string>
+    <string name="prefs_name">limit</string>
+    <string name="key_flag">flag</string>
+    <string name="comma_space">, </string>
+    <string name="square_brackets">[]</string>
+    <string name="square_brackets_open">[</string>
+    <string name="square_brackets_close">]</string>
+
+</resources>
