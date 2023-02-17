@@ -8,14 +8,6 @@
     android:paddingTop="16dp"
     android:paddingBottom="16dp">
 
-    <ImageView
-        android:id="@+id/iv_hand"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="26dp"
-        android:src="@drawable/image_hand_one_finger" />
-
     <TextView
         android:id="@+id/tv_delete"
         android:layout_width="wrap_content"
@@ -23,12 +15,12 @@
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:gravity="center"
-        android:text="@string/delete_swipe_left"
+        android:text="@string/habit_limit_10"
         android:textColor="@color/sapphire"
         android:textSize="14sp" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_gotit"
+        android:id="@+id/button_i_see"
         android:layout_width="304dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

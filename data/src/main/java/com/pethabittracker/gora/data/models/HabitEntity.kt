@@ -14,16 +14,5 @@ internal data class HabitEntity(
     val urlImage: Int,
     val priority: Int,
     @Embedded
-    val repeatDays: WeekListEntity
-)
-
-@Entity
-data class WeekListEntity(
-    val monday: Boolean,
-    val thursday: Boolean,
-    val wednesday: Boolean,
-    val tuesday: Boolean,
-    val friday: Boolean,
-    val saturday: Boolean,
-    val sunday: Boolean
+    val repeatDays: DaysOfWeekEntity
 )

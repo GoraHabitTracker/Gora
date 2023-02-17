@@ -1,8 +1,9 @@
-package com.pethabittracker.gora.presentation.ui.calendar
+package com.pethabittracker.gora.data.utils
 
 import android.content.Context
 import android.widget.TextView
 import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import java.time.DayOfWeek
 import java.time.Month
@@ -34,3 +35,6 @@ fun Context.getColorCompat(@ColorRes color: Int) =
 
 fun TextView.setTextColorRes(@ColorRes color: Int) =
     setTextColor(context.getColorCompat(color))
+
+fun TextView.setBackgroundColorRes(@DrawableRes color: Int) =
+    setBackgroundResource(color)

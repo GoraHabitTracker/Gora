@@ -18,7 +18,7 @@
     </style>
 
     <style name="AlertDialogStyle" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:windowBackground">@drawable/border_dialog</item>
+        <item name="android:windowBackground">@drawable/style_alert_dialog</item>
     </style>
 
     <style name="roundedWeek">

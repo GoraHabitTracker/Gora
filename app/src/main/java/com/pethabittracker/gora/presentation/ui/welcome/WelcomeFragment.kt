@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.pethabittracker.gora.R
 import com.pethabittracker.gora.databinding.FragmentWelcomeBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WelcomeFragment : Fragment() {
 
     private var _binding: FragmentWelcomeBinding? = null
     private val binding get() = requireNotNull(_binding)
+    private val viewModel by viewModel<WelcomeFragmentViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,6 +32,8 @@ class WelcomeFragment : Fragment() {
         binding.button.setOnClickListener {
             findNavController().navigate(R.id.action_global_welcome)
         }
+
+        viewModel.updateDaily()
     }
 
     override fun onDestroyView() {

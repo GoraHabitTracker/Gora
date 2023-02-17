@@ -13,15 +13,16 @@ import com.pethabittracker.gora.presentation.models.Priority
 class HabitViewHolder(
     private val binding: ItemHabitBinding,
     private val context: Context,
-    private val onButtonActionClicked: (Habit, Int) -> Unit
+    private val onDoneClicked: (Habit) -> Unit,
+    private val onSkipClicked: (Habit) -> Unit,
+    private val onQuestionClicked: (Habit) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(habit: Habit) {
-
         with(binding) {
-
             imageView.setImageResource(habit.urlImage)
 
+            // у нас два разных стиля для замены цвета (тут один, а в CalendarFragment другой). нужно выбрать один и его придерживаться
             val colorInt: Int = context.getColor(R.color.transparent_90)
             val csl = ColorStateList.valueOf(colorInt)
 
@@ -31,8 +32,13 @@ class HabitViewHolder(
                     frameChoice.isVisible = true
                 }
                 Priority.Done.value -> {
-                    frameChoice.isVisible = false
                     frameDone.isVisible = true
+                    tvNameHabit.setCompoundDrawablesWithIntrinsicBounds(
+                        null,
+                        null,
+                        ContextCompat.getDrawable(context, R.drawable.icon_question_white),
+                        null
+                    )
                     root.setCardBackgroundColor(
                         ContextCompat.getColor(
                             context,
@@ -41,35 +47,35 @@ class HabitViewHolder(
                     )
                 }
                 Priority.Skip.value -> {
-                    frameChoice.isVisible = false
                     frameSkip.isVisible = true
+                    tvNameHabit.setCompoundDrawablesWithIntrinsicBounds(
+                        null,
+                        null,
+                        ContextCompat.getDrawable(context, R.drawable.icon_question_blue_fcbk),
+                        null
+                    )
                     root.setCardForegroundColor(csl)
                 }
                 Priority.Inactive.value -> {
-                    frameChoice.isVisible = true
-                    buttonDone.isEnabled = false
-                    buttonDone.isClickable = false
-                    buttonSkip.isEnabled = false
-                    buttonSkip.isClickable = false
-                    root.setCardForegroundColor(csl)
+                    frameInactive.isVisible = true
                 }
             }
 
-
             buttonDone.setOnClickListener {
-                frameChoice.isVisible = false
+                buttonDone.isVisible = false
+                buttonSkip.isVisible = false
                 frameDone.isVisible = true
                 root.setCardBackgroundColor(ContextCompat.getColor(context, R.color.pastel_green))
 
-                onButtonActionClicked(habit, Priority.Done.value)
+                onDoneClicked(habit)
             }
 
             buttonSkip.setOnClickListener {
-                frameChoice.isVisible = false
-                frameSkip.isVisible = true
-                root.setCardForegroundColor(csl)
+                onSkipClicked(habit)
+            }
 
-                onButtonActionClicked(habit, Priority.Skip.value)
+            tvNameHabit.setOnClickListener {
+                onQuestionClicked(habit)
             }
 
             tvNameHabit.text = habit.name

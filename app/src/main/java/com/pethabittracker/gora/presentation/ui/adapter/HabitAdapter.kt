@@ -8,9 +8,11 @@ import androidx.recyclerview.widget.ListAdapter
 import com.pethabittracker.gora.databinding.ItemHabitBinding
 import com.pethabittracker.gora.domain.models.Habit
 
-class HabitAdapter (
-    private val context : Context,
-    private val onButtonActionClicked: (Habit, Int) -> Unit
+class HabitAdapter(
+    private val context: Context,
+    private val onDoneClicked: (Habit) -> Unit,
+    private val onSkipClicked: (Habit) -> Unit,
+    private val onQuestionClicked: (Habit) -> Unit
 ) : ListAdapter<Habit, HabitViewHolder>(DIFF_UTIL) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitViewHolder {
@@ -21,7 +23,9 @@ class HabitAdapter (
                 false
             ),
             context = context,
-            onButtonActionClicked = onButtonActionClicked
+            onSkipClicked = onSkipClicked,
+            onDoneClicked = onDoneClicked,
+            onQuestionClicked = onQuestionClicked
         )
     }
 

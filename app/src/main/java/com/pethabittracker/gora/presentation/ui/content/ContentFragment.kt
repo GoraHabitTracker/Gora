@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
@@ -48,21 +50,24 @@ class ContentFragment : Fragment() {
             viewModel.countHabitFlow
                 .onEach {
                     if (it < allowedCountOfHabit) {
-                        binding.fab.setImageResource(R.drawable.icon_button_add)
+                        fab.setImageResource(R.drawable.icon_button_add)
                         fab.setOnClickListener {
                             findNavController().navigate(NavigationDirections.actionGlobalFab())
                         }
                     } else {
-                        binding.fab.setImageResource(R.drawable.icon_button_add_negative)
-                        binding.fab.setColorFilter(R.color.cross_color)
-                        binding.fab.setBackgroundColor(resources.getColor(R.color.cross_background,null) )
-                        fab.setOnClickListener {
-                            val toast = Toast.makeText(
-                                context,
-                                R.string.limit_habit,
-                                Toast.LENGTH_SHORT
-                            )
-                            toast.show()
+                        fab.apply {
+                            setImageResource(R.drawable.icon_button_add_negative)
+                            setColorFilter(R.color.periwinkle)
+                            setBackgroundColor(resources.getColor(R.color.cross_background, null))
+                            setOnClickListener {
+                                showAlertDialog()
+                                val toast = Toast.makeText(
+                                    context,
+                                    R.string.limit_habit,
+                                    Toast.LENGTH_SHORT
+                                )
+                                toast.show()
+                            }
                         }
                     }
                 }.launchIn(lifecycleScope)
@@ -75,6 +80,18 @@ class ContentFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun showAlertDialog() {
+        val viewAlertDialog =
+            layoutInflater.inflate(R.layout.fragment_dialog_habits_limit, null, false)
+        val alertDialog = AlertDialog
+            .Builder(requireContext(), R.style.AlertDialogStyle)
+            .setView(viewAlertDialog)
+            .show()
+        viewAlertDialog.findViewById<Button>(R.id.button_i_see).setOnClickListener {
+            alertDialog.dismiss()
+        }
     }
 
     companion object {
