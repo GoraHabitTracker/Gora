@@ -1,14 +1,10 @@
 package com.pethabittracker.gora.data.mapper
 
+import com.pethabittracker.gora.data.models.DaysOfWeekEntity
 import com.pethabittracker.gora.data.models.HabitEntity
-import com.pethabittracker.gora.data.models.WeekListEntity
 import com.pethabittracker.gora.domain.models.Habit
 import com.pethabittracker.gora.domain.models.HabitId
 import com.pethabittracker.gora.domain.models.WeekList
-
-internal fun List<Habit>.toDataModelsForEntity(): List<HabitEntity> = map {
-    it.toData()
-}
 
 internal fun List<HabitEntity>.toDomainModels(): List<Habit> = map {
     it.toDomain()
@@ -38,7 +34,7 @@ internal fun Habit.toData(): HabitEntity {
     )
 }
 
-internal fun WeekListEntity.toDomain(): WeekList {
+internal fun DaysOfWeekEntity.toDomain(): WeekList {
     return WeekList(
         monday = monday,
         tuesday = tuesday,
@@ -50,8 +46,8 @@ internal fun WeekListEntity.toDomain(): WeekList {
     )
 }
 
-internal fun WeekList.toData(): WeekListEntity {
-    return WeekListEntity(
+internal fun WeekList.toData(): DaysOfWeekEntity {
+    return DaysOfWeekEntity(
         monday = monday,
         tuesday = tuesday,
         wednesday = wednesday,

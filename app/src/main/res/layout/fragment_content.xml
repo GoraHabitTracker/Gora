@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/sea_foam"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/sea_foam">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/container_content"
@@ -23,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:backgroundTint="@color/white"
+        app:elevation="0dp"
         app:fabCradleVerticalOffset="10dp">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -40,12 +40,12 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:backgroundTint="@color/periwinkle"
-        app:tint="@color/blue_fcbk"
         android:contentDescription="Q"
-        android:src="@drawable/icon_button_add"
+        app:backgroundTint="@color/periwinkle"
         app:elevation="0dp"
-        app:layout_anchor="@id/bottom_app_bar" />
+        app:layout_anchor="@id/bottom_app_bar"
+        app:srcCompat="@drawable/icon_button_add2"
+        app:tint="@color/blue_fcbk" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <!--    app:elevation="0dp"                     - убирает тени -->
