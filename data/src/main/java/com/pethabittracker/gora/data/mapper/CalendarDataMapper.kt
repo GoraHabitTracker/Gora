@@ -9,21 +9,39 @@ internal fun List<CalendarDataEntity>.toDomainModels(): List<CalendarData> = map
     it.toDomain()
 }
 
+//internal fun CalendarDataEntity.toDomain(): CalendarData {
+//    return CalendarData(
+//        date = LocalDate.parse(date),
+//        namesHabitsFulfilled = namesHabitsFulfilled.toListString(),
+//        namesAllHabits = namesAllHabits.toListString(),
+//        areAllFulfilled = areAllFulfilled
+//    )
+//}
+//
+//internal fun CalendarData.toData(): CalendarDataEntity {
+//    return CalendarDataEntity(
+//        date = date.toString(),
+//        namesHabitsFulfilled = namesHabitsFulfilled.toString(),
+//        namesAllHabits = namesAllHabits.toString(),
+//        areAllFulfilled = areAllFulfilled
+//    )
+//}
+
 internal fun CalendarDataEntity.toDomain(): CalendarData {
     return CalendarData(
+        id = id,
+        name = name,
         date = LocalDate.parse(date),
-        namesHabitsFulfilled = namesHabitsFulfilled.toListString(),
-        namesAllHabits = namesAllHabits.toListString(),
-        areAllFulfilled = areAllFulfilled
+        state = state
     )
 }
 
 internal fun CalendarData.toData(): CalendarDataEntity {
     return CalendarDataEntity(
+        id = id,
+        name = name,
         date = date.toString(),
-        namesHabitsFulfilled = namesHabitsFulfilled.toString(),
-        namesAllHabits = namesAllHabits.toString(),
-        areAllFulfilled = areAllFulfilled
+        state = state
     )
 }
 

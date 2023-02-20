@@ -25,10 +25,8 @@ import com.pethabittracker.gora.data.utils.setTextColorRes
 import com.pethabittracker.gora.databinding.CalendarDayLayoutBinding
 import com.pethabittracker.gora.databinding.FragmentCalendarBinding
 import com.pethabittracker.gora.presentation.models.MonthViewContainer
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.mapLatest
+import com.pethabittracker.gora.presentation.models.Priority
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.time.DayOfWeek
@@ -45,11 +43,11 @@ class CalendarFragment : Fragment() {
     private val selectedDates = mutableSetOf<LocalDate>()
     private val today = LocalDate.now()
 
-    // список дат с выполненными привычками
-    private var dateFulfilldHabits = emptyList<LocalDate>()
-
-    // список дат с НЕвыполненными привычками
-    private var dateUnfulfilledHabits = emptyList<LocalDate>()
+    //    // список дат с выполненными привычками
+    private var dateFulfilldHabits = flowOf(emptyList<LocalDate>())
+//
+//    // список дат с НЕвыполненными привычками
+//    private var dateUnfulfilledHabits = emptyList<LocalDate>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -72,9 +70,16 @@ class CalendarFragment : Fragment() {
                 textView.setTextColorRes(R.color.sapphire)
             }
 
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                dateFulfilldHabits = viewModel
+                    .getDoneCalendarDataFlow()
+            }
+        }
+
         // эти строки отрабатывают после отресовки view календаря
-        dateFulfilldHabits = viewModel.getDateWithFulfilledHabitFlow()
-        dateUnfulfilledHabits = viewModel.getDateWithUnfulfilledHabitFlow()
+//        dateFulfilldHabits = viewModel.getDateWithFulfilledHabitFlow()
+//        dateUnfulfilledHabits = viewModel.getDateWithUnfulfilledHabitFlow()
 
         val currentMonth = YearMonth.now()
         val startMonth = currentMonth.minusMonths(100)
@@ -85,7 +90,7 @@ class CalendarFragment : Fragment() {
             currentMonth,
             daysOfWeek,
             dateFulfilldHabits,
-            dateUnfulfilledHabits
+//            dateUnfulfilledHabits
         )
     }
 
@@ -94,8 +99,8 @@ class CalendarFragment : Fragment() {
         endMonth: YearMonth,
         currentMonth: YearMonth,
         daysOfWeek: List<DayOfWeek>,
-        done: List<LocalDate>,
-        notDone: List<LocalDate>
+        done: Flow<List<LocalDate>>,
+//        notDone: List<LocalDate>
     ) {
         class DayViewContainer(view: View) : ViewContainer(view) {
             /** Will be set when this container is bound. See the dayBinder. */
@@ -151,7 +156,7 @@ class CalendarFragment : Fragment() {
                         container.textView,
                         data.position == DayPosition.MonthDate,
                         done,
-                        notDone
+//                        notDone
                     )
                 }
             }
@@ -165,8 +170,8 @@ class CalendarFragment : Fragment() {
         date: LocalDate,
         textView: TextView,
         isSelectable: Boolean,
-        done: List<LocalDate>,      // не помогло
-        notDone: List<LocalDate>    // не отрабатывает
+        done: Flow<List<LocalDate>>,      // не помогло
+//        notDone: List<LocalDate>    // не отрабатывает
     ) {
         textView.text = date.dayOfMonth.toString()
 
@@ -181,19 +186,59 @@ class CalendarFragment : Fragment() {
                 else -> {
                     textView.setTextColorRes(R.color.sapphire)
                     textView.background = null
-                    if (done.contains(date)) {
-                        textView.setBackgroundColorRes(R.drawable.background_calendar_done)
-                        textView.setTextColorRes(R.color.sapphire)
+
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                            viewModel
+//                                .getCalendarDataFlow()
+//                                .map { list ->
+//                                    list.onEach {
+//                                        if (it.date == date) {
+//                                            if (it.state == Priority.Done.value && it.state != Priority.Skip.value)
+//                                                textView.setBackgroundColorRes(R.drawable.background_calendar_done)
+//                                            textView.setTextColorRes(R.color.sapphire)
+//                                        }
+//                                    }
+//                                }
+
+                            viewModel
+                                .getDoneCalendarDataFlow()
+                                .onEach {
+
+                                    val myDate = LocalDate.parse("2023-02-21")
+                                    if (myDate == date) {
+                                        textView.setBackgroundResource(R.drawable.background_calendar_done)
+                                    }
+                                    if (it.contains(date)) {
+                                        textView.setBackgroundColorRes(R.drawable.background_calendar_done)
+                                        textView.setTextColorRes(R.color.sapphire)
+                                    }
+                                }
+                        }
                     }
-                    if (notDone.contains(date)) {
-                        textView.setBackgroundColorRes(R.drawable.background_calendar_skipped)
-                        textView.setTextColorRes(R.color.snow_white)
-                    }
+
+
+
+//                    if (done.contains(date)) {
+//                        textView.setBackgroundColorRes(R.drawable.background_calendar_done)
+//                        textView.setTextColorRes(R.color.sapphire)
+//                    }
+//                    if (notDone.contains(date)) {
+//                        textView.setBackgroundColorRes(R.drawable.background_calendar_skipped)
+//                        textView.setTextColorRes(R.color.snow_white)
+//                    }
                 }
             }
         } else {
             textView.setTextColorRes(R.color.periwinkle)
             textView.background = null
+        }
+
+        done.onEach {
+            if (it.contains(date)) {
+                textView.setBackgroundColorRes(R.drawable.background_calendar_done)
+                textView.setTextColorRes(R.color.sapphire)
+            }
         }
 
         val myDate = LocalDate.parse("2023-02-03")
@@ -222,7 +267,8 @@ class CalendarFragment : Fragment() {
         binding.todaysDateText.text = getCurrentDate()
 
         val month = monthCalendarView.findFirstVisibleMonth()?.yearMonth ?: return
-        binding.monthText.text = month.displayText(short = false).replaceFirstChar { it.uppercase() }
+        binding.monthText.text =
+            month.displayText(short = false).replaceFirstChar { it.uppercase() }
     }
 
     override fun onDestroy() {

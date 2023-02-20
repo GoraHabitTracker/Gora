@@ -23,26 +23,28 @@ class WelcomeFragmentViewModel(
 
         viewModelScope.launch {
             val allHabits = repositoryHabit.getAllHabits()
-            val allNamesOfHabits: Set<String> =
-                allHabits.map { it.name }.toSet()
-            val areAllFulfilled = allHabits.filter { habit ->
-                // привычка не имеет ни Priority.Default ни Priority.Skip
-                habit.priority != Priority.Default.value && habit.priority != Priority.Skip.value
-            }.isEmpty()
+
+//            val allNamesOfHabits: Set<String> =
+//                allHabits.map { it.name }.toSet()
+//            val areAllFulfilled = allHabits.filter { habit ->
+//                // привычка не имеет ни Priority.Default ни Priority.Skip
+//                habit.priority != Priority.Default.value && habit.priority != Priority.Skip.value
+//            }.isEmpty()
 
             // создаем CalendarData на сегодня, если онa еще не созданa
-            runCatching {
-                repositoryCalendar.getCalendarData(LocalDate.now().toString())
-            }.onFailure {
-                repositoryCalendar.insertCalendarData(
-                    CalendarData(
-                        date = LocalDate.now(),
-                        namesAllHabits = allNamesOfHabits,
-                        namesHabitsFulfilled = emptySet(),
-                        areAllFulfilled = areAllFulfilled
-                    )
-                )
+//            runCatching {
+//                repositoryCalendar.getCalendarData(LocalDate.now().toString())
+//            }.onFailure {
+//                repositoryCalendar.insertCalendarData(
+//                    CalendarData(
+//                        date = LocalDate.now(),
+//                        namesAllHabits = allNamesOfHabits,
+//                        namesHabitsFulfilled = emptySet(),
+//                        areAllFulfilled = areAllFulfilled
+//                    )
+//                )
                 // обновляем приоритеты хобитам
+
                 withContext(Dispatchers.IO) {
                     allHabits.filter {
                         it.filterCurrentDay()
@@ -53,4 +55,4 @@ class WelcomeFragmentViewModel(
             }
         }
     }
-}
+//}

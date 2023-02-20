@@ -2,6 +2,7 @@ package com.pethabittracker.gora.data.usecase
 
 import com.pethabittracker.gora.data.mapper.toData
 import com.pethabittracker.gora.data.mapper.toDomain
+import com.pethabittracker.gora.data.models.CalendarDataEntity
 import com.pethabittracker.gora.data.models.HabitEntity
 import com.pethabittracker.gora.domain.models.CalendarData
 import com.pethabittracker.gora.domain.models.WeekList
@@ -28,13 +29,23 @@ class NewHabitUseCase(
 
         // обновить список имен всех привычек
         val todayProgressCalendar = calendarRepository.getCalendarData(today)
+
         calendarRepository.insertCalendarData(
-            CalendarData(
-                date = todayProgressCalendar.date,
-                namesHabitsFulfilled = todayProgressCalendar.namesHabitsFulfilled,
-                namesAllHabits = todayProgressCalendar.namesAllHabits.plus(newHabit.name),
-                areAllFulfilled = todayProgressCalendar.areAllFulfilled
-            )
+            CalendarDataEntity(
+                name = name,
+                date = today,
+                state = priority
+            ).toDomain()
         )
+
+//        calendarRepository.insertCalendarData(
+//            CalendarData(
+//                date = todayProgressCalendar.date,
+//                namesHabitsFulfilled = todayProgressCalendar.namesHabitsFulfilled,
+//                namesAllHabits = todayProgressCalendar.namesAllHabits.plus(newHabit.name),
+//                areAllFulfilled = todayProgressCalendar.areAllFulfilled
+//            )
+//        )
+
     }
 }

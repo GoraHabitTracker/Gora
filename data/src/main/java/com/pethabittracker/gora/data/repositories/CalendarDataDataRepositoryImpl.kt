@@ -40,4 +40,8 @@ internal class CalendarDataDataRepositoryImpl(
     override suspend fun updateCalendarData(updatedCalendarData: CalendarData) {
         withContext(Dispatchers.IO) { dao.update(updatedCalendarData.toData()) }
     }
+
+    override suspend fun findCurrentCalendarData(name: String, date: String): CalendarData {
+        return  withContext(Dispatchers.IO) { dao.findCurrentCalendarData(name, date).toDomain() }
+    }
 }
