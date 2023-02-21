@@ -10,27 +10,10 @@ import androidx.room.PrimaryKey
     ]
 )
 internal data class CalendarDataEntity(
-//    @PrimaryKey
-//    val date: String,
-//    @ColumnInfo(name = "names_of_fulfilled_habits")
-//    val namesHabitsFulfilled: String,
-//    @ColumnInfo(name = "names_all_habits")
-//    val namesAllHabits: String,
-//    val areAllFulfilled: Boolean
-
-
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val name: String,
     val date: String,
-    val state: Int
-
+    val state: Int,
+    val clicked: Boolean
 )
-
-//@Entity
-//internal data class State(
-//    val default: Boolean,
-//    val Done: Boolean,
-//    val Skip: Boolean,
-//    val Inactive: Boolean
-//)

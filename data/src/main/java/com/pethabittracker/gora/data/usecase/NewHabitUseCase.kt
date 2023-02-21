@@ -27,25 +27,13 @@ class NewHabitUseCase(
 
         habitRepository.insertHabits(newHabit)
 
-        // обновить список имен всех привычек
-        val todayProgressCalendar = calendarRepository.getCalendarData(today)
-
         calendarRepository.insertCalendarData(
             CalendarDataEntity(
                 name = name,
                 date = today,
-                state = priority
+                state = priority,
+                clicked = false
             ).toDomain()
         )
-
-//        calendarRepository.insertCalendarData(
-//            CalendarData(
-//                date = todayProgressCalendar.date,
-//                namesHabitsFulfilled = todayProgressCalendar.namesHabitsFulfilled,
-//                namesAllHabits = todayProgressCalendar.namesAllHabits.plus(newHabit.name),
-//                areAllFulfilled = todayProgressCalendar.areAllFulfilled
-//            )
-//        )
-
     }
 }

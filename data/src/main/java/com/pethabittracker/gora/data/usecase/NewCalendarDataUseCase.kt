@@ -17,7 +17,8 @@ class NewCalendarDataUseCase(
         val newCalendarData = CalendarDataEntity(
             name = habit.name,
             date = today,
-            state = priority
+            state = priority,
+            clicked = false
         ).toDomain()
 
         if (repository.getAllCalendarData().isNotEmpty()) {

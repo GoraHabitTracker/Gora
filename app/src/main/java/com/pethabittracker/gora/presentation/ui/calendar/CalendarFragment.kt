@@ -42,12 +42,6 @@ class CalendarFragment : Fragment() {
     private val selectedDates = mutableSetOf<LocalDate>()
     private val today = LocalDate.now()
 
-    //    // список дат с выполненными привычками
-    // private var dateFulfilldHabits = flowOf(emptyList<LocalDate>())
-//
-//    // список дат с НЕвыполненными привычками
-//    private var dateUnfulfilledHabits = emptyList<LocalDate>()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -73,16 +67,16 @@ class CalendarFragment : Fragment() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
 
                 val dateDoneHabits = viewModel.getDoneList()
-                val dateSkipHabits = viewModel.getSkipList()
-
-                //val dateDoneHabits = mutableSetOf<LocalDate>()
-
-//                viewModel
-//                    .getDoneCalendarData().onEach { dateDoneHabits.addAll(it) }
-
-                // эти строки отрабатывают после отресовки view календаря
-//        dateFulfilldHabits = viewModel.getDateWithFulfilledHabitFlow()
-//        dateUnfulfilledHabits = viewModel.getDateWithUnfulfilledHabitFlow()
+                val dateDefaultHabits = viewModel.getDefaultList()
+                val dateInactiveHabits = viewModel.getInactiveList()
+                val dateDoneList = mutableListOf<LocalDate>()
+                dateDoneHabits.onEach { if(!dateDefaultHabits.contains(it)){
+                   dateDoneList.add(it)
+               }else if (dateInactiveHabits.contains(it)){
+                    dateDoneList.add(it)
+                }
+               }
+                val dateSkipList = viewModel.getSkipList()
 
                 val currentMonth = YearMonth.now()
                 val startMonth = currentMonth.minusMonths(100)
@@ -92,8 +86,8 @@ class CalendarFragment : Fragment() {
                     endMonth,
                     currentMonth,
                     daysOfWeek,
-                    dateDoneHabits,
-                    dateSkipHabits
+                    dateDoneList,
+                    dateSkipList
                 )
             }
         }
@@ -201,15 +195,6 @@ class CalendarFragment : Fragment() {
                         textView.setBackgroundColorRes(R.drawable.background_calendar_skipped)
                         textView.setTextColorRes(R.color.snow_white)
                     }
-
-//                    if (done.contains(date)) {
-//                        textView.setBackgroundColorRes(R.drawable.background_calendar_done)
-//                        textView.setTextColorRes(R.color.sapphire)
-//                    }
-//                    if (notDone.contains(date)) {
-//                        textView.setBackgroundColorRes(R.drawable.background_calendar_skipped)
-//                        textView.setTextColorRes(R.color.snow_white)
-//                    }
                 }
             }
         } else {
@@ -218,15 +203,15 @@ class CalendarFragment : Fragment() {
         }
 
 
-        val myDate = LocalDate.parse("2023-02-03")
-        if (myDate == date) {
-            textView.setBackgroundResource(R.drawable.background_calendar_done)
-        }
-        val myDat2e = LocalDate.parse("2023-02-23")
-        if (myDat2e == date) {
-            textView.setTextColorRes(R.color.snow_white)
-            textView.setBackgroundResource(R.drawable.background_calendar_skipped)
-        }
+//        val myDate = LocalDate.parse("2023-02-03")
+//        if (myDate == date) {
+//            textView.setBackgroundResource(R.drawable.background_calendar_done)
+//        }
+//        val myDat2e = LocalDate.parse("2023-02-23")
+//        if (myDat2e == date) {
+//            textView.setTextColorRes(R.color.snow_white)
+//            textView.setBackgroundResource(R.drawable.background_calendar_skipped)
+//        }
     }
 
     private fun dateClicked(date: LocalDate) {

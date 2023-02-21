@@ -12,7 +12,7 @@ class UpdateCalendarDataUseCase(
     private val repository: CalendarDataRepository
 ) {
 
-    suspend operator fun invoke(habit: Habit, priority: Int) {
+    suspend operator fun invoke(habit: Habit, priority: Int, clicked: Boolean) {
 
         val today = LocalDate.now()
 
@@ -24,7 +24,8 @@ class UpdateCalendarDataUseCase(
                     id = currentCalendarData.id,
                     name = currentCalendarData.name,
                     date = today,
-                    state = priority
+                    state = priority,
+                    clicked = clicked
                 )
 
                 repository.updateCalendarData(updateCalendarData)
