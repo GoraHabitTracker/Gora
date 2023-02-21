@@ -10,6 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
+import java.time.LocalDate
 
 internal class CalendarDataDataRepositoryImpl(
     private val dao: CalendarDataDao
@@ -31,9 +32,9 @@ internal class CalendarDataDataRepositoryImpl(
         return withContext(Dispatchers.IO) { dao.getCalendarDataEntityList().toDomainModels() }
     }
 
-    override suspend fun getFlowCalendarData(): Flow<List<CalendarData>> {
-        return withContext(Dispatchers.IO) {
-            dao.getFlowCalendarDataEntityList().map { it.toDomainModels() }
+    override fun getFlowCalendarData(): Flow<List<CalendarData>> {
+        return dao.getFlowCalendarDataEntityList().map {
+            it.toDomainModels()
         }
     }
 
@@ -41,7 +42,9 @@ internal class CalendarDataDataRepositoryImpl(
         withContext(Dispatchers.IO) { dao.update(updatedCalendarData.toData()) }
     }
 
-    override suspend fun findCurrentCalendarData(name: String, date: String): CalendarData {
-        return  withContext(Dispatchers.IO) { dao.findCurrentCalendarData(name, date).toDomain() }
+    override suspend fun findCurrentCalendarData(name: String, date: String): CalendarData? {
+        return withContext(Dispatchers.IO) {
+            dao.findCurrentCalendarData(name, date)?.toDomain()
+        }
     }
 }

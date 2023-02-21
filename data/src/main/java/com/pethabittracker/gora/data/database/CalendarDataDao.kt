@@ -26,5 +26,5 @@ internal interface CalendarDataDao {
     fun update(calendarData: CalendarDataEntity)
 
     @Query("SELECT * FROM CalendarDataEntity WHERE name LIKE :name AND " + "date LIKE :date")
-    fun findCurrentCalendarData(name: String, date: String): CalendarDataEntity
+    fun findCurrentCalendarData(name: String, date: String): CalendarDataEntity?
 }

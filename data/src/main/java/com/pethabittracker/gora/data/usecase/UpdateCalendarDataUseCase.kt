@@ -16,16 +16,21 @@ class UpdateCalendarDataUseCase(
 
         val today = LocalDate.now()
 
-        val currentCalendarData =
-            repository.findCurrentCalendarData(habit.name, today.toString())
+        if (repository.getAllCalendarData().isNotEmpty()) {
+            val currentCalendarData =
+                repository.findCurrentCalendarData(habit.name, today.toString())
+            if (currentCalendarData != null) {
+                val updateCalendarData = CalendarData(
+                    id = currentCalendarData.id,
+                    name = currentCalendarData.name,
+                    date = today,
+                    state = priority
+                )
 
-        val updateCalendarData = CalendarData(
-            id = currentCalendarData.id,
-            name = currentCalendarData.name,
-            date = today,
-            state = priority
-        )
+                repository.updateCalendarData(updateCalendarData)
+            }
 
-        repository.updateCalendarData(updateCalendarData)
+        }
+
     }
 }

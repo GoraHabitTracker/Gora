@@ -14,19 +14,20 @@ class NewCalendarDataUseCase(
 
         val today = LocalDate.now().toString()
 
-        val currentCalendarData =
-            repository.findCurrentCalendarData(habit.name, today)
-
         val newCalendarData = CalendarDataEntity(
             name = habit.name,
             date = today,
             state = priority
         ).toDomain()
 
-        if (currentCalendarData!=newCalendarData){
+        if (repository.getAllCalendarData().isNotEmpty()) {
+            val currentCalendarData =
+                repository.findCurrentCalendarData(habit.name, today)
+            if (currentCalendarData!=newCalendarData){
+                repository.insertCalendarData(newCalendarData)
+            }
+        }else{
             repository.insertCalendarData(newCalendarData)
         }
-
-
     }
 }

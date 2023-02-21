@@ -1,13 +1,10 @@
 package com.pethabittracker.gora.presentation.ui.calendar
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.pethabittracker.gora.domain.models.CalendarData
-import com.pethabittracker.gora.domain.models.Habit
 import com.pethabittracker.gora.domain.repositories.CalendarDataRepository
 import com.pethabittracker.gora.presentation.models.Priority
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import java.time.LocalDate
 
 class CalendarViewModel(
@@ -17,22 +14,27 @@ class CalendarViewModel(
     private val _listCalendarDataFlow = MutableStateFlow(emptyList<CalendarData>())
     private val listCalendarDataFlow: Flow<List<CalendarData>> = _listCalendarDataFlow.asStateFlow()
 
-    suspend fun getCalendarDataFlow(): Flow<List<CalendarData>> {
-        return listCalendarDataFlow
-            .runCatching {
-                calendarRepository.getFlowCalendarData()
-            }
-            .fold(
-                onSuccess = { it },
-                onFailure = { emptyFlow() }
-            )
+    private val _listCalendarDataFlow2 = MutableStateFlow(emptyList<LocalDate>())
+    private val listCalendarDataFlow2: Flow<List<LocalDate>> = _listCalendarDataFlow2.asStateFlow()
+
+    suspend fun getDoneList(): List<LocalDate> {
+        return calendarRepository.getAllCalendarData()
+            .filter { item -> item.state != Priority.Skip.value }.map { item -> item.date }
+    }
+    suspend fun getSkipList(): List<LocalDate> {
+        return calendarRepository.getAllCalendarData()
+            .filter { item -> item.state == Priority.Skip.value }.map { item -> item.date }
     }
 
-    suspend fun getDoneCalendarDataFlow(): Flow<List<LocalDate>> {
-        return listCalendarDataFlow
+
+    fun getDoneCalendarData(): Flow<List<LocalDate>> {
+        return listCalendarDataFlow2
             .runCatching {
                 calendarRepository.getFlowCalendarData()
-                    .map { list-> list.map { it.date } }
+                    .map { list ->
+                        list.filter { item -> item.state == Priority.Skip.value }
+                            .map { item -> item.date }
+                    }
             }
             .fold(
                 onSuccess = { it },

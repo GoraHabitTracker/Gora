@@ -133,24 +133,28 @@ class HomeViewModel(
 
     fun onDoneClicked(habit: Habit) {
 
-        listCalendarDataFlow
-            .map { listCalendar ->
-                // обновляем приоритет текущей привычки
-                updateHabit(habit, Priority.Done.value)
+        viewModelScope.launch{
+            updateHabit(habit, Priority.Done.value)
 
-                updateCalendarDataUseCase.invoke(habit, Priority.Done.value)
-//                // добавляем привычку в выполненные и проверяем, все ли выполнены на сегодня
-//                val calendarDateOld = listCalendar.first { it.date == today }
-//                val calendarData = CalendarData(
-//                    date = calendarDateOld.date,
-//                    namesHabitsFulfilled = calendarDateOld.namesHabitsFulfilled.plus(habit.name),
-//                    namesAllHabits = calendarDateOld.namesAllHabits,
-//                    areAllFulfilled = _fulfilledHabitFlow.value
-//                )
+            updateCalendarDataUseCase.invoke(habit, Priority.Done.value)
+        }
+
+//        listCalendarDataFlow
+//            .map { listCalendar ->
+//                // обновляем приоритет текущей привычки
 //
-//                calendarRepository.updateCalendarData(calendarData)
-            }
-            .launchIn(viewModelScope)
+////                // добавляем привычку в выполненные и проверяем, все ли выполнены на сегодня
+////                val calendarDateOld = listCalendar.first { it.date == today }
+////                val calendarData = CalendarData(
+////                    date = calendarDateOld.date,
+////                    namesHabitsFulfilled = calendarDateOld.namesHabitsFulfilled.plus(habit.name),
+////                    namesAllHabits = calendarDateOld.namesAllHabits,
+////                    areAllFulfilled = _fulfilledHabitFlow.value
+////                )
+////
+////                calendarRepository.updateCalendarData(calendarData)
+//            }
+//            .launchIn(viewModelScope)
     }
 
 //    private fun checkAllFulfilled(): Boolean {
@@ -168,12 +172,19 @@ class HomeViewModel(
 //    }
 
     fun onSkipClicked(habit: Habit) {
-        listCalendarDataFlow
-            .map {
-                updateHabit(habit, Priority.Skip.value)
 
-                updateCalendarDataUseCase.invoke(habit, Priority.Skip.value)
-            }
-            .launchIn(viewModelScope)
+        viewModelScope.launch{
+            updateHabit(habit, Priority.Skip.value)
+
+            updateCalendarDataUseCase.invoke(habit, Priority.Skip.value)
+        }
+
+//        listCalendarDataFlow
+//            .map {
+//                updateHabit(habit, Priority.Skip.value)
+//
+//                updateCalendarDataUseCase.invoke(habit, Priority.Skip.value)
+//            }
+//            .launchIn(viewModelScope)
     }
 }

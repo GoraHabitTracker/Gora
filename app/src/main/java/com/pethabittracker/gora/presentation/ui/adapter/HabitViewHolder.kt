@@ -71,6 +71,9 @@ class HabitViewHolder(
             }
 
             buttonSkip.setOnClickListener {
+                buttonDone.isVisible = false
+                buttonSkip.isVisible = false
+                frameSkip.isVisible = true
                 onSkipClicked(habit)
             }
 
