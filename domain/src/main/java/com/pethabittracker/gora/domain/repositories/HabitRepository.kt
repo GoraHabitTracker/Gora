@@ -17,5 +17,5 @@ interface HabitRepository {
 
     fun getFlowAllHabits(): Flow<List<Habit>>
 
-    fun updateHabit(updatedHabit: Habit)
+    suspend fun updateHabit(updatedHabit: Habit)
 }

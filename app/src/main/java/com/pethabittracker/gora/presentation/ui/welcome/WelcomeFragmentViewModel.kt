@@ -32,7 +32,7 @@ class WelcomeFragmentViewModel(
                         it.name,
                         today
                     )
-                    allDateHabitList.contains(currentCalendarData)&&currentCalendarData?.clicked==true
+                    allDateHabitList.contains(currentCalendarData) && currentCalendarData?.clicked == true
                 }
                     .onEach {
                         updateHabitPriorityUseCase.invoke(it, Priority.Default.value)

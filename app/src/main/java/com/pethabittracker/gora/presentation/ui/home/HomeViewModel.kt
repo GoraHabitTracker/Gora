@@ -28,7 +28,7 @@ class HomeViewModel(
     private val _allHabitFlow = MutableStateFlow(emptyList<Habit>())
     private val allHabitFlow: Flow<List<Habit>> = _allHabitFlow.asStateFlow()
 
-    fun getAllHabitFlow(): Flow<List<Habit>> {
+   fun getAllHabitFlow(): Flow<List<Habit>> {
 
         return allHabitFlow
             .runCatching {

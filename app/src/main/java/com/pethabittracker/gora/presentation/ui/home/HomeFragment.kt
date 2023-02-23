@@ -10,10 +10,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat.getDrawable
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.pethabittracker.gora.R
@@ -77,32 +80,32 @@ class HomeFragment : Fragment() {
     private fun updateList() {
 
         //------------------ with Coroutine -------------------------------------------------------
-        viewModel
-            .getAllHabitFlow()
-            .onEach { listHabits ->
-                adapter.submitList(listHabits)
+                viewModel
+                    .getAllHabitFlow()
+                    .onEach { listHabits ->
+                        adapter.submitList(listHabits)
 
-                if (listHabits.isNotEmpty()) {
-                    binding.root.setBackgroundResource(R.color.sea_foam)
-                } else {
-                    binding.root.setBackgroundResource(R.color.transparent)
-                }
+                        if (listHabits.isNotEmpty()) {
+                            binding.root.setBackgroundResource(R.color.sea_foam)
+                        } else {
+                            binding.root.setBackgroundResource(R.color.transparent)
+                        }
 
-                //для плавности замены слоёв
-                delay(300)
-                binding.foto.isVisible = listHabits.isEmpty()
+                        //для плавности замены слоёв
+                        delay(300)
+                        binding.foto.isVisible = listHabits.isEmpty()
 
-                //просто дёргаем адаптер для пересоздания вью карточек
-                binding.recyclerView.adapter = adapter
+                        //просто дёргаем адаптер для пересоздания вью карточек
+                        binding.recyclerView.adapter = adapter
 
-                // AlertDialog
-                if (!prefsManager.flagIsChecked&&listHabits.size == theOnlyHabit){
-                    showAlertDialogKillHabit()
-                    prefsManager.flagIsChecked = true
-                }
+                        // AlertDialog
+                        if (!prefsManager.flagIsChecked&&listHabits.size == theOnlyHabit){
+                            showAlertDialogKillHabit()
+                            prefsManager.flagIsChecked = true
+                        }
 
-            }
-            .launchIn(lifecycleScope)
+                    }
+                    .launchIn(lifecycleScope)
     }
 
     private fun setSwipeToDelete() {

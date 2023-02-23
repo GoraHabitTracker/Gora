@@ -55,7 +55,7 @@ class CalendarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val daysOfWeek = daysOfWeek()
+        val daysOfWeek = daysOfWeek(firstDayOfWeek = DayOfWeek.MONDAY)
         binding.calendarView.children
             .map { it as TextView }
             .forEachIndexed { index, textView ->
