@@ -41,7 +41,8 @@ class HabitAdapter(
 
             override fun areContentsTheSame(oldItem: Habit, newItem: Habit): Boolean {
                 return oldItem.name == newItem.name &&
-                        oldItem.urlImage == newItem.urlImage
+                        oldItem.priority == newItem.priority
+
             }
         }
     }

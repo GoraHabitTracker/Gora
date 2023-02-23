@@ -18,11 +18,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pethabittracker.gora.R
 import com.pethabittracker.gora.data.sharedprefs.PrefsManager
 import com.pethabittracker.gora.databinding.FragmentHomeBinding
 import com.pethabittracker.gora.domain.models.Habit
+import com.pethabittracker.gora.presentation.extensions.addVerticalGaps
 import com.pethabittracker.gora.presentation.ui.adapter.HabitAdapter
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
@@ -40,7 +42,7 @@ class HomeFragment : Fragment() {
             context = requireContext(),
             onDoneClicked = { viewModel.onDoneClicked(it) },
             onSkipClicked = { viewModel.onSkipClicked(it) },
-            onQuestionClicked = { onQuestionClicked(it) }
+            onQuestionClicked = { showAlertDialogInfoDetailed(it) }
         )
     }
 
@@ -62,8 +64,13 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            recyclerView.adapter = adapter
+            val linearLayoutManager = LinearLayoutManager(
+                view.context, LinearLayoutManager.VERTICAL, false
+            )
 
+            recyclerView.adapter = adapter
+            recyclerView.layoutManager = linearLayoutManager
+            recyclerView.addVerticalGaps()
             // закругляем углы картинки
             ivHills.clipToOutline = true
         }
@@ -80,6 +87,8 @@ class HomeFragment : Fragment() {
     private fun updateList() {
 
         //------------------ with Coroutine -------------------------------------------------------
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel
                     .getAllHabitFlow()
                     .onEach { listHabits ->
@@ -94,19 +103,18 @@ class HomeFragment : Fragment() {
                         //для плавности замены слоёв
                         delay(300)
                         binding.foto.isVisible = listHabits.isEmpty()
-
-                        //просто дёргаем адаптер для пересоздания вью карточек
-                        binding.recyclerView.adapter = adapter
-
+                        
                         // AlertDialog
-                        if (!prefsManager.flagIsChecked&&listHabits.size == theOnlyHabit){
+                        if (!prefsManager.flagIsChecked && listHabits.size == theOnlyHabit) {
                             showAlertDialogKillHabit()
                             prefsManager.flagIsChecked = true
                         }
 
                     }
-                    .launchIn(lifecycleScope)
-    }
+                    .launchIn(viewLifecycleOwner.lifecycleScope)
+            }
+//        }
+//    }
 
     private fun setSwipeToDelete() {
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
@@ -221,82 +229,37 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun onQuestionClicked(habit: Habit) {
-        showAlertDialogInfoDetailed(habit)
-    }
 
     private fun showAlertDialogInfoDetailed(habit: Habit) {
         val viewAlertDialogInfoDetailed: View =
             layoutInflater.inflate(R.layout.fragment_dialog_info_detailed, null, false)
 
         if (habit.repeatDays.monday) {
-            viewAlertDialogInfoDetailed.findViewById<TextView>(R.id.checkOrSkip_monday_icon)
-                .setCompoundDrawablesWithIntrinsicBounds(
-                    getDrawable(requireContext(), R.drawable.icon_check_blue_fcbk),
-                    null,
-                    null,
-                    null
-                )
+            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.checkOrSkip_monday_icon)
         }
 
         if (habit.repeatDays.thursday) {
-            viewAlertDialogInfoDetailed.findViewById<TextView>(R.id.checkOrSkip_thursday_icon)
-                .setCompoundDrawablesWithIntrinsicBounds(
-                    getDrawable(requireContext(), R.drawable.icon_check_blue_fcbk),
-                    null,
-                    null,
-                    null
-                )
+            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.checkOrSkip_thursday_icon)
         }
 
         if (habit.repeatDays.wednesday) {
-            viewAlertDialogInfoDetailed.findViewById<TextView>(R.id.checkOrSkip_wednesday_icon)
-                .setCompoundDrawablesWithIntrinsicBounds(
-                    getDrawable(requireContext(), R.drawable.icon_check_blue_fcbk),
-                    null,
-                    null,
-                    null
-                )
+            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.checkOrSkip_wednesday_icon)
         }
 
-        if (habit.repeatDays.thursday) {
-            viewAlertDialogInfoDetailed.findViewById<TextView>(R.id.checkOrSkip_tuesday_icon)
-                .setCompoundDrawablesWithIntrinsicBounds(
-                    getDrawable(requireContext(), R.drawable.icon_check_blue_fcbk),
-                    null,
-                    null,
-                    null
-                )
+        if (habit.repeatDays.tuesday) {
+            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.checkOrSkip_tuesday_icon)
         }
 
         if (habit.repeatDays.friday) {
-            viewAlertDialogInfoDetailed.findViewById<TextView>(R.id.checkOrSkip_friday_icon)
-                .setCompoundDrawablesWithIntrinsicBounds(
-                    getDrawable(requireContext(), R.drawable.icon_check_blue_fcbk),
-                    null,
-                    null,
-                    null
-                )
+            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.checkOrSkip_friday_icon)
         }
 
         if (habit.repeatDays.saturday) {
-            viewAlertDialogInfoDetailed.findViewById<TextView>(R.id.checkOrSkip_saturday_icon)
-                .setCompoundDrawablesWithIntrinsicBounds(
-                    getDrawable(requireContext(), R.drawable.icon_check_blue_fcbk),
-                    null,
-                    null,
-                    null
-                )
+            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.checkOrSkip_saturday_icon)
         }
 
         if (habit.repeatDays.sunday) {
-            viewAlertDialogInfoDetailed.findViewById<TextView>(R.id.checkOrSkip_sunday_icon)
-                .setCompoundDrawablesWithIntrinsicBounds(
-                    getDrawable(requireContext(), R.drawable.icon_check_blue_fcbk),
-                    null,
-                    null,
-                    null
-                )
+            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.checkOrSkip_sunday_icon)
         }
         // надо эти if'ы оптимизировать, но голова уже не соображает
 
@@ -308,6 +271,16 @@ class HomeFragment : Fragment() {
         viewAlertDialogInfoDetailed.findViewById<Button>(R.id.button_ok).setOnClickListener {
             alertDialog.dismiss()
         }
+    }
+
+    private fun drawAlertDetail(viewInfo: View, iconId: Int) {
+        viewInfo.findViewById<TextView>(iconId)
+            .setCompoundDrawablesWithIntrinsicBounds(
+                getDrawable(requireContext(), R.drawable.icon_check_blue_fcbk),
+                null,
+                null,
+                null
+            )
     }
 
     companion object {

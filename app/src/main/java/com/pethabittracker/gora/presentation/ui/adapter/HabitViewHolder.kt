@@ -30,9 +30,15 @@ class HabitViewHolder(
             when (habit.priority) {
                 Priority.Default.value -> {
                     frameChoice.isVisible = true
+                    frameDone.isVisible = false
+                    frameSkip.isVisible = false
+                    frameInactive.isVisible = false
                 }
                 Priority.Done.value -> {
+                    frameChoice.isVisible = false
                     frameDone.isVisible = true
+                    frameSkip.isVisible = false
+                    frameInactive.isVisible = false
                     tvNameHabit.setCompoundDrawablesWithIntrinsicBounds(
                         null,
                         null,
@@ -47,7 +53,10 @@ class HabitViewHolder(
                     )
                 }
                 Priority.Skip.value -> {
+                    frameChoice.isVisible = false
+                    frameDone.isVisible = false
                     frameSkip.isVisible = true
+                    frameInactive.isVisible = false
                     tvNameHabit.setCompoundDrawablesWithIntrinsicBounds(
                         null,
                         null,
@@ -57,6 +66,9 @@ class HabitViewHolder(
                     root.setCardForegroundColor(csl)
                 }
                 Priority.Inactive.value -> {
+                    frameChoice.isVisible = false
+                    frameDone.isVisible = false
+                    frameSkip.isVisible = false
                     frameInactive.isVisible = true
                 }
             }
@@ -74,6 +86,8 @@ class HabitViewHolder(
                 buttonDone.isVisible = false
                 buttonSkip.isVisible = false
                 frameSkip.isVisible = true
+                root.setCardForegroundColor(csl)
+                
                 onSkipClicked(habit)
             }
 
