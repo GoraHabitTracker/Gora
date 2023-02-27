@@ -10,13 +10,13 @@ internal interface CalendarDataDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(calendarData: CalendarDataEntity)
 
-    @Query("SELECT * FROM CalendarDataEntity WHERE date = :date")
+    @Query("SELECT * FROM calendar_data WHERE date = :date")
     fun getByDate(date: String): CalendarDataEntity
 
-    @Query("SELECT * FROM CalendarDataEntity")
+    @Query("SELECT * FROM calendar_data")
     fun getCalendarDataEntityList(): List<CalendarDataEntity>
 
-    @Query("SELECT * FROM CalendarDataEntity")
+    @Query("SELECT * FROM calendar_data")
     fun getFlowCalendarDataEntityList(): Flow<List<CalendarDataEntity>>
 
     @Delete

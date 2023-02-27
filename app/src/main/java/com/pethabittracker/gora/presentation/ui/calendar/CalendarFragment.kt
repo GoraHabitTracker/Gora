@@ -37,12 +37,6 @@ class CalendarFragment : Fragment() {
     private val selectedDates = mutableSetOf<LocalDate>()
     private val today = LocalDate.now()
 
-    // список дат с выполненными привычками
-    private var dateFulfilldHabits = emptyList<LocalDate>()
-
-    // список дат с НЕвыполненными привычками
-    private var dateUnfulfilledHabits = emptyList<LocalDate>()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -65,8 +59,8 @@ class CalendarFragment : Fragment() {
             }
 
         // эти строки отрабатывают после отресовки view календаря
-        dateFulfilldHabits = viewModel.getDateWithFulfilledHabitFlow()
-        dateUnfulfilledHabits = viewModel.getDateWithUnfulfilledHabitFlow()
+        val dateFulfilldHabits = viewModel.getDateWithFulfilledHabitFlow()
+        val dateUnfulfilledHabits = viewModel.getDateWithUnfulfilledHabitFlow()
 
         val currentMonth = YearMonth.now()
         val startMonth = currentMonth.minusMonths(100)
@@ -220,8 +214,8 @@ class CalendarFragment : Fragment() {
 
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }

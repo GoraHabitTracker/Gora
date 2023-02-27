@@ -10,13 +10,13 @@ internal interface HabitDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(habit: HabitEntity)
 
-    @Query("SELECT * FROM HabitEntity WHERE id = :id")
+    @Query("SELECT * FROM habits WHERE id = :id")
     fun getById(id: Int): HabitEntity
 
-    @Query("SELECT * FROM HabitEntity")
+    @Query("SELECT * FROM habits")
     fun getHabitEntityList(): List<HabitEntity>
 
-    @Query("SELECT * from HabitEntity ORDER BY priority ASC")
+    @Query("SELECT * from habits ORDER BY priority ASC")
     fun getFlowHabitEntityList(): Flow<List<HabitEntity>>
 
     @Delete

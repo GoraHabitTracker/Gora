@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "calendar_data")
 internal data class CalendarDataEntity(
     @PrimaryKey
     val date: String,

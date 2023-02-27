@@ -5,7 +5,7 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "habits")
 internal data class HabitEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
