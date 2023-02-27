@@ -49,15 +49,15 @@ class NewHabitViewModel(
         allNameOfHabitsFlow
             .onEach {
                 val today = LocalDate.now().toString()
-                val progressCalendarToday = calendarRepository.getCalendarData(today)
-                calendarRepository.insertCalendarData(
-                    CalendarData(
-                        date = progressCalendarToday.date,
-                        namesHabitsFulfilled = progressCalendarToday.namesHabitsFulfilled,
-                        namesAllHabits = it,
-                        areAllFulfilled = progressCalendarToday.areAllFulfilled
-                    )
-                )
+//                val progressCalendarToday = calendarRepository.getCalendarData(today)
+//                calendarRepository.insertCalendarData(
+//                    CalendarData(
+//                        date = progressCalendarToday.date,
+//                        namesHabitsFulfilled = progressCalendarToday.namesHabitsFulfilled,
+//                        namesAllHabits = it,
+//                        areAllFulfilled = progressCalendarToday.areAllFulfilled
+//                    )
+//                )
             }
     }
 }

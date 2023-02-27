@@ -31,13 +31,19 @@ internal class CalendarDataDataRepositoryImpl(
         return withContext(Dispatchers.IO) { dao.getCalendarDataEntityList().toDomainModels() }
     }
 
-    override suspend fun getFlowCalendarData(): Flow<List<CalendarData>> {
-        return withContext(Dispatchers.IO) {
-            dao.getFlowCalendarDataEntityList().map { it.toDomainModels() }
+    override fun getFlowCalendarData(): Flow<List<CalendarData>> {
+        return dao.getFlowCalendarDataEntityList().map {
+            it.toDomainModels()
         }
     }
 
     override suspend fun updateCalendarData(updatedCalendarData: CalendarData) {
         withContext(Dispatchers.IO) { dao.update(updatedCalendarData.toData()) }
+    }
+
+    override suspend fun findCurrentCalendarData(name: String, date: String): CalendarData? {
+        return withContext(Dispatchers.IO) {
+            dao.findCurrentCalendarData(name, date)?.toDomain()
+        }
     }
 }

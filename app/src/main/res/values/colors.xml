@@ -22,4 +22,5 @@
     <color name="transparent_90">#90FFFFFF</color>
     <color name="pastel_red">#E77777</color>
     <color name="cross_background">#F1F5FF</color>
+    <color name="delete_background">#b80f0a</color>
 </resources>

@@ -7,35 +7,22 @@ import java.time.LocalDate
 internal fun List<CalendarDataEntity>.toDomainModels(): List<CalendarData> = map {
     it.toDomain()
 }
-
 internal fun CalendarDataEntity.toDomain(): CalendarData {
     return CalendarData(
+        id = id,
+        name = name,
         date = LocalDate.parse(date),
-        namesHabitsFulfilled = namesHabitsFulfilled.toListString(),
-        namesAllHabits = namesAllHabits.toListString(),
-        areAllFulfilled = areAllFulfilled
+        state = state,
+        clicked = clicked
     )
 }
 
 internal fun CalendarData.toData(): CalendarDataEntity {
     return CalendarDataEntity(
+        id = id,
+        name = name,
         date = date.toString(),
-        namesHabitsFulfilled = namesHabitsFulfilled.toString(),
-        namesAllHabits = namesAllHabits.toString(),
-        areAllFulfilled = areAllFulfilled
+        state = state,
+        clicked = clicked
     )
-}
-
-internal fun String.toListString(): Set<String> {
-    val delimiter = ", "
-    val namesList: MutableSet<String> = mutableSetOf()
-    if (this == "[]") return namesList      // вынести в константы
-
-    this
-        .trim('[', ']')
-        .split(delimiter)
-        .forEach {
-            namesList.add(it.trim())
-        }
-    return namesList
 }

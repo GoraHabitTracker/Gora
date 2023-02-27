@@ -1,16 +1,20 @@
 package com.pethabittracker.gora.data.models
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "calendar_data")
+@Entity(
+    tableName = "calendar_data",
+    indices = [
+        Index("name", "date", unique = true)
+    ]
+)
 internal data class CalendarDataEntity(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+    val name: String,
     val date: String,
-    @ColumnInfo(name = "names_of_fulfilled_habits")
-    val namesHabitsFulfilled: String,
-    @ColumnInfo(name = "names_all_habits")
-    val namesAllHabits: String,
-    val areAllFulfilled: Boolean
+    val state: Int,
+    val clicked: Boolean
 )

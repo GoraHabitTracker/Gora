@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 internal interface CalendarDataDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(calendarData: CalendarDataEntity)
 
     @Query("SELECT * FROM calendar_data WHERE date = :date")
@@ -24,4 +24,7 @@ internal interface CalendarDataDao {
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun update(calendarData: CalendarDataEntity)
+
+    @Query("SELECT * FROM CalendarDataEntity WHERE name LIKE :name AND " + "date LIKE :date")
+    fun findCurrentCalendarData(name: String, date: String): CalendarDataEntity?
 }

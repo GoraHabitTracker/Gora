@@ -5,7 +5,7 @@ import com.pethabittracker.gora.domain.repositories.HabitRepository
 
 class UpdateHabitPriorityUseCase(private val repository: HabitRepository) {
 
-    operator fun invoke(habit: Habit, priority: Int) {
+    suspend operator fun invoke(habit: Habit, priority: Int) {
 
         val updatedHabit = Habit(
             id = habit.id,

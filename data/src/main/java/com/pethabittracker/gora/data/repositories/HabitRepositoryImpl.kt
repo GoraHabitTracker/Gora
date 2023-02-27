@@ -34,7 +34,7 @@ internal class HabitRepositoryImpl(private val habitDao: HabitDao) : HabitReposi
         return habitDao.getFlowHabitEntityList().map { it.toDomainModels() }
     }
 
-    override fun updateHabit(updatedHabit: Habit) {
+    override suspend fun updateHabit(updatedHabit: Habit) {
         habitDao.update(updatedHabit.toData())
     }
 }

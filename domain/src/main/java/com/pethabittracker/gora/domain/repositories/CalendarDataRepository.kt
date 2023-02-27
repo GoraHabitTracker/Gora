@@ -13,7 +13,9 @@ interface CalendarDataRepository {
 
     suspend fun getAllCalendarData(): List<CalendarData>
 
-    suspend fun getFlowCalendarData(): Flow<List<CalendarData>>
+   fun getFlowCalendarData(): Flow<List<CalendarData>>
 
     suspend fun updateCalendarData(updatedCalendarData: CalendarData)
+
+    suspend fun findCurrentCalendarData(name: String, date: String): CalendarData?
 }

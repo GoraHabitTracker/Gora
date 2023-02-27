@@ -9,6 +9,9 @@ import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.kizitonwose.calendar.core.*
 import com.kizitonwose.calendar.view.CalendarView
 import com.kizitonwose.calendar.view.MonthDayBinder
@@ -22,6 +25,8 @@ import com.pethabittracker.gora.data.utils.setTextColorRes
 import com.pethabittracker.gora.databinding.CalendarDayLayoutBinding
 import com.pethabittracker.gora.databinding.FragmentCalendarBinding
 import com.pethabittracker.gora.presentation.models.MonthViewContainer
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -50,7 +55,7 @@ class CalendarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val daysOfWeek = daysOfWeek()
+        val daysOfWeek = daysOfWeek(firstDayOfWeek = DayOfWeek.MONDAY)
         binding.calendarView.children
             .map { it as TextView }
             .forEachIndexed { index, textView ->
@@ -58,21 +63,34 @@ class CalendarFragment : Fragment() {
                 textView.setTextColorRes(R.color.sapphire)
             }
 
-        // эти строки отрабатывают после отресовки view календаря
-        val dateFulfilldHabits = viewModel.getDateWithFulfilledHabitFlow()
-        val dateUnfulfilledHabits = viewModel.getDateWithUnfulfilledHabitFlow()
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
 
-        val currentMonth = YearMonth.now()
-        val startMonth = currentMonth.minusMonths(100)
-        val endMonth = currentMonth.plusMonths(100)
-        setupMonthCalendar(
-            startMonth,
-            endMonth,
-            currentMonth,
-            daysOfWeek,
-            dateFulfilldHabits,
-            dateUnfulfilledHabits
-        )
+                val dateDoneHabits = viewModel.getDoneList()
+                val dateDefaultHabits = viewModel.getDefaultList()
+                val dateInactiveHabits = viewModel.getInactiveList()
+                val dateDoneList = mutableListOf<LocalDate>()
+                dateDoneHabits.onEach { if(!dateDefaultHabits.contains(it)){
+                   dateDoneList.add(it)
+               }else if (dateInactiveHabits.contains(it)){
+                    dateDoneList.add(it)
+                }
+               }
+                val dateSkipList = viewModel.getSkipList()
+
+                val currentMonth = YearMonth.now()
+                val startMonth = currentMonth.minusMonths(100)
+                val endMonth = currentMonth.plusMonths(100)
+                setupMonthCalendar(
+                    startMonth,
+                    endMonth,
+                    currentMonth,
+                    daysOfWeek,
+                    dateDoneList,
+                    dateSkipList
+                )
+            }
+        }
     }
 
     private fun setupMonthCalendar(
@@ -167,10 +185,12 @@ class CalendarFragment : Fragment() {
                 else -> {
                     textView.setTextColorRes(R.color.sapphire)
                     textView.background = null
+
                     if (done.contains(date)) {
                         textView.setBackgroundColorRes(R.drawable.background_calendar_done)
                         textView.setTextColorRes(R.color.sapphire)
                     }
+
                     if (notDone.contains(date)) {
                         textView.setBackgroundColorRes(R.drawable.background_calendar_skipped)
                         textView.setTextColorRes(R.color.snow_white)
@@ -180,16 +200,6 @@ class CalendarFragment : Fragment() {
         } else {
             textView.setTextColorRes(R.color.periwinkle)
             textView.background = null
-        }
-
-        val myDate = LocalDate.parse("2023-02-03")
-        if (myDate == date) {
-            textView.setBackgroundResource(R.drawable.background_calendar_done)
-        }
-        val myDat2e = LocalDate.parse("2023-02-23")
-        if (myDat2e == date) {
-            textView.setTextColorRes(R.color.snow_white)
-            textView.setBackgroundResource(R.drawable.background_calendar_skipped)
         }
     }
 
@@ -208,10 +218,8 @@ class CalendarFragment : Fragment() {
         binding.todaysDateText.text = getCurrentDate()
 
         val month = monthCalendarView.findFirstVisibleMonth()?.yearMonth ?: return
-        binding.monthText.text = month.year.toString()
-//        binding.monthText.text = month.month.displayText(short = false)
-        binding.monthText.text = month.month.toString()
-
+        binding.monthText.text =
+            month.displayText(short = false).replaceFirstChar { it.uppercase() }
     }
 
     override fun onDestroyView() {
