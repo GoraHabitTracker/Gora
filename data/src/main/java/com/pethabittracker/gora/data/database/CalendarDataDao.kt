@@ -25,6 +25,6 @@ internal interface CalendarDataDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun update(calendarData: CalendarDataEntity)
 
-    @Query("SELECT * FROM CalendarDataEntity WHERE name LIKE :name AND " + "date LIKE :date")
+    @Query("SELECT * FROM calendar_data WHERE name LIKE :name AND " + "date LIKE :date")
     fun findCurrentCalendarData(name: String, date: String): CalendarDataEntity?
 }

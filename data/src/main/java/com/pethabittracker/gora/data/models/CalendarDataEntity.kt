@@ -15,6 +15,6 @@ internal data class CalendarDataEntity(
     val id: Int = 0,
     val name: String,
     val date: String,
-    val state: Int,
+    val state: Int,     // = Priority
     val clicked: Boolean
 )

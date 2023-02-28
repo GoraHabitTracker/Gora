@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/sea_foam"
@@ -211,7 +212,7 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatToggleButton
-                    android:id="@+id/monday"
+                    android:id="@+id/monday_bttn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_tint_toggle"
@@ -232,12 +233,12 @@
                     android:layout_gravity="center_vertical"
                     android:background="@color/periwinkle"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/tuesday"
-                    app:layout_constraintStart_toEndOf="@+id/monday"
+                    app:layout_constraintEnd_toStartOf="@+id/tuesday_bttn"
+                    app:layout_constraintStart_toEndOf="@+id/monday_bttn"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatToggleButton
-                    android:id="@+id/tuesday"
+                    android:id="@+id/tuesday_bttn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_tint_toggle"
@@ -258,12 +259,12 @@
                     android:layout_gravity="center_vertical"
                     android:background="@color/periwinkle"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/wednesday"
-                    app:layout_constraintStart_toEndOf="@+id/tuesday"
+                    app:layout_constraintEnd_toStartOf="@+id/wednesday_bttn"
+                    app:layout_constraintStart_toEndOf="@+id/tuesday_bttn"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatToggleButton
-                    android:id="@+id/wednesday"
+                    android:id="@+id/wednesday_bttn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_tint_toggle"
@@ -284,12 +285,12 @@
                     android:layout_gravity="center_vertical"
                     android:background="@color/periwinkle"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/thursday"
-                    app:layout_constraintStart_toEndOf="@+id/wednesday"
+                    app:layout_constraintEnd_toStartOf="@+id/thursday_bttn"
+                    app:layout_constraintStart_toEndOf="@+id/wednesday_bttn"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatToggleButton
-                    android:id="@+id/thursday"
+                    android:id="@+id/thursday_bttn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_tint_toggle"
@@ -311,12 +312,12 @@
                     android:layout_gravity="center_vertical"
                     android:background="@color/periwinkle"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/friday"
-                    app:layout_constraintStart_toEndOf="@+id/thursday"
+                    app:layout_constraintEnd_toStartOf="@+id/friday_bttn"
+                    app:layout_constraintStart_toEndOf="@+id/thursday_bttn"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatToggleButton
-                    android:id="@+id/friday"
+                    android:id="@+id/friday_bttn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_tint_toggle"
@@ -337,12 +338,12 @@
                     android:layout_gravity="center_vertical"
                     android:background="@color/periwinkle"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/saturday"
-                    app:layout_constraintStart_toEndOf="@+id/friday"
+                    app:layout_constraintEnd_toStartOf="@+id/saturday_bttn"
+                    app:layout_constraintStart_toEndOf="@+id/friday_bttn"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatToggleButton
-                    android:id="@+id/saturday"
+                    android:id="@+id/saturday_bttn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_tint_toggle"
@@ -363,12 +364,12 @@
                     android:layout_gravity="center_vertical"
                     android:background="@color/periwinkle"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/sunday"
-                    app:layout_constraintStart_toEndOf="@+id/saturday"
+                    app:layout_constraintEnd_toStartOf="@+id/sunday_bttn"
+                    app:layout_constraintStart_toEndOf="@+id/saturday_bttn"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatToggleButton
-                    android:id="@+id/sunday"
+                    android:id="@+id/sunday_bttn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_tint_toggle"
@@ -387,6 +388,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <TextView
+                    android:id="@+id/alarm_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginBottom="85dp"
+                    android:textColor="@color/pastel_red"
+                    android:textSize="14sp"
+                    tools:text="Выберите иконку привычки" />
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/button_save"
                     android:layout_width="match_parent"
@@ -397,7 +408,7 @@
                     android:text="@string/add_habit"
                     android:textAllCaps="false"
                     android:textSize="16sp"
-                    app:backgroundTint="@color/blue_fcbk"
+                    app:backgroundTint="@color/periwinkle"
                     app:shapeAppearance="@style/roundedEmoji" />
             </FrameLayout>
         </LinearLayout>

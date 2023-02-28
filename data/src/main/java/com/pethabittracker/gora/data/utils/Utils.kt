@@ -1,6 +1,7 @@
 package com.pethabittracker.gora.data.utils
 
 import android.content.Context
+import android.view.View
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
@@ -12,7 +13,7 @@ import java.time.format.TextStyle
 import java.util.*
 
 
-val rusLocale = Locale("ru","RU")
+val rusLocale = Locale("ru", "RU")
 
 fun YearMonth.displayText(short: Boolean = false): String {
     return "${this.month.displayText(short = short)} ${this.year}"
@@ -38,3 +39,6 @@ fun TextView.setTextColorRes(@ColorRes color: Int) =
 
 fun TextView.setBackgroundColorRes(@DrawableRes color: Int) =
     setBackgroundResource(color)
+
+fun View.setBackgrndColor(@ColorRes color: Int) =
+    setBackgroundColor(context.getColorCompat(color))
