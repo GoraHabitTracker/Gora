@@ -149,12 +149,11 @@ class HomeFragment : Fragment() {
                 actionState: Int,
                 isCurrentlyActive: Boolean
             ) {
-
                 val mClearPaint = Paint()
                 mClearPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
-                val backGroundColor = resources.getColor(R.color.delete_background, null)
+                val backGroundColor = resources.getColor(R.color.transparent, null)
                 val deleteDrawable =
-                    getDrawable(requireContext(), R.drawable.icon_trashcan)
+                    getDrawable(requireContext(), R.drawable.icon_trashcan_red)
                 val width = deleteDrawable?.intrinsicWidth ?: 0
                 val height = deleteDrawable?.intrinsicHeight ?: 0
 
