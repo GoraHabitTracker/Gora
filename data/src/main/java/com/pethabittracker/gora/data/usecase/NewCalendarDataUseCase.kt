@@ -24,10 +24,10 @@ class NewCalendarDataUseCase(
         if (repository.getAllCalendarData().isNotEmpty()) {
             val currentCalendarData =
                 repository.findCurrentCalendarData(habit.name, today)
-            if (currentCalendarData!=newCalendarData){
+            if (currentCalendarData != newCalendarData) {
                 repository.insertCalendarData(newCalendarData)
             }
-        }else{
+        } else {
             repository.insertCalendarData(newCalendarData)
         }
     }

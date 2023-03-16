@@ -1,6 +1,9 @@
 package com.pethabittracker.gora.presentation.ui.home
 
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffXfermode
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RoundRectShape
 import android.os.Bundle
@@ -8,15 +11,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat.getDrawable
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -71,8 +73,6 @@ class HomeFragment : Fragment() {
             recyclerView.adapter = adapter
             recyclerView.layoutManager = linearLayoutManager
             recyclerView.addVerticalGaps()
-            // закругляем углы картинки
-            ivHills.clipToOutline = true
         }
 
         updateList()
@@ -85,36 +85,33 @@ class HomeFragment : Fragment() {
     }
 
     private fun updateList() {
+        viewModel
+            .getAllHabitFlow()
+            .onEach { listHabits ->
+                adapter.submitList(listHabits)
 
-        //------------------ with Coroutine -------------------------------------------------------
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel
-                    .getAllHabitFlow()
-                    .onEach { listHabits ->
-                        adapter.submitList(listHabits)
+                if (listHabits.isNotEmpty()) {
+                    //для плавности замены слоёв
+                    delay(300)
+                    binding.recyclerView.isVisible = true
+                    binding.photo.isGone = true
+                    binding.arrowContainer.isGone = true
+                } else {
+                    //для плавности замены слоёв
+                    delay(300)
+                    binding.recyclerView.isGone = true
+                    binding.photo.isVisible = true
+                    binding.arrowContainer.isVisible = true
+                }
 
-                        if (listHabits.isNotEmpty()) {
-                            binding.root.setBackgroundResource(R.color.sea_foam)
-                        } else {
-                            binding.root.setBackgroundResource(R.color.transparent)
-                        }
-
-                        //для плавности замены слоёв
-                        delay(300)
-                        binding.foto.isVisible = listHabits.isEmpty()
-                        
-                        // AlertDialog
-                        if (!prefsManager.flagIsChecked && listHabits.size == theOnlyHabit) {
-                            showAlertDialogKillHabit()
-                            prefsManager.flagIsChecked = true
-                        }
-
-                    }
-                    .launchIn(viewLifecycleOwner.lifecycleScope)
+                // AlertDialog
+                if (!prefsManager.flagIsChecked && listHabits.size == theOnlyHabit) {
+                    showAlertDialogKillHabit()
+                    prefsManager.flagIsChecked = true
+                }
             }
-//        }
-//    }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
+    }
 
     private fun setSwipeToDelete() {
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
@@ -173,14 +170,7 @@ class HomeFragment : Fragment() {
 
                 val valueDp = 5 * resources.displayMetrics.density
                 val outR = floatArrayOf(
-                    valueDp,
-                    valueDp,
-                    valueDp,
-                    valueDp,
-                    valueDp,
-                    valueDp,
-                    valueDp,
-                    valueDp
+                    valueDp, valueDp, valueDp, valueDp, valueDp, valueDp, valueDp, valueDp
                 )
                 val mBackGround = ShapeDrawable(RoundRectShape(outR, null, null))
                 mBackGround.setBounds(
@@ -228,39 +218,35 @@ class HomeFragment : Fragment() {
         }
     }
 
-
     private fun showAlertDialogInfoDetailed(habit: Habit) {
         val viewAlertDialogInfoDetailed: View =
             layoutInflater.inflate(R.layout.fragment_dialog_info_detailed, null, false)
 
+        // надо эти if'ы оптимизировать, но голова не соображает
         if (habit.repeatDays.monday) {
-            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.checkOrSkip_monday_icon)
+            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.progress_monday_t_v)
         }
-
         if (habit.repeatDays.thursday) {
-            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.checkOrSkip_thursday_icon)
+            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.progress_thursday_t_v)
         }
-
         if (habit.repeatDays.wednesday) {
-            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.checkOrSkip_wednesday_icon)
+            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.progress_wednesday_t_v)
         }
-
         if (habit.repeatDays.tuesday) {
-            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.checkOrSkip_tuesday_icon)
+            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.progress_tuesday_t_v)
         }
-
         if (habit.repeatDays.friday) {
-            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.checkOrSkip_friday_icon)
+            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.progress_friday_t_v)
         }
-
         if (habit.repeatDays.saturday) {
-            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.checkOrSkip_saturday_icon)
+            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.progress_saturday_t_v)
+        }
+        if (habit.repeatDays.sunday) {
+            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.progress_sunday_t_v)
         }
 
-        if (habit.repeatDays.sunday) {
-            drawAlertDetail(viewAlertDialogInfoDetailed, R.id.checkOrSkip_sunday_icon)
-        }
-        // надо эти if'ы оптимизировать, но голова уже не соображает
+        viewAlertDialogInfoDetailed.findViewById<TextView>(R.id.name_habit_dialog_tv).text = habit.name
+        viewAlertDialogInfoDetailed.findViewById<ImageView>(R.id.image_habit).setImageResource(habit.urlImage)
 
         val alertDialog = AlertDialog
             .Builder(requireContext(), R.style.AlertDialogStyle)
@@ -273,7 +259,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun drawAlertDetail(viewInfo: View, iconId: Int) {
-        viewInfo.findViewById<TextView>(iconId)
+        viewInfo
+            .findViewById<TextView>(iconId)
             .setCompoundDrawablesWithIntrinsicBounds(
                 getDrawable(requireContext(), R.drawable.icon_check_blue_fcbk),
                 null,

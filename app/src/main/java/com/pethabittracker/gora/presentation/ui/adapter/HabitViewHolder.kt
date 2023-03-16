@@ -39,6 +39,7 @@ class HabitViewHolder(
                     frameDone.isVisible = true
                     frameSkip.isVisible = false
                     frameInactive.isVisible = false
+                    imageView.foreground = null
                     tvNameHabit.setCompoundDrawablesWithIntrinsicBounds(
                         null,
                         null,

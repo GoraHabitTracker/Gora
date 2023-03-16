@@ -70,24 +70,19 @@ class CalendarFragment : Fragment() {
                 val dateDefaultHabits = viewModel.getDefaultList()
                 val dateInactiveHabits = viewModel.getInactiveList()
                 val dateDoneList = mutableListOf<LocalDate>()
-                dateDoneHabits.onEach { if(!dateDefaultHabits.contains(it)){
-                   dateDoneList.add(it)
-               }else if (dateInactiveHabits.contains(it)){
-                    dateDoneList.add(it)
+                dateDoneHabits.onEach {
+                    if (!dateDefaultHabits.contains(it)) {
+                        dateDoneList.add(it)
+                    } else if (dateInactiveHabits.contains(it)) {
+                        dateDoneList.add(it)
+                    }
                 }
-               }
                 val dateSkipList = viewModel.getSkipList()
-
                 val currentMonth = YearMonth.now()
                 val startMonth = currentMonth.minusMonths(100)
                 val endMonth = currentMonth.plusMonths(100)
                 setupMonthCalendar(
-                    startMonth,
-                    endMonth,
-                    currentMonth,
-                    daysOfWeek,
-                    dateDoneList,
-                    dateSkipList
+                    startMonth, endMonth, currentMonth, daysOfWeek, dateDoneList, dateSkipList
                 )
             }
         }
@@ -169,16 +164,16 @@ class CalendarFragment : Fragment() {
         date: LocalDate,
         textView: TextView,
         isSelectable: Boolean,
-        done: List<LocalDate>,      // не помогло
-        notDone: List<LocalDate>    // не отрабатывает
+        done: List<LocalDate>,
+        notDone: List<LocalDate>
     ) {
         textView.text = date.dayOfMonth.toString()
 
         if (date == today) textView.foreground =
-            ResourcesCompat.getDrawable(resources, R.drawable.background_today_ring, null)
+            ResourcesCompat.getDrawable(resources, R.drawable.foreground_today_ring, null)
 
         if (isSelectable) {
-            when {      // TODO Календарь отрабатывает только со второго захода. Надо исправить
+            when {
                 selectedDates.contains(date) -> {
                     textView.setBackgroundColorRes(R.drawable.background_calendar_selected)
                 }

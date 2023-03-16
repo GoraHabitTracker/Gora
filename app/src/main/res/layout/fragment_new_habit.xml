@@ -13,6 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/background_transparent"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
         app:navigationIcon="@drawable/icon_arrow_back">
 
         <TextView
@@ -32,6 +34,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
             android:orientation="vertical">
 
             <TextView
@@ -49,6 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:hint="@string/number_of_symbol"
+                android:imeOptions="actionDone"
                 android:textColorHint="@color/periwinkle"
                 app:endIconDrawable="@drawable/icon_x_periwinkle"
                 app:endIconMode="custom"
@@ -92,7 +97,7 @@
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginBottom="8dp"
                     app:shapeAppearanceOverlay="@style/roundedEmoji"
-                    app:srcCompat="@drawable/image_are_you_ready" />
+                    app:srcCompat="@drawable/icon_newhabit_water" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_2"
@@ -103,7 +108,7 @@
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginTop="8dp"
                     app:shapeAppearanceOverlay="@style/roundedEmoji"
-                    app:srcCompat="@drawable/image_are_you_ready" />
+                    app:srcCompat="@drawable/icon_newhabit_plant" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_3"
@@ -114,7 +119,7 @@
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginBottom="8dp"
                     app:shapeAppearanceOverlay="@style/roundedEmoji"
-                    app:srcCompat="@drawable/image_are_you_ready" />
+                    app:srcCompat="@drawable/icon_newhabit_meal" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_4"
@@ -125,7 +130,7 @@
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginTop="8dp"
                     app:shapeAppearanceOverlay="@style/roundedEmoji"
-                    app:srcCompat="@drawable/image_are_you_ready" />
+                    app:srcCompat="@drawable/icon_newhabit_sport" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_5"
@@ -136,7 +141,7 @@
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginBottom="8dp"
                     app:shapeAppearanceOverlay="@style/roundedEmoji"
-                    app:srcCompat="@drawable/image_are_you_ready" />
+                    app:srcCompat="@drawable/icon_newhabit_pills" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_6"
@@ -147,7 +152,7 @@
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginTop="8dp"
                     app:shapeAppearanceOverlay="@style/roundedEmoji"
-                    app:srcCompat="@drawable/image_are_you_ready" />
+                    app:srcCompat="@drawable/icon_newhabit_creative" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_7"
@@ -158,7 +163,7 @@
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginBottom="8dp"
                     app:shapeAppearanceOverlay="@style/roundedEmoji"
-                    app:srcCompat="@drawable/image_are_you_ready" />
+                    app:srcCompat="@drawable/icon_newhabit_pet" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_8"
@@ -169,7 +174,7 @@
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginTop="8dp"
                     app:shapeAppearanceOverlay="@style/roundedEmoji"
-                    app:srcCompat="@drawable/image_are_you_ready" />
+                    app:srcCompat="@drawable/icon_newhabit_cleaning" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_9"
@@ -180,7 +185,7 @@
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginBottom="8dp"
                     app:shapeAppearanceOverlay="@style/roundedEmoji"
-                    app:srcCompat="@drawable/image_are_you_ready" />
+                    app:srcCompat="@drawable/icon_newhabit_walk" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_10"
@@ -191,7 +196,7 @@
                     android:layout_margin="@dimen/dp_7"
                     android:layout_marginTop="8dp"
                     app:shapeAppearanceOverlay="@style/roundedEmoji"
-                    app:srcCompat="@drawable/image_are_you_ready" />
+                    app:srcCompat="@drawable/icon_newhabit_book" />
             </GridLayout>
 
             <TextView
@@ -208,8 +213,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
-                android:background="@drawable/background_button_skip"
-                android:orientation="horizontal">
+                android:background="@drawable/background_button_skip">
 
                 <androidx.appcompat.widget.AppCompatToggleButton
                     android:id="@+id/monday_bttn"
@@ -386,7 +390,9 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusableInTouchMode="true">
 
                 <TextView
                     android:id="@+id/alarm_tv"

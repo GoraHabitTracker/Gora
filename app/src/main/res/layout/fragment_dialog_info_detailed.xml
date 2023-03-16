@@ -10,17 +10,29 @@
     android:padding="16dp"
     android:paddingBottom="16dp">
 
-    <TextView
-        android:id="@+id/tv_name_habit_dialog"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
-        android:drawablePadding="16dp"
-        android:gravity="center_vertical"
-        android:textColor="@color/sapphire"
-        android:textSize="17sp"
-        app:drawableStartCompat="@drawable/image_girl_runs_png"
-        tools:text="Имя привычки" />
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/image_habit"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:foreground="@drawable/foreground_item_habit_ring" />
+
+        <TextView
+            android:id="@+id/name_habit_dialog_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="16dp"
+            android:textColor="@color/sapphire"
+            android:textSize="17sp"
+            tools:text="Имя привычки" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +40,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/checkOrSkip_monday_icon"
+            android:id="@+id/progress_monday_t_v"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -40,7 +52,7 @@
             app:drawableLeftCompat="@drawable/icon_x_blue_fcbk" />
 
         <TextView
-            android:id="@+id/checkOrSkip_friday_icon"
+            android:id="@+id/progress_friday_t_v"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -58,7 +70,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/checkOrSkip_tuesday_icon"
+            android:id="@+id/progress_tuesday_t_v"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -70,7 +82,7 @@
             app:drawableLeftCompat="@drawable/icon_x_blue_fcbk" />
 
         <TextView
-            android:id="@+id/checkOrSkip_saturday_icon"
+            android:id="@+id/progress_saturday_t_v"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -88,7 +100,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/checkOrSkip_wednesday_icon"
+            android:id="@+id/progress_wednesday_t_v"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -100,7 +112,7 @@
             app:drawableLeftCompat="@drawable/icon_x_blue_fcbk" />
 
         <TextView
-            android:id="@+id/checkOrSkip_sunday_icon"
+            android:id="@+id/progress_sunday_t_v"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -113,7 +125,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/checkOrSkip_thursday_icon"
+        android:id="@+id/progress_thursday_t_v"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawablePadding="10dp"

@@ -30,32 +30,20 @@ class NewHabitFragment : Fragment() {
     private var _binding: FragmentNewHabitBinding? = null
     private val binding get() = requireNotNull(_binding)
     private val viewModel by viewModel<NewHabitViewModel>()
+    private var oldIconHabit: ShapeableImageView? = null
+    private var urlImage: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return FragmentNewHabitBinding.inflate(inflater, container, false)
-            .also { _binding = it }
-            .root
+        _binding = FragmentNewHabitBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        var currentIconHabit: ShapeableImageView = binding.emoji1
-        var urlImage = R.drawable.spanch
-        fun selectTheIcon(selectedIcon: ShapeableImageView) {
-            if (selectedIcon != currentIconHabit) {
-                // снимаем выделения с currentIconHabit
-                currentIconHabit.setImageResource(R.drawable.spanch)
-                // выделяем новую выбранную иконку
-                selectedIcon.setImageResource(R.drawable.image_girl_runs_png)
-                // приравниваем текущую иконку к новой(выбранной)
-                currentIconHabit = selectedIcon
-            }
-        }
 
         with(binding) {
             toolbarDetail.setNavigationOnClickListener {
@@ -110,69 +98,64 @@ class NewHabitFragment : Fragment() {
             }
 
             emoji1.setOnClickListener {
+                selectTheIcon(emoji1)
                 viewModel.onChangeIcon()
-                if (currentIconHabit == emoji1) {
-                    // выделяем иконку
-                    emoji1.setImageResource(R.drawable.image_girl_runs_png)
-                } else {
-                    selectTheIcon(emoji1)
-                    urlImage = R.drawable.spanch
-                }
+                urlImage = R.drawable.icon_newhabit_water
             }
             emoji2.setOnClickListener {
                 selectTheIcon(emoji2)
                 viewModel.onChangeIcon()
-                urlImage = R.drawable.spanch_2
+                urlImage = R.drawable.icon_newhabit_plant
             }
             emoji3.setOnClickListener {
                 viewModel.onChangeIcon()
                 selectTheIcon(emoji3)
-                urlImage = R.drawable.spanch_3
+                urlImage = R.drawable.icon_newhabit_meal
             }
             emoji4.setOnClickListener {
                 viewModel.onChangeIcon()
                 selectTheIcon(emoji4)
-                urlImage = R.drawable.spanch_4
+                urlImage = R.drawable.icon_newhabit_sport
             }
             emoji5.setOnClickListener {
                 viewModel.onChangeIcon()
                 selectTheIcon(emoji5)
-                urlImage = R.drawable.spanch_5
+                urlImage = R.drawable.icon_newhabit_pills
             }
             emoji6.setOnClickListener {
                 viewModel.onChangeIcon()
                 selectTheIcon(emoji6)
-                urlImage = R.drawable.spanch_6
+                urlImage = R.drawable.icon_newhabit_creative
             }
             emoji7.setOnClickListener {
                 viewModel.onChangeIcon()
                 selectTheIcon(emoji7)
-                urlImage = R.drawable.spanch_7
+                urlImage = R.drawable.icon_newhabit_pet
             }
             emoji8.setOnClickListener {
                 viewModel.onChangeIcon()
                 selectTheIcon(emoji8)
-                urlImage = R.drawable.spanch_8
+                urlImage = R.drawable.icon_newhabit_cleaning
             }
             emoji9.setOnClickListener {
                 viewModel.onChangeIcon()
                 selectTheIcon(emoji9)
-                urlImage = R.drawable.spanch_9
+                urlImage = R.drawable.icon_newhabit_walk
             }
             emoji10.setOnClickListener {
                 viewModel.onChangeIcon()
                 selectTheIcon(emoji10)
-                urlImage = R.drawable.spanch_10
+                urlImage = R.drawable.icon_newhabit_book
             }
 
-            buttonSave.setOnClickListener { view ->
+            buttonSave.setOnClickListener {
                 val titleHabit = containerTitle.getTextOrSetError() ?: return@setOnClickListener
 
                 if (!monday && !thursday && !wednesday && !tuesday && !friday && !saturday && !sunday) {
                     alarmTv.text = getString(R.string.alarm_selection_day)
                     return@setOnClickListener
                 }
-                if (urlImage == R.drawable.spanch) {
+                if (urlImage == null) {
                     alarmTv.text = getString(R.string.alarm_selection_icon)
                     return@setOnClickListener
                 }
@@ -181,7 +164,7 @@ class NewHabitFragment : Fragment() {
                     runCatching {
                         viewModel.newHabit(
                             titleHabit,
-                            urlImage,
+                            requireNotNull(urlImage),
                             Priority.Default.value,
                             selectedDays
                         )
@@ -191,15 +174,16 @@ class NewHabitFragment : Fragment() {
                 findNavController().navigateUp()
             }
 
-            // убираем клаву при переходе на другой фрагмент
+            // убираем клаву при потере фокуса
             editTextTitle.setOnFocusChangeListener { view, hasFocus ->
                 if (!hasFocus) {
                     val imm =
-                        activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     imm.hideSoftInputFromWindow(view.windowToken, 0)
                 }
             }
 
+            // активируем (делаем кликабельной) кнопку "Добавить привычку"
             viewModel.isAllowedSave
                 .onEach {
                     buttonSave.setBackgrndColor(R.color.periwinkle)
@@ -251,6 +235,16 @@ class NewHabitFragment : Fragment() {
 
                 null
             }
+        }
+    }
+
+    // логика выделения иконок
+    private fun selectTheIcon(selectedIcon: ShapeableImageView) {
+        if (selectedIcon != oldIconHabit) {
+            oldIconHabit?.foreground = null
+            selectedIcon.foreground =
+                ResourcesCompat.getDrawable(resources, R.drawable.background_ring_item_habit_selected,null)
+            oldIconHabit = selectedIcon
         }
     }
 }
