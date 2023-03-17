@@ -2,12 +2,11 @@
 <resources>
 
     <dimen name="emoji_choice">56dp</dimen>
-    <dimen name="dp_7">8dp</dimen>
+    <dimen name="margin_item_grid">8dp</dimen>
     <dimen name="dp_14">14dp</dimen>
     <dimen name="text_margin">10dp</dimen>
     <dimen name="week_height">58dp</dimen>
     <dimen name="week_text_size">11sp</dimen>
     <dimen name="gap">5dp</dimen>
-
-
+    <dimen name="side_icon_habit">64dp</dimen>
 </resources>
