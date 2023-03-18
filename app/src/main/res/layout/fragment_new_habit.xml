@@ -88,7 +88,7 @@
                 <GridLayout
                     android:id="@+id/grid"
                     android:layout_width="wrap_content"
-                    android:layout_height="160dp"
+                    android:layout_height="wrap_content"
                     android:columnCount="5"
                     android:overScrollMode="always"
                     android:orientation="vertical"
@@ -214,12 +214,7 @@
                     android:textOn="@string/monday"
                     android:textSize="11sp" />
 
-                <TextView
-                    android:id="@+id/stick_monday"
-                    android:layout_width="1dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/periwinkle" />
+                <include layout="@layout/stick_bttn_day" />
 
                 <androidx.appcompat.widget.AppCompatToggleButton
                     android:id="@+id/tuesday_bttn"
@@ -232,12 +227,7 @@
                     android:textOn="@string/tuesday"
                     android:textSize="11sp" />
 
-                <TextView
-                    android:id="@+id/stick_tuesday"
-                    android:layout_width="1dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/periwinkle" />
+                <include layout="@layout/stick_bttn_day" />
 
                 <androidx.appcompat.widget.AppCompatToggleButton
                     android:id="@+id/wednesday_bttn"
@@ -250,12 +240,7 @@
                     android:textOn="@string/wednesday"
                     android:textSize="11sp" />
 
-                <TextView
-                    android:id="@+id/stick_wednesday"
-                    android:layout_width="1dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/periwinkle" />
+                <include layout="@layout/stick_bttn_day" />
 
                 <androidx.appcompat.widget.AppCompatToggleButton
                     android:id="@+id/thursday_bttn"
@@ -269,12 +254,7 @@
                     android:textOn="@string/thursday"
                     android:textSize="11sp" />
 
-                <TextView
-                    android:id="@+id/stick_thursday"
-                    android:layout_width="1dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/periwinkle" />
+                <include layout="@layout/stick_bttn_day" />
 
                 <androidx.appcompat.widget.AppCompatToggleButton
                     android:id="@+id/friday_bttn"
@@ -287,12 +267,7 @@
                     android:textOn="@string/friday"
                     android:textSize="11sp" />
 
-                <TextView
-                    android:id="@+id/stick_friday"
-                    android:layout_width="1dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/periwinkle" />
+                <include layout="@layout/stick_bttn_day" />
 
                 <androidx.appcompat.widget.AppCompatToggleButton
                     android:id="@+id/saturday_bttn"
@@ -305,12 +280,7 @@
                     android:textOn="@string/saturday"
                     android:textSize="11sp" />
 
-                <TextView
-                    android:id="@+id/stick_saturday"
-                    android:layout_width="1dp"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/periwinkle" />
+                <include layout="@layout/stick_bttn_day" />
 
                 <androidx.appcompat.widget.AppCompatToggleButton
                     android:id="@+id/sunday_bttn"
