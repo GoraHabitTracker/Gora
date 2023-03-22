@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Gora</string>
     <string name="support_symbols">QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁйцукенгшщзхъфывапролджэячсмитьбюё 0123456789</string>
-    <string name="go">Давай</string>
-    <string name="welcome_text">Добро пожаловать \nДавай начнём планировать \nтвой день!</string>
+    <string name="go">Давай!</string>
+    <string name="welcome_text">Добро пожаловать. \nДавай начнём планировать \nтвой день!</string>
     <string name="be_creator">Будь творцом своей жизни!</string>
     <string name="my_habit">Мои привычки</string>
-    <string name="add_habit_text">У вас пока нет привычек. \nЧтобы добавить привычку, \nНажмите «+»</string>
+    <string name="add_habit_text">У вас пока нет привычек. \nЧтобы добавить привычку, \nнажмите «+»</string>
     <string name="done">сделано</string>
     <string name="skip">пропустить</string>
     <string name="done_cancel">Привычка выполнена!</string>

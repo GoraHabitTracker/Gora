@@ -149,7 +149,8 @@ class NewHabitFragment : Fragment() {
             }
 
             buttonSave.setOnClickListener {
-                val titleHabit = containerTitle.getTextOrSetError() ?: return@setOnClickListener
+                val titleHabit =
+                    containerTitle.getTextOrSetError()?.trim() ?: return@setOnClickListener
 
                 if (!monday && !thursday && !wednesday && !tuesday && !friday && !saturday && !sunday) {
                     alarmTv.text = getString(R.string.alarm_selection_day)
@@ -181,6 +182,9 @@ class NewHabitFragment : Fragment() {
                         requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     imm.hideSoftInputFromWindow(view.windowToken, 0)
                 }
+//                if (hasFocus){
+//                    containerTitle.hintTextColor = ContextCompat.getColorStateList(requireContext(), R.color.transparent)
+//                }
             }
 
             // активируем (делаем кликабельной) кнопку "Добавить привычку"
@@ -195,7 +199,17 @@ class NewHabitFragment : Fragment() {
                 .launchIn(lifecycleScope)
 
             editTextTitle.doOnTextChanged { text, _, _, _ ->
+                if (text.toString() == singleSpace) {
+                    editTextTitle.setText(emptyString)
+                }
                 if (text?.length != 0) {
+                    requireNotNull(text)
+                    if (text.contains(pattern)) {
+                        val a: String = text.replace(pattern, singleSpace)
+                        editTextTitle.setText(a)
+                        // переводим курсор в конец строки
+                        editTextTitle.setSelection(requireNotNull(editTextTitle.text?.length))
+                    }
                     viewModel.onChangeTitle(true)
                 } else {
                     viewModel.onChangeTitle(false)
@@ -204,7 +218,7 @@ class NewHabitFragment : Fragment() {
 
             // очищаем поле ввода при нажатии на иконку "х"
             containerTitle.setEndIconOnClickListener {
-                editTextTitle.setText("")
+                editTextTitle.setText(emptyString)
                 viewModel.onChangeTitle(false)
             }
         }
@@ -242,9 +256,17 @@ class NewHabitFragment : Fragment() {
     private fun selectTheIcon(selectedIcon: ShapeableImageView) {
         if (selectedIcon != oldIconHabit) {
             oldIconHabit?.foreground = null
-            selectedIcon.foreground =
-                ResourcesCompat.getDrawable(resources, R.drawable.background_ring_item_habit_selected,null)
+            selectedIcon.foreground = ResourcesCompat
+                .getDrawable(resources, R.drawable.background_ring_item_habit_selected, null)
             oldIconHabit = selectedIcon
         }
+    }
+
+    companion object {
+        private const val doubleSpace = "  "
+        private const val singleSpace = " "
+        private const val emptyString = ""
+
+        val pattern = doubleSpace.toRegex()
     }
 }
