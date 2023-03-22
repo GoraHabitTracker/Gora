@@ -40,17 +40,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_view_be_creator" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button"
         android:layout_width="320dp"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        android:background="@drawable/roundstyle_button"
         android:text="@string/go"
+        android:padding="@dimen/dp_14"
         android:textAllCaps="false"
         android:textColor="@color/snow_white"
         android:textSize="16sp"
         app:backgroundTint="@color/blue_fcbk"
+        app:shapeAppearance="@style/roundedEmoji"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"

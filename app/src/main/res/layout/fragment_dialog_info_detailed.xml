@@ -135,13 +135,13 @@
         android:textSize="14sp"
         app:drawableLeftCompat="@drawable/icon_x_blue_fcbk" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button_ok"
         android:layout_width="304dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="25dp"
-        android:background="@drawable/background_button_dialog"
+        android:padding="@dimen/dp_14"
         android:text="@string/ok"
         android:textAllCaps="false"
         android:textColor="@color/snow_white" />
