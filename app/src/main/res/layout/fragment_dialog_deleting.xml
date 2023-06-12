@@ -27,12 +27,13 @@
         android:textColor="@color/sapphire"
         android:textSize="14sp" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button_gotit"
         android:layout_width="304dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/background_button_dialog"
+        android:layout_marginTop="25dp"
+        android:padding="@dimen/dp_14"
         android:text="@string/gotit"
         android:textAllCaps="false"
         android:textColor="@color/snow_white" />

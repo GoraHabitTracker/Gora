@@ -22,6 +22,7 @@
         android:text="@string/be_creator"
         android:textColor="@color/sapphire"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/text_view_welcome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,16 +46,16 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        android:text="@string/go"
         android:padding="@dimen/dp_14"
+        android:text="@string/go"
         android:textAllCaps="false"
         android:textColor="@color/snow_white"
         android:textSize="16sp"
         app:backgroundTint="@color/blue_fcbk"
-        app:shapeAppearance="@style/roundedEmoji"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_view_welcome" />
+        app:layout_constraintTop_toBottomOf="@id/text_view_welcome"
+        app:shapeAppearance="@style/roundedEmoji" />
 </androidx.constraintlayout.widget.ConstraintLayout>

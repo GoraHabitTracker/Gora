@@ -33,6 +33,11 @@ class HabitViewHolder(
                     frameDone.isVisible = false
                     frameSkip.isVisible = false
                     frameInactive.isVisible = false
+                    root.setCardBackgroundColor(ContextCompat.getColor(context, R.color.white))
+                    root.setCardForegroundColor(ColorStateList.valueOf(context.getColor(R.color.transparent)))
+                    tvNameHabit.setCompoundDrawablesWithIntrinsicBounds(
+                        null,null,ContextCompat.getDrawable(context, R.drawable.icon_question_periwinkle),null
+                    )
                 }
                 Priority.Done.value -> {
                     frameChoice.isVisible = false
@@ -40,17 +45,10 @@ class HabitViewHolder(
                     frameSkip.isVisible = false
                     frameInactive.isVisible = false
                     imageView.foreground = null
+                    root.setCardBackgroundColor(ContextCompat.getColor(context, R.color.pastel_green))
+                    root.setCardForegroundColor(ColorStateList.valueOf(context.getColor(R.color.transparent)))
                     tvNameHabit.setCompoundDrawablesWithIntrinsicBounds(
-                        null,
-                        null,
-                        ContextCompat.getDrawable(context, R.drawable.icon_question_white),
-                        null
-                    )
-                    root.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            context,
-                            R.color.pastel_green
-                        )
+                        null,null,ContextCompat.getDrawable(context, R.drawable.icon_question_white),null
                     )
                 }
                 Priority.Skip.value -> {
@@ -58,19 +56,22 @@ class HabitViewHolder(
                     frameDone.isVisible = false
                     frameSkip.isVisible = true
                     frameInactive.isVisible = false
-                    tvNameHabit.setCompoundDrawablesWithIntrinsicBounds(
-                        null,
-                        null,
-                        ContextCompat.getDrawable(context, R.drawable.icon_question_blue_fcbk),
-                        null
-                    )
+                    root.setCardBackgroundColor(ContextCompat.getColor(context, R.color.white))
                     root.setCardForegroundColor(csl)
+                    tvNameHabit.setCompoundDrawablesWithIntrinsicBounds(
+                        null,null,ContextCompat.getDrawable(context, R.drawable.icon_question_blue_fcbk),null
+                    )
                 }
                 Priority.Inactive.value -> {
                     frameChoice.isVisible = false
                     frameDone.isVisible = false
                     frameSkip.isVisible = false
                     frameInactive.isVisible = true
+                    root.setCardBackgroundColor(ContextCompat.getColor(context, R.color.white))
+                    root.setCardForegroundColor(ColorStateList.valueOf(context.getColor(R.color.transparent)))
+                    tvNameHabit.setCompoundDrawablesWithIntrinsicBounds(
+                        null,null,ContextCompat.getDrawable(context, R.drawable.icon_question_periwinkle),null
+                    )
                 }
             }
 

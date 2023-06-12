@@ -50,7 +50,7 @@ class NewHabitViewModel(
 
     fun onChangeDays(weekList: WeekList) {
         isSetDays = weekList.monday || weekList.thursday || weekList.wednesday ||
-                weekList.tuesday || weekList.friday || weekList.saturday
+                weekList.tuesday || weekList.friday || weekList.saturday || weekList.sunday
         _helperFlow.value++
     }
 }
