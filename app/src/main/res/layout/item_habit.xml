@@ -35,7 +35,6 @@
             android:gravity="center_vertical"
             android:textColor="@color/sapphire"
             android:textSize="18sp"
-            app:drawableEndCompat="@drawable/icon_question_periwinkle"
             tools:text="Название привычки" />
 
         <LinearLayout
@@ -43,8 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            android:visibility="gone">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/button_skip"
@@ -97,7 +95,6 @@
             android:text="@string/done_cancel"
             android:textColor="@color/sapphire"
             android:textSize="12sp"
-            android:visibility="gone"
             app:drawableStartCompat="@drawable/icon_check_white"
             tools:backgroundTint="@color/pastel_green" />
 
@@ -118,7 +115,6 @@
             android:text="@string/skip_cancel"
             android:textColor="@color/sapphire"
             android:textSize="12sp"
-            android:visibility="gone"
             app:drawableStartCompat="@drawable/icon_x_blue_fcbk" />
 
         <TextView
@@ -138,7 +134,6 @@
             android:text="@string/habit_inactive"
             android:textColor="@color/sapphire"
             android:textSize="12sp"
-            android:visibility="gone"
             app:drawableStartCompat="@drawable/icon_peace__hand" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

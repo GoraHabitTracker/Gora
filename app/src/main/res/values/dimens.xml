@@ -9,4 +9,6 @@
     <dimen name="week_text_size">11sp</dimen>
     <dimen name="gap">5dp</dimen>
     <dimen name="side_icon_habit">64dp</dimen>
+    <dimen name="margin_horizontal_icon">2dp</dimen>
+    <dimen name="margin_vertical_icon">8dp</dimen>
 </resources>

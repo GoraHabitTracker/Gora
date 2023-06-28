@@ -34,6 +34,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="25dp"
         android:padding="@dimen/dp_14"
+        android:stateListAnimator="@null"
         android:text="@string/gotit"
         android:textAllCaps="false"
         android:textColor="@color/snow_white" />

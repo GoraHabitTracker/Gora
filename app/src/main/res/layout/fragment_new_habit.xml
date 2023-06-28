@@ -23,7 +23,8 @@
             android:layout_gravity="center_vertical"
             android:text="@string/new_habit"
             android:textColor="@color/sapphire"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textStyle="bold" />
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
@@ -44,7 +45,7 @@
                 android:layout_marginStart="12dp"
                 android:text="@string/name_habit"
                 android:textColor="@color/sapphire"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/container_title"
@@ -75,116 +76,154 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
+                android:layout_marginHorizontal="12dp"
                 android:text="@string/icon_choice_text"
                 android:textColor="@color/sapphire"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
-            <HorizontalScrollView
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/grid"
                 android:layout_width="match_parent"
-                android:layout_marginHorizontal="4dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                <GridLayout
-                    android:id="@+id/grid"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:columnCount="5"
-                    android:overScrollMode="always"
-                    android:orientation="vertical"
-                    android:rowCount="2">
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_1"
+                    android:layout_width="@dimen/side_icon_habit"
+                    android:layout_height="@dimen/side_icon_habit"
+                    android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
+                    android:layout_marginVertical="@dimen/margin_vertical_icon"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toTopOf="@id/emoji_6"
+                    app:layout_constraintEnd_toStartOf="@id/emoji_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:srcCompat="@drawable/icon_newhabit_water" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_1"
-                        android:layout_width="@dimen/side_icon_habit"
-                        android:layout_height="@dimen/side_icon_habit"
-                        android:layout_margin="@dimen/margin_item_grid"
-                        android:layout_marginBottom="8dp"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji"
-                        app:srcCompat="@drawable/icon_newhabit_water" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_2"
+                    android:layout_width="@dimen/side_icon_habit"
+                    android:layout_height="@dimen/side_icon_habit"
+                    android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
+                    android:layout_marginVertical="@dimen/margin_vertical_icon"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toStartOf="@id/emoji_3"
+                    app:layout_constraintStart_toEndOf="@+id/emoji_1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:srcCompat="@drawable/icon_newhabit_plant" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_2"
-                        android:layout_width="@dimen/side_icon_habit"
-                        android:layout_height="@dimen/side_icon_habit"
-                        android:layout_margin="@dimen/margin_item_grid"
-                        android:layout_marginTop="8dp"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji"
-                        app:srcCompat="@drawable/icon_newhabit_plant" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_3"
+                    android:layout_width="@dimen/side_icon_habit"
+                    android:layout_height="@dimen/side_icon_habit"
+                    android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
+                    android:layout_marginVertical="@dimen/margin_vertical_icon"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toStartOf="@id/emoji_4"
+                    app:layout_constraintStart_toEndOf="@+id/emoji_2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:srcCompat="@drawable/icon_newhabit_meal" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_3"
-                        android:layout_width="@dimen/side_icon_habit"
-                        android:layout_height="@dimen/side_icon_habit"
-                        android:layout_margin="@dimen/margin_item_grid"
-                        android:layout_marginBottom="8dp"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji"
-                        app:srcCompat="@drawable/icon_newhabit_meal" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_4"
+                    android:layout_width="@dimen/side_icon_habit"
+                    android:layout_height="@dimen/side_icon_habit"
+                    android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
+                    android:layout_marginVertical="@dimen/margin_vertical_icon"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toStartOf="@id/emoji_5"
+                    app:layout_constraintStart_toEndOf="@+id/emoji_3"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:srcCompat="@drawable/icon_newhabit_sport" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_4"
-                        android:layout_width="@dimen/side_icon_habit"
-                        android:layout_height="@dimen/side_icon_habit"
-                        android:layout_margin="@dimen/margin_item_grid"
-                        android:layout_marginTop="8dp"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji"
-                        app:srcCompat="@drawable/icon_newhabit_sport" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_5"
+                    android:layout_width="@dimen/side_icon_habit"
+                    android:layout_height="@dimen/side_icon_habit"
+                    android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
+                    android:layout_marginVertical="@dimen/margin_vertical_icon"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toTopOf="@id/emoji_10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/emoji_4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:srcCompat="@drawable/icon_newhabit_pills" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_5"
-                        android:layout_width="@dimen/side_icon_habit"
-                        android:layout_height="@dimen/side_icon_habit"
-                        android:layout_margin="@dimen/margin_item_grid"
-                        android:layout_marginBottom="8dp"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji"
-                        app:srcCompat="@drawable/icon_newhabit_pills" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_6"
+                    android:layout_width="@dimen/side_icon_habit"
+                    android:layout_height="@dimen/side_icon_habit"
+                    android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
+                    android:layout_marginVertical="@dimen/margin_vertical_icon"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/emoji_7"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/emoji_1"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:srcCompat="@drawable/icon_newhabit_creative" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_6"
-                        android:layout_width="@dimen/side_icon_habit"
-                        android:layout_height="@dimen/side_icon_habit"
-                        android:layout_margin="@dimen/margin_item_grid"
-                        android:layout_marginTop="8dp"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji"
-                        app:srcCompat="@drawable/icon_newhabit_creative" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_7"
+                    android:layout_width="@dimen/side_icon_habit"
+                    android:layout_height="@dimen/side_icon_habit"
+                    android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
+                    android:layout_marginVertical="@dimen/margin_vertical_icon"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/emoji_8"
+                    app:layout_constraintStart_toEndOf="@id/emoji_6"
+                    app:layout_constraintTop_toBottomOf="@id/emoji_2"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:srcCompat="@drawable/icon_newhabit_pet" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_7"
-                        android:layout_width="@dimen/side_icon_habit"
-                        android:layout_height="@dimen/side_icon_habit"
-                        android:layout_margin="@dimen/margin_item_grid"
-                        android:layout_marginBottom="8dp"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji"
-                        app:srcCompat="@drawable/icon_newhabit_pet" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_8"
+                    android:layout_width="@dimen/side_icon_habit"
+                    android:layout_height="@dimen/side_icon_habit"
+                    android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
+                    android:layout_marginVertical="@dimen/margin_vertical_icon"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/emoji_9"
+                    app:layout_constraintStart_toEndOf="@id/emoji_7"
+                    app:layout_constraintTop_toBottomOf="@id/emoji_3"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:srcCompat="@drawable/icon_newhabit_cleaning" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_8"
-                        android:layout_width="@dimen/side_icon_habit"
-                        android:layout_height="@dimen/side_icon_habit"
-                        android:layout_margin="@dimen/margin_item_grid"
-                        android:layout_marginTop="8dp"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji"
-                        app:srcCompat="@drawable/icon_newhabit_cleaning" />
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_9"
+                    android:layout_width="@dimen/side_icon_habit"
+                    android:layout_height="@dimen/side_icon_habit"
+                    android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
+                    android:layout_marginVertical="@dimen/margin_vertical_icon"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/emoji_10"
+                    app:layout_constraintStart_toEndOf="@id/emoji_8"
+                    app:layout_constraintTop_toBottomOf="@id/emoji_4"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:srcCompat="@drawable/icon_newhabit_walk" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_9"
-                        android:layout_width="@dimen/side_icon_habit"
-                        android:layout_height="@dimen/side_icon_habit"
-                        android:layout_margin="@dimen/margin_item_grid"
-                        android:layout_marginBottom="8dp"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji"
-                        app:srcCompat="@drawable/icon_newhabit_walk" />
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/emoji_10"
-                        android:layout_width="@dimen/side_icon_habit"
-                        android:layout_height="@dimen/side_icon_habit"
-                        android:layout_margin="@dimen/margin_item_grid"
-                        android:layout_marginTop="8dp"
-                        app:shapeAppearanceOverlay="@style/roundedEmoji"
-                        app:srcCompat="@drawable/icon_newhabit_book" />
-                </GridLayout>
-            </HorizontalScrollView>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/emoji_10"
+                    android:layout_width="@dimen/side_icon_habit"
+                    android:layout_height="@dimen/side_icon_habit"
+                    android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
+                    android:layout_marginVertical="@dimen/margin_vertical_icon"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/emoji_9"
+                    app:layout_constraintTop_toBottomOf="@id/emoji_5"
+                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:srcCompat="@drawable/icon_newhabit_book" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -194,7 +233,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="@string/day_of_week_choice_text"
                 android:textColor="@color/sapphire"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -317,6 +356,7 @@
                     android:layout_gravity="bottom"
                     android:layout_margin="20dp"
                     android:padding="@dimen/dp_14"
+                    android:stateListAnimator="@null"
                     android:text="@string/add_habit"
                     android:textAllCaps="false"
                     android:textSize="16sp"

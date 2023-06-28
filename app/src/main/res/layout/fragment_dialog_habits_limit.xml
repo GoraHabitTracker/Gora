@@ -26,6 +26,7 @@
         android:layout_gravity="center_horizontal"
         android:background="@drawable/background_button_dialog"
         android:text="@string/gotit"
+        android:stateListAnimator="@null"
         android:textAllCaps="false"
         android:textColor="@color/snow_white" />
 </LinearLayout>

@@ -51,10 +51,10 @@
         android:textAllCaps="false"
         android:textColor="@color/snow_white"
         android:textSize="16sp"
+        android:stateListAnimator="@null"
         app:backgroundTint="@color/blue_fcbk"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_view_welcome"
         app:shapeAppearance="@style/roundedEmoji" />
