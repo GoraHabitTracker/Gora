@@ -150,7 +150,7 @@
                 android:textColor="@color/sapphire"
                 android:textSize="12sp"
                 android:visibility="gone"
-                app:drawableStartCompat="@drawable/icon_peace__hand" />
+                app:drawableStartCompat="@drawable/icon_peace_hand" />
 
         </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

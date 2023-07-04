@@ -1,32 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/dialog_xml"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
     android:orientation="vertical"
-    android:paddingTop="16dp"
-    android:paddingBottom="16dp">
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="10dp">
 
     <TextView
         android:id="@+id/tv_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="20dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:text="@string/habit_limit_10"
         android:textColor="@color/sapphire"
         android:textSize="14sp" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/button_i_see"
-        android:layout_width="304dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/background_button_dialog"
-        android:text="@string/gotit"
         android:stateListAnimator="@null"
+        android:padding="@dimen/padding_button_alertdialog"
+        android:text="@string/gotit"
         android:textAllCaps="false"
-        android:textColor="@color/snow_white" />
+        android:textColor="@color/snow_white"
+        android:textSize="12sp"
+        app:cornerRadius="8dp" />
 </LinearLayout>

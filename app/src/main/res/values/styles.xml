@@ -3,13 +3,26 @@
 
     <style name="ListCardViewStyle" parent="Theme.AppCompat.Light">
         <item name="cardCornerRadius">16dp</item>
-        <item name="cardElevation">2dp</item>
-        <item name="cardMaxElevation">4dp</item>
+        <item name="android:outlineSpotShadowColor">@color/shadow_of_icon</item>
+        <item name="cardElevation">8dp</item>
     </style>
 
     <style name="roundedImageViewRounded">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
+<!--        <item name="color">@color/white</item>-->
+<!--        <item name="backgroundTint">@color/white</item>-->
+<!--        <item name="background">@color/white</item>-->
+<!--        <item name="colorBackgroundFloating">@color/white</item>-->
+<!--        <item name="colorOnBackground">@color/white</item>-->
+<!--        <item name="colorPrimary">@color/white</item>-->
+<!--        <item name="android:color">@color/white</item>-->
+<!--        <item name="android:colorBackground">@color/white</item>-->
+<!--        <item name="boxBackgroundColor">@color/white</item>-->
+<!--        <item name="customColorValue">@color/white</item>-->
+<!--        <item name="customColorDrawableValue">@color/white</item>-->
+<!--        <item name="android:windowBackground">@drawable/style_alert_dialog</item>-->
+
     </style>
 
     <style name="roundedEmoji">
@@ -19,6 +32,29 @@
 
     <style name="AlertDialogStyle" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:windowBackground">@drawable/style_alert_dialog</item>
+        <item name="android:backgroundDimAmount">0.2</item>
+<!--        backgroundDimAmount - прозрачность затемнения-->
+
+<!--        ........................................................................................  -->
+
+<!--        <item name="colorPrimaryFixedDim">@color/transparent</item>-->
+<!--        <item name="colorSurfaceDim">@color/transparent</item>-->
+<!--        <item name="android:backgroundDimAmount">@color/white</item>-->
+<!--        <item name="android:colorForeground">@color/white</item>-->
+<!--        <item name="android:colorAccent">@color/pastel_red</item>-->
+<!--        <item name="android:colorBackground">@color/pastel_red</item>-->
+<!--        <item name="android:colorMode">@color/pastel_red</item>-->
+<!--        <item name="android:backdropColor">@color/pastel_red</item>-->
+<!--        <item name="android:effectColor">@color/pastel_red</item>-->
+<!--        <item name="android:outlineAmbientShadowColor">@color/pastel_red</item>-->
+<!--        <item name="android:colorPrimaryDark">@color/pastel_red</item>-->
+<!--        <item name="android:colorPrimary">@color/pastel_red</item>-->
+<!--        <item name="android:colorSecondary">@color/pastel_red</item>-->
+<!--        <item name="android:shadowColor">@color/pastel_red</item>-->
+<!--        <item name="android:endColor">@color/pastel_red</item>-->
+<!--        <item name="android:amPmBackgroundColor">@color/pastel_red</item>-->
+<!--        <item name="android:outlineSpotShadowColor">@color/pastel_red</item>-->
+<!--        <item name="android:windowSplashScreenIconBackgroundColor">@color/pastel_red</item>-->
     </style>
 
     <style name="roundedWeek">

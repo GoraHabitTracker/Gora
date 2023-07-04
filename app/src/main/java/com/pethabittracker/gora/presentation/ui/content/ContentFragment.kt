@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
@@ -50,23 +51,19 @@ class ContentFragment : Fragment() {
             viewModel.countHabitFlow
                 .onEach {
                     if (it < allowedCountOfHabit) {
-                        fab.setImageResource(R.drawable.icon_button_add)
-                        fab.setOnClickListener {
-                            findNavController().navigate(NavigationDirections.actionGlobalFab())
+                        fab.apply {
+                            foreground = ResourcesCompat.getDrawable(resources,R.drawable.icon_button_add, null)
+                            backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.periwinkle)
+                            setOnClickListener {
+                                findNavController().navigate(NavigationDirections.actionGlobalFab())
+                            }
                         }
                     } else {
                         fab.apply {
-                            setImageResource(R.drawable.icon_button_add_negative)
-                            setColorFilter(R.color.periwinkle)
-                            setBackgroundColor(resources.getColor(R.color.cross_background, null))
+                            foreground = ResourcesCompat.getDrawable(resources,R.drawable.icon_button_add_negative, null)
+                            backgroundTintList = ContextCompat.getColorStateList(context, R.color.cross_background)
                             setOnClickListener {
                                 showAlertDialog()
-                                val toast = Toast.makeText(
-                                    context,
-                                    R.string.limit_habit,
-                                    Toast.LENGTH_SHORT
-                                )
-                                toast.show()
                             }
                         }
                     }

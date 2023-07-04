@@ -13,7 +13,7 @@
     <string name="gotit">Понятно</string>
     <string name="delete_swipe_left">Чтобы удалить привычку, свайпните влево \nпо карточке привычки</string>
     <string name="new_habit">Создать новую привычку</string>
-    <string name="name_habit">Название привычки</string>
+    <string name="name_habit">Название</string>
     <string name="icon_choice_text">Выберите иконку привычки</string>
     <string name="day_of_week_choice_text">Повторять по дням недели</string>
     <string name="monday">Пн</string>

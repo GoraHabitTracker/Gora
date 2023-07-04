@@ -30,7 +30,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:paddingHorizontal="12dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,7 +43,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="4dp"
                 android:text="@string/name_habit"
                 android:textColor="@color/sapphire"
                 android:textSize="14sp" />
@@ -52,7 +54,6 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:hint="@string/number_of_symbol"
                 android:imeOptions="actionDone"
                 android:textColorHint="@color/periwinkle"
@@ -65,18 +66,19 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_text_title"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:background="@drawable/background_button_skip"
                     android:digits="@string/support_symbols"
                     android:maxLength="20"
                     android:text=""
-                    android:textColor="@color/sapphire" />
+                    android:textColor="@color/sapphire"
+                    android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="12dp"
                 android:text="@string/icon_choice_text"
                 android:textColor="@color/sapphire"
                 android:textSize="14sp" />
@@ -84,18 +86,17 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/grid"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="146dp">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/emoji_1"
                     android:layout_width="@dimen/side_icon_habit"
                     android:layout_height="@dimen/side_icon_habit"
-                    android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
                     android:layout_marginVertical="@dimen/margin_vertical_icon"
+                    android:layout_marginEnd="@dimen/margin_horizontal_icon"
                     android:background="@color/white"
-                    app:layout_constraintBottom_toTopOf="@id/emoji_6"
-                    app:layout_constraintEnd_toStartOf="@id/emoji_2"
+                    android:elevation="8dp"
+                    android:outlineSpotShadowColor="@color/shadow_of_icon"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:shapeAppearanceOverlay="@style/roundedEmoji"
@@ -108,6 +109,8 @@
                     android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
                     android:layout_marginVertical="@dimen/margin_vertical_icon"
                     android:background="@color/white"
+                    android:elevation="8dp"
+                    android:outlineSpotShadowColor="@color/shadow_of_icon"
                     app:layout_constraintEnd_toStartOf="@id/emoji_3"
                     app:layout_constraintStart_toEndOf="@+id/emoji_1"
                     app:layout_constraintTop_toTopOf="parent"
@@ -121,6 +124,8 @@
                     android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
                     android:layout_marginVertical="@dimen/margin_vertical_icon"
                     android:background="@color/white"
+                    android:elevation="8dp"
+                    android:outlineSpotShadowColor="@color/shadow_of_icon"
                     app:layout_constraintEnd_toStartOf="@id/emoji_4"
                     app:layout_constraintStart_toEndOf="@+id/emoji_2"
                     app:layout_constraintTop_toTopOf="parent"
@@ -134,6 +139,8 @@
                     android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
                     android:layout_marginVertical="@dimen/margin_vertical_icon"
                     android:background="@color/white"
+                    android:elevation="8dp"
+                    android:outlineSpotShadowColor="@color/shadow_of_icon"
                     app:layout_constraintEnd_toStartOf="@id/emoji_5"
                     app:layout_constraintStart_toEndOf="@+id/emoji_3"
                     app:layout_constraintTop_toTopOf="parent"
@@ -144,12 +151,12 @@
                     android:id="@+id/emoji_5"
                     android:layout_width="@dimen/side_icon_habit"
                     android:layout_height="@dimen/side_icon_habit"
-                    android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
                     android:layout_marginVertical="@dimen/margin_vertical_icon"
+                    android:layout_marginStart="@dimen/margin_horizontal_icon"
                     android:background="@color/white"
-                    app:layout_constraintBottom_toTopOf="@id/emoji_10"
+                    android:elevation="8dp"
+                    android:outlineSpotShadowColor="@color/shadow_of_icon"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/emoji_4"
                     app:layout_constraintTop_toTopOf="parent"
                     app:shapeAppearanceOverlay="@style/roundedEmoji"
                     app:srcCompat="@drawable/icon_newhabit_pills" />
@@ -158,13 +165,13 @@
                     android:id="@+id/emoji_6"
                     android:layout_width="@dimen/side_icon_habit"
                     android:layout_height="@dimen/side_icon_habit"
-                    android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
                     android:layout_marginVertical="@dimen/margin_vertical_icon"
+                    android:layout_marginEnd="@dimen/margin_horizontal_icon"
                     android:background="@color/white"
+                    android:elevation="8dp"
+                    android:outlineSpotShadowColor="@color/shadow_of_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/emoji_7"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/emoji_1"
                     app:shapeAppearanceOverlay="@style/roundedEmoji"
                     app:srcCompat="@drawable/icon_newhabit_creative" />
 
@@ -175,10 +182,11 @@
                     android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
                     android:layout_marginVertical="@dimen/margin_vertical_icon"
                     android:background="@color/white"
+                    android:elevation="8dp"
+                    android:outlineSpotShadowColor="@color/shadow_of_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/emoji_8"
                     app:layout_constraintStart_toEndOf="@id/emoji_6"
-                    app:layout_constraintTop_toBottomOf="@id/emoji_2"
                     app:shapeAppearanceOverlay="@style/roundedEmoji"
                     app:srcCompat="@drawable/icon_newhabit_pet" />
 
@@ -189,10 +197,11 @@
                     android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
                     android:layout_marginVertical="@dimen/margin_vertical_icon"
                     android:background="@color/white"
+                    android:elevation="8dp"
+                    android:outlineSpotShadowColor="@color/shadow_of_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/emoji_9"
                     app:layout_constraintStart_toEndOf="@id/emoji_7"
-                    app:layout_constraintTop_toBottomOf="@id/emoji_3"
                     app:shapeAppearanceOverlay="@style/roundedEmoji"
                     app:srcCompat="@drawable/icon_newhabit_cleaning" />
 
@@ -203,10 +212,11 @@
                     android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
                     android:layout_marginVertical="@dimen/margin_vertical_icon"
                     android:background="@color/white"
+                    android:elevation="8dp"
+                    android:outlineSpotShadowColor="@color/shadow_of_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/emoji_10"
                     app:layout_constraintStart_toEndOf="@id/emoji_8"
-                    app:layout_constraintTop_toBottomOf="@id/emoji_4"
                     app:shapeAppearanceOverlay="@style/roundedEmoji"
                     app:srcCompat="@drawable/icon_newhabit_walk" />
 
@@ -214,22 +224,22 @@
                     android:id="@+id/emoji_10"
                     android:layout_width="@dimen/side_icon_habit"
                     android:layout_height="@dimen/side_icon_habit"
-                    android:layout_marginHorizontal="@dimen/margin_horizontal_icon"
                     android:layout_marginVertical="@dimen/margin_vertical_icon"
+                    android:layout_marginStart="@dimen/margin_horizontal_icon"
                     android:background="@color/white"
+                    android:elevation="8dp"
+                    android:outlineSpotShadowColor="@color/shadow_of_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/emoji_9"
-                    app:layout_constraintTop_toBottomOf="@id/emoji_5"
                     app:shapeAppearanceOverlay="@style/roundedEmoji"
                     app:srcCompat="@drawable/icon_newhabit_book" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
+                android:id="@+id/text_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="12dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/day_of_week_choice_text"
                 android:textColor="@color/sapphire"
@@ -238,7 +248,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="12dp"
                 android:background="@drawable/background_button_skip"
                 android:orientation="horizontal">
 
@@ -344,9 +353,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center_horizontal"
-                    android:layout_marginBottom="85dp"
+                    android:layout_marginBottom="86dp"
                     android:textColor="@color/pastel_red"
                     android:textSize="14sp"
+                    android:textStyle="bold"
                     tools:text="Выберите иконку привычки" />
 
                 <com.google.android.material.button.MaterialButton
@@ -354,12 +364,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:layout_margin="20dp"
-                    android:padding="@dimen/dp_14"
+                    android:layout_marginVertical="20dp"
+                    android:padding="@dimen/padding_button_default"
                     android:stateListAnimator="@null"
                     android:text="@string/add_habit"
                     android:textAllCaps="false"
                     android:textSize="16sp"
+                    android:textStyle="bold"
                     app:backgroundTint="@color/periwinkle"
                     app:shapeAppearance="@style/roundedEmoji" />
             </FrameLayout>

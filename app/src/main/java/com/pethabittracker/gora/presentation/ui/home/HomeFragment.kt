@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pethabittracker.gora.R
 import com.pethabittracker.gora.data.sharedprefs.PrefsManager
+import com.pethabittracker.gora.data.utils.getCurrentDate
 import com.pethabittracker.gora.databinding.FragmentHomeBinding
 import com.pethabittracker.gora.domain.models.Habit
 import com.pethabittracker.gora.presentation.extensions.addVerticalGaps
@@ -95,13 +96,18 @@ class HomeFragment : Fragment() {
                     delay(300)
                     binding.recyclerView.isVisible = true
                     binding.photo.isGone = true
-                    binding.arrowContainer.isGone = true
+                    binding.ivArrow.isGone = true
+                    binding.todaysDateText.text = getCurrentDate()
+                    binding.todaysDateText.isGone = false
+                    binding.tvClickButton.isGone = true
                 } else {
                     //для плавности замены слоёв
                     delay(300)
                     binding.recyclerView.isGone = true
                     binding.photo.isVisible = true
-                    binding.arrowContainer.isVisible = true
+                    binding.ivArrow.isVisible = true
+                    binding.todaysDateText.isGone = true
+                    binding.tvClickButton.isGone = false
                 }
 
                 // AlertDialog
@@ -256,6 +262,22 @@ class HomeFragment : Fragment() {
         viewAlertDialogInfoDetailed.findViewById<Button>(R.id.button_ok).setOnClickListener {
             alertDialog.dismiss()
         }
+
+//        val builder = AlertDialog.Builder(requireContext())
+//        builder.setTitle("Заголовок")
+//            .setMessage("Сообщение")
+//            .setPositiveButton("OK", null)
+//
+//        val alertDialog2 = builder.create()
+//
+//        val window = alertDialog2.window
+//        if (window != null) {
+//            // Установка фона и прозрачности
+//            window.setBackgroundDrawableResource(R.drawable.style_alert_dialog)
+//            window.setDimAmount(0.3f) // Значение 0.5 обозначает 50% прозрачности, можете настроить по своему усмотрению
+//        }
+//
+//        alertDialog2.show()
     }
 
     private fun drawAlertDetail(viewInfo: View, iconId: Int) {

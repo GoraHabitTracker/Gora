@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/dialog_xml"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
     android:orientation="vertical"
-    android:paddingTop="16dp"
-    android:paddingBottom="16dp">
+    android:paddingVertical="10dp"
+    android:paddingHorizontal="16dp">
 
     <ImageView
         android:id="@+id/iv_hand"
@@ -21,21 +21,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="14dp"
         android:gravity="center"
         android:text="@string/delete_swipe_left"
         android:textColor="@color/sapphire"
         android:textSize="14sp" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/button_gotit"
-        android:layout_width="304dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="25dp"
-        android:padding="@dimen/dp_14"
         android:stateListAnimator="@null"
         android:text="@string/gotit"
         android:textAllCaps="false"
-        android:textColor="@color/snow_white" />
+        android:textColor="@color/snow_white"
+        android:textSize="11sp"
+        app:cornerRadius="8dp" />
 </LinearLayout>

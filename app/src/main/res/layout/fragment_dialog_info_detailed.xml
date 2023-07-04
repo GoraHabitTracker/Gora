@@ -3,12 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dialog_xml"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:paddingBottom="16dp">
+    android:paddingHorizontal="16dp"
+    android:paddingTop="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,9 +17,11 @@
 
         <ImageView
             android:id="@+id/image_habit"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_tv_and_image"
             android:layout_gravity="center"
+            tools:src="@drawable/icon_newhabit_water"
             android:foreground="@drawable/foreground_item_habit_ring" />
 
         <TextView
@@ -37,6 +38,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/margin_dialog_days"
         android:orientation="horizontal">
 
         <TextView
@@ -44,7 +46,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/padding_tv_and_image"
             android:gravity="center_vertical"
             android:text="@string/monday_full_ru"
             android:textColor="@color/sapphire"
@@ -56,7 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/padding_tv_and_image"
             android:gravity="center_vertical"
             android:text="@string/friday_full_ru"
             android:textColor="@color/sapphire"
@@ -67,6 +69,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/margin_dialog_days"
         android:orientation="horizontal">
 
         <TextView
@@ -74,7 +77,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/padding_tv_and_image"
             android:gravity="center_vertical"
             android:text="@string/tuesday_full_ru"
             android:textColor="@color/sapphire"
@@ -86,7 +89,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/padding_tv_and_image"
             android:gravity="center_vertical"
             android:text="@string/saturday_full_ru"
             android:textColor="@color/sapphire"
@@ -97,6 +100,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/margin_dialog_days"
         android:orientation="horizontal">
 
         <TextView
@@ -104,7 +108,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/padding_tv_and_image"
             android:gravity="center_vertical"
             android:text="@string/wednesday_full_ru"
             android:textColor="@color/sapphire"
@@ -116,7 +120,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/padding_tv_and_image"
             android:gravity="center_vertical"
             android:text="@string/sunday_full_ru"
             android:textColor="@color/sapphire"
@@ -128,22 +132,25 @@
         android:id="@+id/progress_thursday_t_v"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawablePadding="10dp"
+        android:layout_marginVertical="@dimen/margin_dialog_days"
+        android:drawablePadding="@dimen/padding_tv_and_image"
         android:gravity="center_vertical"
         android:text="@string/thursday_full_ru"
         android:textColor="@color/sapphire"
         android:textSize="14sp"
         app:drawableLeftCompat="@drawable/icon_x_blue_fcbk" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/button_ok"
-        android:layout_width="304dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="25dp"
-        android:padding="@dimen/dp_14"
+        android:layout_marginVertical="10dp"
+        android:padding="@dimen/padding_button_alertdialog"
         android:stateListAnimator="@null"
         android:text="@string/ok"
         android:textAllCaps="false"
-        android:textColor="@color/snow_white" />
+        android:textColor="@color/snow_white"
+        android:textSize="11sp"
+        app:cornerRadius="8dp" />
 </LinearLayout>

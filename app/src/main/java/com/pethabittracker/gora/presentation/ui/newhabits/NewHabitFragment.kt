@@ -182,9 +182,12 @@ class NewHabitFragment : Fragment() {
                         requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     imm.hideSoftInputFromWindow(view.windowToken, 0)
                 }
-//                if (hasFocus){
-//                    containerTitle.hintTextColor = ContextCompat.getColorStateList(requireContext(), R.color.transparent)
-//                }
+                if (hasFocus){
+                    containerTitle.hint = null
+                }
+                if (!hasFocus && editTextTitle.text.toString() == emptyString) {
+                    containerTitle.hint = resources.getString(R.string.number_of_symbol)
+                }
             }
 
             // активируем (делаем кликабельной) кнопку "Добавить привычку"
@@ -195,12 +198,14 @@ class NewHabitFragment : Fragment() {
                 .filter { it }
                 .onEach {
                     buttonSave.setBackgrndColor(R.color.blue_fcbk)
+                    alarmTv.text = emptyString
                 }
                 .launchIn(lifecycleScope)
 
             editTextTitle.doOnTextChanged { text, _, _, _ ->
                 if (text.toString() == singleSpace) {
                     editTextTitle.setText(emptyString)
+                    alarmTv
                 }
                 if (text?.length != 0) {
                     requireNotNull(text)
@@ -220,6 +225,7 @@ class NewHabitFragment : Fragment() {
             containerTitle.setEndIconOnClickListener {
                 editTextTitle.setText(emptyString)
                 viewModel.onChangeTitle(false)
+                editTextTitle.requestFocus()
             }
         }
     }

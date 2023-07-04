@@ -29,8 +29,8 @@
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginEnd="16dp"
             android:background="@color/white"
+            android:paddingTop="14dp"
             app:elevation="0dp"
             app:itemIconTint="@color/blue_fcbk"
             app:menu="@menu/menu_bottom" />
@@ -38,15 +38,15 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:foregroundGravity="center"
         android:contentDescription="Q"
-        app:backgroundTint="@color/periwinkle"
         app:elevation="0dp"
-        app:layout_anchor="@id/bottom_app_bar"
-        app:srcCompat="@drawable/icon_button_add2"
-        app:tint="@color/blue_fcbk" />
+        app:layout_anchor="@id/bottom_app_bar"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <!--    app:elevation="0dp"                     - убирает тени -->
+
+    <!--    android:stateListAnimator="@null"       - убирает тени с кнопока -->
+    <!--    app:elevation="0dp"                     - убирает тени в нижней навигации-->
     <!--    app:itemIconTint="@color/blue_fcbk"     - устанавливает цвет иконкам -->

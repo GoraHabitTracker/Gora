@@ -3,16 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="80dp"
     android:background="@color/sea_foam">
 
     <ImageView
         android:id="@+id/iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/text_view_welcome"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_be_creator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/image_welcome_man" />
 
     <TextView
@@ -22,40 +23,40 @@
         android:text="@string/be_creator"
         android:textColor="@color/sapphire"
         android:textSize="20sp"
+        android:layout_marginBottom="14dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/text_view_welcome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/text_view_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginBottom="32dp"
         android:text="@string/welcome_text"
+        android:lineSpacingExtra="2sp"
         android:textColor="@color/sapphire"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_view_be_creator" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/button"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        android:padding="@dimen/dp_14"
+        android:padding="@dimen/padding_button_default"
         android:text="@string/go"
+        android:textStyle="bold"
         android:textAllCaps="false"
         android:textColor="@color/snow_white"
         android:textSize="16sp"
         android:stateListAnimator="@null"
-        app:backgroundTint="@color/blue_fcbk"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_view_welcome"
         app:shapeAppearance="@style/roundedEmoji" />
 </androidx.constraintlayout.widget.ConstraintLayout>
