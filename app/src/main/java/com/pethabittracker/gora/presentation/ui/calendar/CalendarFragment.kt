@@ -176,6 +176,10 @@ class CalendarFragment : Fragment() {
             when {
                 selectedDates.contains(date) -> {
                     textView.setBackgroundColorRes(R.drawable.background_calendar_selected)
+                    if (date == today){
+                        textView.setBackgroundColorRes(R.drawable.background_calendar_selected_today)
+                        textView.setTextColorRes(R.color.snow_white)
+                    }
                 }
                 else -> {
                     textView.setTextColorRes(R.color.sapphire)

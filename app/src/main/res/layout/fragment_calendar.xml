@@ -9,31 +9,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/sea_foam"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="12dp">
 
-        <androidx.appcompat.widget.Toolbar
+        <TextView
             android:id="@+id/toolbar_home"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/sea_foam">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="@string/calendar"
-                android:textColor="@color/sapphire"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-        </androidx.appcompat.widget.Toolbar>
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="40dp"
+            android:background="@color/sea_foam"
+            android:fontFamily="@font/manrope_extrabold"
+            android:text="@string/calendar"
+            android:textColor="@color/sapphire"
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/todays_date_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginHorizontal="12dp"
             android:layout_marginVertical="16dp"
             android:text=""
             android:textColor="@color/sapphire"
@@ -41,12 +36,12 @@
             tools:text="Понедельник, 1 февраля 2023" />
 
         <LinearLayout
+            style="@style/CalendarViewStyle"
             android:layout_width="match_parent"
             android:layout_height="400dp"
-            android:layout_marginHorizontal="12dp"
-            android:background="@drawable/roundstyle_image"
-            android:backgroundTint="@color/white"
-            android:orientation="vertical">
+            android:elevation="8dp"
+            android:orientation="vertical"
+            android:outlineSpotShadowColor="@color/shadow_of_icon">
 
             <TextView
                 android:id="@+id/month_text"
@@ -67,20 +62,19 @@
         </LinearLayout>
 
         <LinearLayout
+            style="@style/CalendarViewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
             android:layout_marginVertical="16dp"
-            android:background="@drawable/roundstyle_image"
-            android:backgroundTint="@color/white"
+            android:elevation="8dp"
             android:orientation="vertical"
+            android:outlineSpotShadowColor="@color/shadow_of_icon"
             android:padding="18dp">
 
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
                 android:text="@string/habits_done"
@@ -92,7 +86,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
+                android:layout_marginTop="8dp"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
                 android:text="@string/habits_not_done"

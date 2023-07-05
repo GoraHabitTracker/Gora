@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="46dp"
-        android:paddingBottom="18dp"
         android:fontFamily="@font/manrope_extrabold"
+        android:paddingBottom="18dp"
         android:text="@string/my_habit"
         android:textColor="@color/sapphire"
         android:textSize="22sp"
@@ -47,14 +47,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
+        android:lineSpacingExtra="2dp"
         android:text="@string/add_habit_text"
         android:textColor="@color/sapphire"
-        android:lineSpacingExtra="2dp"
-        android:visibility="gone"
         android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/iv_arrow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/iv_arrow"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/iv_arrow"
@@ -63,8 +63,8 @@
         android:layout_gravity="center_horizontal|bottom"
         android:paddingStart="104dp"
         android:paddingBottom="42dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/image_vector_arrow" />
@@ -88,14 +88,15 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:clipToPadding="false"
+        android:layout_marginBottom="14dp"
         android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/todays_date_text"
-        tools:layout_editor_absoluteX="12dp"
+        tools:itemCount="1"
         tools:listitem="@layout/item_habit" />
 </androidx.constraintlayout.widget.ConstraintLayout>
