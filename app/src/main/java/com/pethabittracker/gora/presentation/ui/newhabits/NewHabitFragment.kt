@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.isGone
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -61,40 +62,80 @@ class NewHabitFragment : Fragment() {
             val selectedDays =
                 WeekList(monday, thursday, wednesday, tuesday, friday, saturday, sunday)
 
+//            mondayBttn5.setOnClickListener {
+//                stick1111.isGone = mondayBttn5.isChecked
+//            }
+//            tuesdayBttn5.setOnClickListener {
+//                stick52.isGone = tuesdayBttn5.isChecked
+//                stick1111.isGone = tuesdayBttn5.isChecked
+//            }
+//            wednesdayBttn5.setOnClickListener {
+//                stick53.isGone = wednesdayBttn5.isChecked
+//                stick52.isGone = wednesdayBttn5.isChecked
+//            }
+//            thursdayBttn5.setOnClickListener {
+//                stick54.isGone = thursdayBttn5.isChecked
+//                stick53.isGone = thursdayBttn5.isChecked
+//            }
+//            fridayBttn5.setOnClickListener {
+//                stick55.isGone = fridayBttn5.isChecked
+//                stick54.isGone = fridayBttn5.isChecked
+//            }
+//            saturdayBttn5.setOnClickListener {
+//                stick56.isGone = saturdayBttn5.isChecked
+//                stick55.isGone = saturdayBttn5.isChecked
+//            }
+//            sundayBttn5.setOnClickListener {
+//                stick56.isGone = sundayBttn5.isChecked
+//            }
+
+
             mondayBttn.setOnClickListener {
                 selectedDays.monday = mondayBttn.isChecked
                 monday = mondayBttn.isChecked
                 viewModel.onChangeDays(selectedDays)
-            }
-            thursdayBttn.setOnClickListener {
-                selectedDays.thursday = thursdayBttn.isChecked
-                thursday = thursdayBttn.isChecked
-                viewModel.onChangeDays(selectedDays)
-            }
-            wednesdayBttn.setOnClickListener {
-                selectedDays.wednesday = wednesdayBttn.isChecked
-                wednesday = wednesdayBttn.isChecked
-                viewModel.onChangeDays(selectedDays)
+                stick1.isGone = monday || tuesday
             }
             tuesdayBttn.setOnClickListener {
                 selectedDays.tuesday = tuesdayBttn.isChecked
                 tuesday = tuesdayBttn.isChecked
                 viewModel.onChangeDays(selectedDays)
+                stick1.isGone = monday || tuesday
+                stick2.isGone = wednesday || tuesday
+            }
+            wednesdayBttn.setOnClickListener {
+                selectedDays.wednesday = wednesdayBttn.isChecked
+                wednesday = wednesdayBttn.isChecked
+                viewModel.onChangeDays(selectedDays)
+                stick2.isGone = wednesday || tuesday
+                stick3.isGone = wednesday || thursday
+            }
+            thursdayBttn.setOnClickListener {
+                selectedDays.thursday = thursdayBttn.isChecked
+                thursday = thursdayBttn.isChecked
+                viewModel.onChangeDays(selectedDays)
+                stick3.isGone = wednesday || thursday
+                stick4.isGone = friday || thursday
             }
             fridayBttn.setOnClickListener {
                 selectedDays.friday = fridayBttn.isChecked
                 friday = fridayBttn.isChecked
                 viewModel.onChangeDays(selectedDays)
+                stick4.isGone = friday || thursday
+                stick5.isGone = friday || saturday
             }
             saturdayBttn.setOnClickListener {
                 selectedDays.saturday = saturdayBttn.isChecked
                 saturday = saturdayBttn.isChecked
                 viewModel.onChangeDays(selectedDays)
+                stick5.isGone = saturday || friday
+                stick6.isGone = saturday || sunday
             }
             sundayBttn.setOnClickListener {
                 selectedDays.sunday = sundayBttn.isChecked
                 sunday = sundayBttn.isChecked
                 viewModel.onChangeDays(selectedDays)
+                stick6.isGone = saturday || sunday
             }
 
             emoji1.setOnClickListener {
