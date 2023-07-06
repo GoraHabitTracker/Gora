@@ -288,7 +288,7 @@ class NewHabitFragment : Fragment() {
                     if (text?.length != 0) {
                         error = null
                         editTextTitle.background = ResourcesCompat.getDrawable(
-                            resources, R.drawable.background_button_skip, null
+                            resources, R.drawable.background_default_elements, null
                         )
                         hintTextColor = ContextCompat.getColorStateList(context, R.color.periwinkle)
                     }

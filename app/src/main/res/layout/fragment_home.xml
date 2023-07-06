@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingHorizontal="12dp">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/toolbar_home"
@@ -13,6 +12,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginTop="46dp"
         android:fontFamily="@font/manrope_extrabold"
+        android:layout_marginHorizontal="@dimen/margin_horizontal_main"
         android:paddingBottom="18dp"
         android:text="@string/my_habit"
         android:textColor="@color/sapphire"
@@ -26,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar_home"
@@ -62,6 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
         android:paddingStart="104dp"
+        android:paddingEnd="0dp"
         android:paddingBottom="42dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -73,10 +75,10 @@
         android:id="@+id/todays_date_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginHorizontal="@dimen/margin_horizontal_main"
         android:background="@drawable/background_transparent"
         android:paddingHorizontal="8dp"
-        android:paddingBottom="10dp"
+        android:paddingBottom="8dp"
         android:textColor="@color/sapphire"
         android:textSize="17sp"
         android:visibility="visible"

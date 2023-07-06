@@ -4,8 +4,6 @@
     <style name="ListCardViewStyle" parent="Theme.AppCompat.Light">
         <item name="cardCornerRadius">16dp</item>
         <item name="android:outlineSpotShadowColor">@color/shadow_of_icon</item>
-        <item name="android:translationX">2dp</item>
-        <item name="android:translationY">2dp</item>
 <!--        <item name="android:translationX">2dp</item>     - это какое-то там смещение тени -->
 <!--        <item name="android:translationY">2dp</item>-->
         <item name="cardElevation">8dp</item>
@@ -28,13 +26,8 @@
 
     <style name="AlertDialogStyle" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:windowBackground">@drawable/style_alert_dialog</item>
-        <item name="android:backgroundDimAmount">0.2</item>
+        <item name="android:backgroundDimAmount">0.3</item>
 <!--        backgroundDimAmount - прозрачность затемнения-->
-    </style>
-
-    <style name="roundedWeek">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">12%</item>
     </style>
 
 </resources>
