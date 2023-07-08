@@ -58,6 +58,11 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        viewModel
+            .getAllHabitFlow()
+            .launchIn(viewLifecycleOwner.lifecycleScope)
+
         return FragmentHomeBinding.inflate(inflater, container, false)
             .also { _binding = it }
             .root
