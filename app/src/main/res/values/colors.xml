@@ -18,11 +18,8 @@
     <color name="snow_white">#FFFDFA</color>
     <color name="pastel_green">#C7EEC9</color>
     <color name="transparent">#00000000</color>
-    <color name="transparent_40">#40000000</color>
     <color name="transparent_90">#90FFFFFF</color>
     <color name="pastel_red">#E77777</color>
     <color name="cross_background">#F1F5FF</color>
-    <color name="delete_background">#b80f0a</color>
     <color name="shadow_of_icon">#BEAB951A</color>
-    <color name="shading">#08163666</color>
 </resources>

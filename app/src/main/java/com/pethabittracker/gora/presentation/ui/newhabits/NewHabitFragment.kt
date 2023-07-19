@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isGone
 import androidx.core.widget.doOnTextChanged
@@ -61,34 +60,6 @@ class NewHabitFragment : Fragment() {
 
             val selectedDays =
                 WeekList(monday, thursday, wednesday, tuesday, friday, saturday, sunday)
-
-//            mondayBttn5.setOnClickListener {
-//                stick1111.isGone = mondayBttn5.isChecked
-//            }
-//            tuesdayBttn5.setOnClickListener {
-//                stick52.isGone = tuesdayBttn5.isChecked
-//                stick1111.isGone = tuesdayBttn5.isChecked
-//            }
-//            wednesdayBttn5.setOnClickListener {
-//                stick53.isGone = wednesdayBttn5.isChecked
-//                stick52.isGone = wednesdayBttn5.isChecked
-//            }
-//            thursdayBttn5.setOnClickListener {
-//                stick54.isGone = thursdayBttn5.isChecked
-//                stick53.isGone = thursdayBttn5.isChecked
-//            }
-//            fridayBttn5.setOnClickListener {
-//                stick55.isGone = fridayBttn5.isChecked
-//                stick54.isGone = fridayBttn5.isChecked
-//            }
-//            saturdayBttn5.setOnClickListener {
-//                stick56.isGone = saturdayBttn5.isChecked
-//                stick55.isGone = saturdayBttn5.isChecked
-//            }
-//            sundayBttn5.setOnClickListener {
-//                stick56.isGone = sundayBttn5.isChecked
-//            }
-
 
             mondayBttn.setOnClickListener {
                 selectedDays.monday = mondayBttn.isChecked
@@ -280,7 +251,6 @@ class NewHabitFragment : Fragment() {
         return editText?.text?.toString()?.ifBlank {
             with(binding) {
                 error = getString(R.string.empty_field)
-                hintTextColor = ContextCompat.getColorStateList(context, R.color.pastel_red)
                 editTextTitle.background = ResourcesCompat.getDrawable(
                     resources, R.drawable.border_edittext_error, null
                 )
@@ -290,7 +260,6 @@ class NewHabitFragment : Fragment() {
                         editTextTitle.background = ResourcesCompat.getDrawable(
                             resources, R.drawable.background_default_elements, null
                         )
-                        hintTextColor = ContextCompat.getColorStateList(context, R.color.periwinkle)
                     }
                 }
 

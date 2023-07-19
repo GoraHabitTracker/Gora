@@ -53,7 +53,7 @@
             android:paddingStart="0dp"
             android:paddingEnd="16dp"
             android:paddingBottom="16dp"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <FrameLayout
                 android:layout_width="wrap_content"

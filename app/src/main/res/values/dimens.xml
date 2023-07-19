@@ -20,5 +20,6 @@
     <dimen name="stick_width">1dp</dimen>
     <dimen name="margin_start_weeks_day">20dp</dimen>
     <dimen name="margin_horizontal_main">12dp</dimen>
+    <dimen name="main_margin_top">30dp</dimen>
 
 </resources>
