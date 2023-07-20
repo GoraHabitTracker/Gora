@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Альтернативный варик без ConstraintLayout, но есть веса -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_habit"
+    style="@style/ListCardViewStyle"
+    android:layout_width="match_parent"
+    android:layout_height="112dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="16dp"
+        android:background="@color/white"
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:foreground="@drawable/foreground_item_habit_ring"
+        android:padding="@dimen/padding_tv_and_image"
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+        app:srcCompat="@drawable/icon_newhabit_water" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="112dp"
+        android:paddingVertical="16dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="0dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_name_habit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textColor="@color/sapphire"
+            android:textSize="17sp"
+            app:drawableEndCompat="@drawable/icon_question_blue_fcbk"
+            tools:text="Название привычки" />
+
+        <LinearLayout
+            android:id="@+id/frame_choice"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/background_default_elements"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/button_skip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="6dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center"
+                    android:paddingVertical="8dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="0dp"
+                    android:text="@string/skip"
+                    android:textColor="@color/sapphire"
+                    android:textSize="11sp"
+                    app:drawableStartCompat="@drawable/icon_x_periwinkle" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_button_done"
+                android:layout_gravity="center"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/button_done"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="6dp"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="8dp"
+                    android:paddingStart="8dp"
+                    android:layout_gravity="center"
+                    android:paddingEnd="0dp"
+                    android:stateListAnimator="@null"
+                    android:text="@string/done"
+                    android:textColor="@color/sapphire"
+                    android:textSize="11sp"
+                    app:drawableStartCompat="@drawable/icon_check_white" />
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/frame_done"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_button_done_clicked"
+            android:drawablePadding="6dp"
+            android:gravity="center_vertical"
+            android:paddingVertical="10dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="16dp"
+            android:text="@string/done_cancel"
+            android:textColor="@color/sapphire"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:drawableStartCompat="@drawable/icon_check_white"
+            tools:backgroundTint="@color/pastel_green" />
+
+        <TextView
+            android:id="@+id/frame_skip"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_button_skip_clicked"
+            android:drawablePadding="6dp"
+            android:gravity="center_vertical"
+            android:paddingVertical="10dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="16dp"
+            android:stateListAnimator="@null"
+            android:text="@string/skip_cancel"
+            android:textColor="@color/sapphire"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:drawableStartCompat="@drawable/icon_x_blue_fcbk" />
+
+        <TextView
+            android:id="@+id/frame_inactive"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_button_inactive_habit"
+            android:drawablePadding="6dp"
+            android:gravity="center_vertical"
+            android:paddingVertical="10dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="16dp"
+            android:stateListAnimator="@null"
+            android:text="@string/habit_inactive"
+            android:textColor="@color/sapphire"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:drawableStartCompat="@drawable/icon_peace_hand" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
+
+    <!-- android:stateListAnimator="@null"  - Убирает тени-->
