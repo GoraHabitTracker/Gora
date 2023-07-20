@@ -1,9 +1,11 @@
 package com.pethabittracker.gora.presentation.ui.welcome
 
 import android.os.Bundle
+import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.pethabittracker.gora.R
@@ -29,8 +31,21 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.button.setOnClickListener {
-            findNavController().navigate(R.id.action_global_welcome)
+        with(binding){
+            iv.alpha = 0.0f
+            iv.animate()
+                .setDuration(3000)
+                .alpha(1.0F)
+                .startDelay = 1000
+
+            textViewBeCreator.setOnClickListener {
+                TransitionManager.beginDelayedTransition(root)
+                iv.isVisible = !iv.isVisible
+            }
+
+            button.setOnClickListener {
+                findNavController().navigate(R.id.action_global_welcome)
+            }
         }
 
         viewModel.updateDaily()

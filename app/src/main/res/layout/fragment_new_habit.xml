@@ -104,7 +104,7 @@
                     android:outlineSpotShadowColor="@color/shadow_of_icon"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
                     app:srcCompat="@drawable/icon_newhabit_water" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -119,7 +119,7 @@
                     app:layout_constraintEnd_toStartOf="@id/emoji_3"
                     app:layout_constraintStart_toEndOf="@+id/emoji_1"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
                     app:srcCompat="@drawable/icon_newhabit_plant" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -134,7 +134,7 @@
                     app:layout_constraintEnd_toStartOf="@id/emoji_4"
                     app:layout_constraintStart_toEndOf="@+id/emoji_2"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
                     app:srcCompat="@drawable/icon_newhabit_meal" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -149,7 +149,7 @@
                     app:layout_constraintEnd_toStartOf="@id/emoji_5"
                     app:layout_constraintStart_toEndOf="@+id/emoji_3"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
                     app:srcCompat="@drawable/icon_newhabit_sport" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -164,7 +164,7 @@
                     android:outlineSpotShadowColor="@color/shadow_of_icon"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
                     app:srcCompat="@drawable/icon_newhabit_pills" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -179,7 +179,7 @@
                     android:outlineSpotShadowColor="@color/shadow_of_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
                     app:srcCompat="@drawable/icon_newhabit_creative" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -194,7 +194,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/emoji_8"
                     app:layout_constraintStart_toEndOf="@id/emoji_6"
-                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
                     app:srcCompat="@drawable/icon_newhabit_pet" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -209,7 +209,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/emoji_9"
                     app:layout_constraintStart_toEndOf="@id/emoji_7"
-                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
                     app:srcCompat="@drawable/icon_newhabit_cleaning" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -224,7 +224,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/emoji_10"
                     app:layout_constraintStart_toEndOf="@id/emoji_8"
-                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
                     app:srcCompat="@drawable/icon_newhabit_walk" />
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -239,7 +239,7 @@
                     android:outlineSpotShadowColor="@color/shadow_of_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:shapeAppearanceOverlay="@style/roundedEmoji"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
                     app:srcCompat="@drawable/icon_newhabit_book" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -413,7 +413,7 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:backgroundTint="@color/periwinkle"
-                    app:shapeAppearance="@style/roundedEmoji" />
+                    app:shapeAppearance="@style/roundedImageViewRounded" />
             </FrameLayout>
         </LinearLayout>
     </ScrollView>
