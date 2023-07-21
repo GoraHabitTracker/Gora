@@ -34,9 +34,9 @@ class WelcomeFragment : Fragment() {
         with(binding){
             iv.alpha = 0.0f
             iv.animate()
-                .setDuration(3000)
+                .setDuration(1500)
                 .alpha(1.0F)
-                .startDelay = 1000
+                .startDelay = 500
 
             textViewBeCreator.setOnClickListener {
                 TransitionManager.beginDelayedTransition(root)
