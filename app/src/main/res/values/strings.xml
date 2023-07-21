@@ -42,5 +42,6 @@
     <string name="ok">Окей</string>
     <string name="habit_inactive">Сегодня привычка неактивна</string>
     <string name="habit_limit_10">Более 10 привычек \nдобавить нельзя</string>
+    <string name="title_gora">GORA</string>
 
 </resources>

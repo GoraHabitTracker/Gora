@@ -2,12 +2,16 @@
 <navigation
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:startDestination="@id/navigation_welcome"
+    app:startDestination="@id/navigation_splashscreen"
     android:id="@+id/navigation">
 
-    <include app:graph="@navigation/navigation_content" />
+    <include app:graph="@navigation/navigation_splashscreen" />
     <include app:graph="@navigation/navigation_welcome" />
+    <include app:graph="@navigation/navigation_content" />
     <include app:graph="@navigation/navigation_detail" />
+
+    <action android:id="@+id/action_global_splashscreen"
+        app:destination="@id/navigation_welcome"/>
 
     <action android:id="@+id/action_global_welcome"
         app:destination="@id/navigation_content"/>

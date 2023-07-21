@@ -25,31 +25,12 @@
 <!--        backgroundDimAmount - прозрачность затемнения-->
     </style>
 
-<!--    <style name="SplashScreen" parent="Theme.SplashScreen">-->
-<!--        <item name="windowSplashScreenBackground">@color/sea_foam</item>-->
-<!--        <item name="windowSplashScreenAnimatedIcon">@drawable/animated_splash</item>-->
-<!--        <item name="postSplashScreenTheme">@style/Theme.Gora</item>-->
-<!--    </style>-->
-
-<!--    <style name="SplashScreen" parent="Theme.SplashScreen">-->
-<!--        <item name="windowSplashScreenBackground">@color/sea_foam</item>-->
-<!--        <item name="windowSplashScreenIconBackgroundColor">@color/sea_foam</item>-->
-<!--        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_image</item>-->
-<!--        <item name="postSplashScreenTheme">@style/Theme.Gora</item>-->
-<!--    </style>-->
-
-<!--    <style name="SplashScreen" parent="Theme.SplashScreen">-->
-<!--        <item name="windowSplashScreenBackground">@color/sea_foam</item>-->
-<!--        <item name="windowSplashScreenAnimatedIcon">@drawable/animated_splash</item>-->
-<!--        <item name="android:windowSplashScreenBrandingImage">@drawable/splashscreen_branding</item>-->
-<!--        <item name="android:windowSplashScreenAnimationDuration">2147483647</item>-->
-<!--        <item name="postSplashScreenTheme">@style/Theme.Gora</item>-->
-<!--    </style>-->
-
-        <style name="SplashScreen" parent="Theme.SplashScreen">
-            <item name="windowSplashScreenBackground">@color/sea_foam</item>
-            <item name="windowSplashScreenAnimatedIcon">@drawable/news_avd_v02</item>
-            <item name="postSplashScreenTheme">@style/Theme.Gora</item>
-        </style>
+    <!--*************************    код для заставки SplashScreen            *******************-->
+<!--  *******   в Манифесте в активити надо добавить  android:theme="@style/SplashScreen" и в gradle вписать зависимости  *****  -->
+<!--        <style name="SplashScreen" parent="Theme.SplashScreen">-->
+<!--            <item name="windowSplashScreenBackground">@color/sea_foam</item>-->
+<!--            <item name="windowSplashScreenAnimatedIcon">@drawable/news_avd_v02</item>-->
+<!--            <item name="postSplashScreenTheme">@style/Theme.Gora</item>-->
+<!--        </style>-->
 
 </resources>

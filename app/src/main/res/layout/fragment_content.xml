@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:layout_marginHorizontal="34dp"
+        android:paddingHorizontal="34dp"
         android:layout_gravity="bottom"
         android:paddingTop="14dp"
         app:elevation="0dp"
@@ -42,7 +42,7 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:foregroundGravity="center"
-        android:contentDescription="Q"
+        android:contentDescription="@string/go"
         app:elevation="0dp"
         app:layout_anchor="@id/bottom_app_bar"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
