@@ -148,13 +148,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="14dp"
+        android:layout_marginBottom="10dp"
+        android:letterSpacing="0.0"
         android:padding="@dimen/padding_button_alertdialog"
         android:stateListAnimator="@null"
         android:text="@string/ok"
         android:textAllCaps="false"
         android:textColor="@color/snow_white"
-        android:textSize="11sp"
+        android:textSize="14sp"
         app:cornerRadius="8dp" />
 </LinearLayout>

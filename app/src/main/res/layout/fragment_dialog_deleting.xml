@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingVertical="10dp"
-    android:paddingHorizontal="16dp">
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="10dp">
 
     <ImageView
         android:id="@+id/iv_hand"
@@ -24,6 +24,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="14dp"
         android:gravity="center"
+        android:letterSpacing="0.0"
         android:text="@string/delete_swipe_left"
         android:textColor="@color/sapphire"
         android:textSize="14sp" />
@@ -33,10 +34,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:letterSpacing="0.0"
         android:stateListAnimator="@null"
         android:text="@string/gotit"
         android:textAllCaps="false"
         android:textColor="@color/snow_white"
-        android:textSize="11sp"
+        android:textSize="14sp"
         app:cornerRadius="8dp" />
 </LinearLayout>
+
+
+    <!--    android:letterSpacing="0.0"         межбуквенное расстояние-->

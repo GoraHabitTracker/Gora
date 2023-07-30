@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="80dp"
-    android:background="@color/sea_foam">
+    android:background="@color/sea_foam"
+    android:paddingBottom="80dp">
 
     <ImageView
         android:id="@+id/iv"
@@ -20,23 +20,23 @@
         android:id="@+id/text_view_be_creator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
         android:text="@string/be_creator"
         android:textColor="@color/sapphire"
         android:textSize="20sp"
-        android:layout_marginBottom="14dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/text_view_welcome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/text_view_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginBottom="32dp"
-        android:text="@string/welcome_text"
+        android:gravity="center"
         android:lineSpacingExtra="2sp"
+        android:text="@string/welcome_text"
         android:textColor="@color/sapphire"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@id/button"
@@ -48,13 +48,14 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
+        android:letterSpacing="0.0"
         android:padding="@dimen/padding_button_default"
+        android:stateListAnimator="@null"
         android:text="@string/go"
-        android:textStyle="bold"
         android:textAllCaps="false"
         android:textColor="@color/snow_white"
         android:textSize="16sp"
-        android:stateListAnimator="@null"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
